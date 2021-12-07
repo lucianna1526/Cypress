@@ -8,7 +8,7 @@ class requisicaoInsereDados {
                 acessaModuloCompras.acessarCompras();
                 cy.wait(5000);
                 cy.get('.md-toolbar-shadow > .md-toolbar-tools > .md-icon-button > .md-blue-theme').click();
-                cy.get('#pdInputMenuVerfical370').type('Requisição de compras').click().type('{enter}');
+                cy.get('input[nat="buscaMenuVertical"]').type('Requisição de compras').click().type('{enter}');
                 cy.wait(1000)
                 //Organograma
                 cy.get('input[nat="cadastroRequisicaoComprasDadosPrincipaisOrganograma"]')
@@ -31,8 +31,9 @@ class requisicaoInsereDados {
                 //Fonte
                 cy.get('input[nat="cadastroRequisicaoComprasDadosPrincipaisFonte"]')
                 .click()
-                cy.focused().tab()
+                cy.focused().tab().wait(2000);
                 //Detalhamento da Fonte
+                
                 cy.get('input[nat="cadastroRequisicaoComprasDadosPrincipaisDetalhamentoFonte"]')
                 .click()
                 .type('10000').click().type('{enter}')
@@ -43,19 +44,21 @@ class requisicaoInsereDados {
                 //Salvar Button Capa
                 cy.get('button[nat="cadastroRequisicaoComprasCrudSalvar"]')
                 .click()
-                //Codigo Produto
+                //Aguarda 5 segundos
+                cy.wait(5000)
+                //ABA Cadastro de itens da requisição de compras - Codigo Produto
                 cy.get('input[nat="cadastroItemRequisicaoComprasProduto"]')
                 .type('2824171').type('{enter}')
-                .tab()
-                //Quantidade Pedida
+                .wait(1000)
+                //ABA Cadastro de itens da requisição de compras - Quantidade Pedida
                 cy.get('input[nat="cadastroItemRequisicaoComprasQtdPedida"]')
                 .type('5')
-                .tab()
-                //Valor Unitário
+                .tab().wait(1000)
+                //ABA Cadastro de itens da requisição de compras - Valor Unitário
                 cy.get('input[nat="cadastroItemRequisicaoComprasValorUnitario"]')
                 .type('1,7750')
-                .tab()
-                //Origem do valor de referência
+                .tab().wait(1000)
+                //ABA Cadastro de itens da requisição de compras - Origem do valor de referência
                 cy.get('[nat="cadastroItemRequisicaoComprasOrigemValorReferenciaSelect"]')
                 .click().type('{enter}')
                 //Adicionar e Sair
