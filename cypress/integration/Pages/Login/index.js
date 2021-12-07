@@ -10,6 +10,7 @@ class Login {
         //clica em entrar
         cy.get('input.ng-scope').click();
     }
+    
 }
  
 export default new Login();
