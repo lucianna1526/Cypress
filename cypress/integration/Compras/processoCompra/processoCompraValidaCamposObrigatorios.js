@@ -6,9 +6,18 @@ class requisicaoValidaCamposObrigatorios {
                 acessaModuloCompras.acessarCompras();
                 cy.wait(5000);
                 cy.get('button[nat="botaoSideMenu"]').click();
-                cy.get('input[nat="buscaMenuVertical"]').type('Requisição de compras').click().type('{enter}');
+                cy.get('input[nat="buscaMenuVertical"]').type('Processo de compras')
+                .click()
+                .type('{downarrow}')
+                .type('{enter}');
                 cy.wait(1000)
-                cy.get('[nat="cadastroRequisicaoComprasCrudSalvar"]').click();
+
+                //clica em salvar
+                cy.get('[nat="cadastroProcessoCompraCrudSalvar"]').click();
+
+                //valida mensagem campos em branco
+                cy.get(".md-toast-text").should('have.text',"      Por favor, verifique os campos inválidos    ").screenshot()
+                //Por favor, verifique os campos inválidos
            });
         });
     }
