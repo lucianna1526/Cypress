@@ -12,15 +12,15 @@ class requisicaoInsereDados {
                 cy.wait(1000)
                 //Organograma
                 cy.get('input[nat="cadastroRequisicaoComprasDadosPrincipaisOrganograma"]')
-                .type('2.0212.0032.2006')
+                .type('13.2201.0042.2194')
                 //Subgrupo
                 cy.get('input[nat="cadastroRequisicaoComprasDadosPrincipaisSubGrupo"]')
                 .click()
-                .type('193')
+                .type('16')
                 //Ficha
                 cy.get('input[nat="cadastroRequisicaoComprasDadosPrincipaisFicha"]')
                 .click()
-                .type('20210805')
+                .type('20211455')
                 .type('{enter}')
                 .tab()
                 //Origem do recurso
@@ -36,7 +36,10 @@ class requisicaoInsereDados {
                 
                 cy.get('input[nat="cadastroRequisicaoComprasDadosPrincipaisDetalhamentoFonte"]')
                 .click()
-                .type('10000').click().type('{enter}')
+                .type('10000')
+                .wait(3000)
+                .click()
+                .type('{enter}')
                 //Processo
                 cy.get('input[nat="cadastroRequisicaoComprasDadosPrincipaisProcesso"]')
                 .click()
@@ -46,9 +49,12 @@ class requisicaoInsereDados {
                 .click()
                 //Aguarda 5 segundos
                 cy.wait(5000)
+
+                // --INSERE ITEM 1 NA REQUISIÇÃO--
+
                 //ABA Cadastro de itens da requisição de compras - Codigo Produto
                 cy.get('input[nat="cadastroItemRequisicaoComprasProduto"]')
-                .type('2824171').type('{enter}')
+                .type('48859114').type('{enter}')
                 .wait(1000)
                 //ABA Cadastro de itens da requisição de compras - Quantidade Pedida
                 cy.get('input[nat="cadastroItemRequisicaoComprasQtdPedida"]')
@@ -61,9 +67,31 @@ class requisicaoInsereDados {
                 //ABA Cadastro de itens da requisição de compras - Origem do valor de referência
                 cy.get('[nat="cadastroItemRequisicaoComprasOrigemValorReferenciaSelect"]')
                 .click().type('{enter}')
-                //Adicionar e Sair
+                //Adicionar e Limpar
+                cy.get('button[nat="cadastroItemRequisicaoComprasCrudSalvarLimpar"]')
+                .click()
+                .wait(2000);
+
+                // --INSERE ITEM 2 NA REQUISIÇÃO--
+
+                cy.get('input[nat="cadastroItemRequisicaoComprasProduto"]')
+                .type('48859972').type('{enter}')
+                .wait(1000)
+                //ABA Cadastro de itens da requisição de compras - Quantidade Pedida
+                cy.get('input[nat="cadastroItemRequisicaoComprasQtdPedida"]')
+                .type('5')
+                .tab().wait(1000)
+                //ABA Cadastro de itens da requisição de compras - Valor Unitário
+                cy.get('input[nat="cadastroItemRequisicaoComprasValorUnitario"]')
+                .type('1,7650')
+                .tab().wait(1000)
+                //ABA Cadastro de itens da requisição de compras - Origem do valor de referência
+                cy.get('[nat="cadastroItemRequisicaoComprasOrigemValorReferenciaSelect"]')
+                .click().type('{enter}')
+                 //Adicionar e Sair
                 cy.get('button[nat="cadastroItemRequisicaoComprasCrudSalvarFechar"]')
                 .click()
+                /*
                 if(cy.get('[nat="cadastroRequisicaoComprasDadosPrincipaisTotalPedido"] > .col-md-2 > .form-group > .form-control > span')=='8,90'){
                     console.log('Valor esperado')
                    
@@ -71,9 +99,13 @@ class requisicaoInsereDados {
                     cy.get('[nat="Produtos"]').click()
                     console.log('Valor diferente do esperado')
                 }
+             */ 
+                //Enviar e Liberar
+                cy.get('button[nat="cadastroRequisicaoComprasEnviarLiberar"]')
+                .click()
+                .wait(1000)
+            }); 
                 
-                
-           });
         });
         
         
