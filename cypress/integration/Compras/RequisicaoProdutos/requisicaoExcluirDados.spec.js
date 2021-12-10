@@ -1,11 +1,12 @@
-import acessaModuloCompras from '../AcessaModuloCompras'
-
 class requisicaoExcluiDados {
     reqExcluiDados(){
         describe('Acessa Tela Cadastro de requisição de compras, E exclui', ()=> {
+            it('Acessa Modulo Compras', ()=>{
+                cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
+              })
             it('Valida Exclusão de dados', () =>{
                 //Acessa modulo compras e aguarda 5 segundos
-                acessaModuloCompras.acessarCompras();
+                
                 cy.wait(5000);
                 cy.get('button[nat="botaoSideMenu"]').click();
                 cy.get('input[nat="buscaMenuVertical"]').type('Requisição de compras').click().type('{enter}');
