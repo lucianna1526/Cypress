@@ -1,7 +1,7 @@
 
 class Login {
     acessarLogin(){
-        cy.visit('http://desenvolvimento.prodataweb.inf.br:8008/sigAutomacao/')
+        cy.visit('/')
     }
 
     preencherLogin(){
