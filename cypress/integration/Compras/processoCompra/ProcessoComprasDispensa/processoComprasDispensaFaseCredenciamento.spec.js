@@ -1,11 +1,10 @@
-import processoComprasDispensaFaseJulgamento from "./processoComprasDispensaFaseJulgamento.spec";
 
 class processoComprasDispensaFaseCredenciamento {
   credenciamento() {
     it("Acessa - Fase Credenciamento", () => {
-      beforeEach(() => cy.visit("/"));
+      
       //Clica na aba de credenciamento
-      cy.get('li[nat="Credenciamento"]').click().wait(5000);
+      cy.get('li[nat="Credenciamento"]').click().wait(1000);
 
       //Abre modal credenciamento
       cy.get(
@@ -26,9 +25,8 @@ class processoComprasDispensaFaseCredenciamento {
         .wait(3000);
 
       //##############FIM-CREDENCIAMENTO###################
-    });
-    //Chama Classe Fase Julgamento
-    processoComprasDispensaFaseJulgamento.julgamento();
+    });   
+    
   }
 }
 export default new processoComprasDispensaFaseCredenciamento();

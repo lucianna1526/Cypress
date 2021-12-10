@@ -1,4 +1,3 @@
-import processoComprasDispensaGeraAutorizacaoCompra from "./processoComprasDispensaGeraAutorizacaoCompra.spec";
 
 class processoComprasDispensaJulgamento {
   julgamento() {
@@ -42,8 +41,7 @@ class processoComprasDispensaJulgamento {
 
       //##############FIM-JULGAMENTO###################
     });
-    //Chama Classe Fase Gera autorização de compra
-    processoComprasDispensaGeraAutorizacaoCompra.geraAutorizacao();
+    
   }
 }
 export default new processoComprasDispensaJulgamento();

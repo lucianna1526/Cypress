@@ -21,3 +21,14 @@ import './commands'
 
 //insere plugin tab
 require('cypress-plugin-tab');
+
+//Preserva o cookie, previne de ser resetado depois de cada teste
+Cypress.Cookies.defaults({
+    preserve: 'JSESSIONID',
+  })
+
+   
+  //Reinscreve o clear, depois de cada teste ele fazia reload na pagina.
+  Cypress.LocalStorage.clear = function (keys, ls, rs) {
+    return;
+  }

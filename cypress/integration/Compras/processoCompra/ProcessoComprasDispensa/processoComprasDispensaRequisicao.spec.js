@@ -1,16 +1,16 @@
-import acessaModuloCompras from "../../acessaModuloCompras";
-import processoComprasDispensaCapa from "./processoComprasDispensaCapa.spec";
 
 class processoComprasDispensaRequisicao {
   requisicao() {
-    describe("Acessa Tela Cadastro de requisição de compras", () => {
+    it('Acessa Modulo Compras', ()=>{
+      cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
+    })
+      
       it("Preenche Requisição", () => {
         //Acessa modulo compras e aguarda 5 segundos
-        acessaModuloCompras.acessarCompras();
+        //acessaModuloCompras.acessarCompras();
         cy.wait(5000);
-        cy.get(
-          ".md-toolbar-shadow > .md-toolbar-tools > .md-icon-button > .md-blue-theme"
-        ).click();
+        cy.get('button[nat="botaoSideMenu"]')
+        .click();
         cy.get('input[nat="buscaMenuVertical"]')
           .type("Requisição de compras")
           .click()
@@ -159,10 +159,8 @@ class processoComprasDispensaRequisicao {
           .wait(1000);
 
         //##############FIM-REQUISIÇÃO###################
-      });
-      //Chama Classe processo de compras capa
-      processoComprasDispensaCapa.processoCompras();
-    });
+      });      
+    
   }
 }
 export default new processoComprasDispensaRequisicao();

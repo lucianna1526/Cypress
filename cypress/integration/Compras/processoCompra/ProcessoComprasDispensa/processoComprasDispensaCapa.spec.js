@@ -1,11 +1,9 @@
-import acessaModuloCompras from "../../AcessaModuloCompras";
-import processoComprasDispensaFaseCredenciamento from "./processoComprasDispensaFaseCredenciamento.spec";
 
 class processoComprasDispensa {
   processoCompras() {
     it("Preenche Processo de Compras - Aba Principal", () => {
       //Acessa modulo compras e aguarda 5 segundos
-      acessaModuloCompras.acessarCompras();
+      //acessaModuloCompras.acessarCompras();
       cy.wait(5000);
       cy.get('button[nat="botaoSideMenu"]').click();
       cy.get('input[nat="buscaMenuVertical"]')
@@ -103,11 +101,10 @@ class processoComprasDispensa {
 
       //Clica na aba de credenciamento
       cy.get('li[nat="Credenciamento"]').click().wait(5000);
-
-      //Chama Classe Fase Credenciamento
+      
     });
 
-    processoComprasDispensaFaseCredenciamento.credenciamento();
+    
   }
 }
 
