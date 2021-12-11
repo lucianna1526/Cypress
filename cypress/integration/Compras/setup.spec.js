@@ -4,7 +4,8 @@ import processoComprasDispensaCapaSpec from "./processoCompra/ProcessoComprasDis
 import processoComprasDispensaFaseCredenciamentoSpec from "./processoCompra/ProcessoComprasDispensa/processoComprasDispensaFaseCredenciamento.spec";
 import processoComprasDispensaFaseJulgamentoSpec from "./processoCompra/ProcessoComprasDispensa/processoComprasDispensaFaseJulgamento.spec";
 import processoComprasDispensaGeraAutorizacaoCompraSpec from "./processoCompra/ProcessoComprasDispensa/processoComprasDispensaGeraAutorizacaoCompra.spec";
-
+import requisicaoInsereDadosSpec from "./RequisicaoProdutos/requisicaoInsereDados.spec";
+import requisicaoValidaCamposObrigatoriosAbntSpec from "./RequisicaoProdutos/requisicaoValidaValoresAbnt.spec";
 class setup {
     constructor() {
         
@@ -18,7 +19,7 @@ class setup {
                     
                 });
             this.requisicaoCompras();    
-            this.processoComprasDispensa();          
+            //this.processoComprasDispensa();          
         
         });
 
@@ -26,6 +27,8 @@ class setup {
     requisicaoCompras(){
         //requisiçao]
         console.log('Chama Requisicao COmpras')
+        requisicaoInsereDadosSpec.reqInsereDados();
+        requisicaoValidaCamposObrigatoriosAbntSpec.ReqvalidaCampos();
     }
 
     processoComprasDispensa(){
