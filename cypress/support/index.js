@@ -12,23 +12,23 @@
 // You can read more here:
 // https://on.cypress.io/configuration
 // ***********************************************************
-
+//Importa dependencia que faz upload de arquivos
+import "cypress-file-upload";
 // Import commands.js using ES2015 syntax:
-import './commands'
+import "./commands";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
 //insere plugin tab
-require('cypress-plugin-tab');
+require("cypress-plugin-tab");
 
 //Preserva o cookie, previne de ser resetado depois de cada teste
 Cypress.Cookies.defaults({
-    preserve: 'JSESSIONID',
-  })
+  preserve: "JSESSIONID",
+});
 
-   
-  //Reinscreve o clear, depois de cada teste ele fazia reload na pagina.
-  Cypress.LocalStorage.clear = function (keys, ls, rs) {
-    return;
-  }
+//Reinscreve o clear, depois de cada teste ele fazia reload na pagina.
+Cypress.LocalStorage.clear = function (keys, ls, rs) {
+  return;
+};
