@@ -11,7 +11,12 @@ Cypress.Commands.add(
 //Preenche Requisição - Aba Produto
 Cypress.Commands.add(
   "requisicaoAdicionarProduto",
-  (codProduto, quantidade, valorUnitario) => {
+  (codProduto, quantidade, valorUnitario, valorEsperado) => {
+    //Limpar Campos
+    cy.get('button[nat="cadastroItemRequisicaoComprasCrudLimpar"]')
+      .click()
+      .wait(2000);
+
     //ABA Cadastro de itens da requisição de compras - Codigo Produto
     cy.get('input[nat="cadastroItemRequisicaoComprasProduto"]')
       .type(codProduto)
@@ -25,6 +30,7 @@ Cypress.Commands.add(
     //ABA Cadastro de itens da requisição de compras - Valor Unitário
     cy.get('input[nat="cadastroItemRequisicaoComprasValorUnitario"]')
       .type(valorUnitario)
+      .wait(100)
       .tab()
       .wait(1000);
     //ABA Cadastro de itens da requisição de compras - Origem do valor de referência
@@ -32,9 +38,72 @@ Cypress.Commands.add(
       .click()
       .type("Cotação")
       .type("{enter}");
-    //Adicionar e Limpar
-    cy.get('button[nat="cadastroItemRequisicaoComprasCrudSalvarLimpar"]')
+
+    //Validar SPAN valor Total
+    cy.get('[nat="cadastroItemRequisicaoComprasValorTotal"]>div>div>span')
+      .as("valorTotal")
+      .should("contain", valorEsperado);
+
+    cy.get('[nat="cadastroItemRequisicaoComprasVlExercicioAtual"]>div>div>span')
+      .as("valorExercicioAtual")
+      .should("contain", valorEsperado);
+
+    //validar SPAN Valor do execicio atual
+
+    const valorCalculado = parseFloat(valorUnitario) * parseFloat(quantidade);
+    console.log(valorCalculado);
+    //Validar SPAN valor Autorizado
+    cy.get('[nat="cadastroItemRequisicaoComprasVlAutorizada"]>div>div>span>')
+      .as("valorAutorizado")
+      .should(
+        "have.text",
+        parseFloat(valorCalculado).toFixed(4).replace(".", ",")
+      );
+    if (valorEsperado == "0,0000") {
+      cy.get("@valorAutorizado").should("contain", "0,0000");
+    }
+
+    //SALVAR ITEM
+    cy.get('button[nat="cadastroItemRequisicaoComprasCrudSalvar"]')
       .click()
+      .wait(2000);
+  }
+);
+
+//VALIDA LOAD PRODUTOS TELA REQUISIÇÃO
+Cypress.Commands.add(
+  "requisicaoValidaProduto",
+  (codProduto, quantidade, valorUnitario, valorEsperado) => {
+    //Informa valor unitario item 2
+    cy.get('[role="row"]').contains(codProduto).dblclick().wait(5000);
+
+    //Validar SPAN valor Total
+    cy.get('[nat="cadastroItemRequisicaoComprasValorTotal"]>div>div>span')
+      .as("valorTotal")
+      .should("contain", valorEsperado);
+
+    cy.get('[nat="cadastroItemRequisicaoComprasVlExercicioAtual"]>div>div>span')
+      .as("valorExercicioAtual")
+      .should("contain", valorEsperado);
+
+    //validar SPAN Valor do execicio atual
+
+    const valorCalculado = parseFloat(valorUnitario) * parseFloat(quantidade);
+    console.log(valorCalculado);
+    //Validar SPAN valor Autorizado
+    cy.get('[nat="cadastroItemRequisicaoComprasVlAutorizada"]>div>div>span>')
+      .as("valorAutorizado")
+      .should(
+        "have.text",
+        parseFloat(valorCalculado).toFixed(4).replace(".", ",")
+      );
+    if (valorEsperado == "0,0000") {
+      cy.get("@valorAutorizado").should("contain", "0,0000");
+    }
+
+    //SALVAR ITEM
+    cy.get('button[nat="cadastroItemRequisicaoComprasCrudSalvar"]')
+      .esc()
       .wait(2000);
   }
 );

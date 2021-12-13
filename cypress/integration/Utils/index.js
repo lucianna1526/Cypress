@@ -4,7 +4,7 @@ class Utils {
   }
 
   preencherLogin() {
-    cy.intercept("GET", "**/sigAutomacao/**").as("getUrl");
+    cy.intercept("GET", "**/sigMarcelo/**").as("getUrl");
     cy.get("#usuario").focus().type("jwm");
     cy.get("#iPassword").focus().type("1010");
     //clica em entrar
