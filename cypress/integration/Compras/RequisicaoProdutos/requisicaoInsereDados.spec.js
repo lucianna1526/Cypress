@@ -99,7 +99,7 @@ class requisicaoInsereDados {
         cy.requisicaoAdicionarProduto("73534", "1", "1.7649", "1,76");
       });
 
-      it("Validação 6 - arredondamento 1,7749 para 1,79", () => {
+      it("Validação 6 - arredondamento 1,7749 para 1,77", () => {
         // --INSERE ITEM 5 NA REQUISIÇÃO--
         cy.requisicaoAdicionarProduto("73257", "1", "1.7749", "1,77");
       });
