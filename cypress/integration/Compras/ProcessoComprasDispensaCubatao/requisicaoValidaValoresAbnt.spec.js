@@ -7,9 +7,9 @@ class requisicaoValidaValoresAbnt {
                 }*/
 
         cy.get("body").then(($body) => {
-          if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
-            cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
-          }
+          // if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
+          cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
+          //}
         });
       });
       it("Valida campos obrigátorios", () => {

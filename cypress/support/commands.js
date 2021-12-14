@@ -57,7 +57,8 @@ Cypress.Commands.add(
       .as("valorAutorizado")
       .should(
         "have.text",
-        parseFloat(valorCalculado).toFixed(4).replace(".", ",")
+        valorEsperado
+        //parseFloat(valorEsperado).toFixed(4).replace(".", ",")
       );
     if (valorEsperado == "0,0000") {
       cy.get("@valorAutorizado").should("contain", "0,0000");
@@ -74,6 +75,13 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   "requisicaoValidaProduto",
   (codProduto, quantidade, valorUnitario, valorEsperado) => {
+    //Fecha  do teste anterior se existir
+    cy.get("body").then(($body) => {
+      if ($body.find('[ng-click="fechar()"]').length > 0) {
+        cy.get('[ng-click="fechar()"] > .md-blue-theme').click().wait(2000);
+      }
+    });
+
     //Informa valor unitario item 2
     cy.get('[role="row"]').contains(codProduto).dblclick().wait(5000);
 
@@ -95,15 +103,18 @@ Cypress.Commands.add(
       .as("valorAutorizado")
       .should(
         "have.text",
-        parseFloat(valorCalculado).toFixed(4).replace(".", ",")
+        valorEsperado
+        //parseFloat(valorEsperado).toFixed(4).replace(".", ",")
       );
-    if (valorEsperado == "0,0000") {
-      cy.get("@valorAutorizado").should("contain", "0,0000");
-    }
+    //if (valorEsperado == "0,0000") {
 
+    //}
+
+    //Fecha modal
+    cy.get('[ng-click="fechar()"] > .md-blue-theme').click().wait(2000);
     //SALVAR ITEM
-    cy.get('button[nat="cadastroItemRequisicaoComprasCrudSalvar"]')
+    /*cy.get('button[nat="cadastroItemRequisicaoComprasCrudSalvar"]')
       .esc()
-      .wait(2000);
+      .wait(2000);*/
   }
 );

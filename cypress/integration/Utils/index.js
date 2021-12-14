@@ -5,7 +5,7 @@ class Utils {
 
   preencherLogin() {
     cy.intercept("GET", "**/sigMarcelo/**").as("getUrl");
-    cy.get("#usuario").focus().type("jwm");
+    cy.get("#usuario").focus().type("automacao");
     cy.get("#iPassword").focus().type("1010");
     //clica em entrar
     cy.get("input.ng-scope").click();

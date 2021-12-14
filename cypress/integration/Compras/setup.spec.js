@@ -22,7 +22,7 @@ class setup {
   requisicaoCompras() {
     //requisiçao]
     console.log("Chama Requisicao COmpras");
-    requisicaoInsereDadosSpec.reqInsereDados();
+    //requisicaoInsereDadosSpec.reqInsereDados();
     requisicaoValidaCamposObrigatoriosAbntSpec.ReqvalidaCampos();
   }
 
