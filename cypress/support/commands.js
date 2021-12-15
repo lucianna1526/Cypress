@@ -71,6 +71,31 @@ Cypress.Commands.add(
   }
 );
 
+Cypress.Commands.add(
+  "moduloMenu",
+  (modulo, menu, voltaModulo = 0, voltaSubModulo = 0) => {
+    if (voltaModulo > 0) {
+      cy.get('[title="Ir para menu geral"]').click();
+    }
+    if (voltaSubModulo > 0) {
+      cy.get('[title="Ir para menu geral"]').click();
+    }
+    it("Acessa Modulo Compras", () => {
+      cy.get(modulo).wait(1000).click();
+    });
+    it("Consulta Saldo Ficha", () => {
+      cy.wait(5000);
+      cy.get(menu).click().wait(2000);
+
+      cy.get('input[nat="buscaMenuVertical"]')
+        .type("Saldo de Fichas")
+        .click()
+        .type("{enter}")
+        .wait(1000);
+    });
+  }
+);
+
 //VALIDA LOAD PRODUTOS TELA REQUISIÇÃO
 Cypress.Commands.add(
   "requisicaoValidaProduto",
@@ -116,5 +141,42 @@ Cypress.Commands.add(
     /*cy.get('button[nat="cadastroItemRequisicaoComprasCrudSalvar"]')
       .esc()
       .wait(2000);*/
+  }
+);
+
+//VALIDA LOAD PRODUTOS TELA REQUISIÇÃO
+Cypress.Commands.add(
+  "solicitacaoAdicionaProduto",
+  (codProduto, quantidade, valorUnitario, valorEsperado) => {
+    //informa o item para a compra
+    cy.get('input[nat="cadastroSolicitacaoCompraItemProduto"]')
+      .type(codProduto)
+      .tab()
+      .wait(1000);
+
+    //informa o processo de compra
+    cy.get('input[nat="cadastroSolicitacaoCompraItemProcesso"]')
+      .type("2021014277")
+      .tab()
+      .wait(1000);
+
+    //cadastra quantidade de produto
+    cy.get('input[nat="cadastroSolicitacaoCompraItemQtdPedida"]')
+      .type(quantidade)
+      .tab();
+
+    //informa o valor unitario
+    cy.get('input[nat="cadastroSolicitacaoCompraItemValorUnitario"]')
+      .type(valorUnitario)
+      .tab();
+
+    //Validar SPAN valor Total
+    cy.get('[nat="cadastroSolicitacaoCompraItemValorTotal"]>div>div>span>span')
+      .as("valorAutorizado")
+      .should(
+        "have.text",
+        "R$ " + valorEsperado
+        //parseFloat(valorEsperado).toFixed(4).replace(".", ",")
+      );
   }
 );

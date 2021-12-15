@@ -6,6 +6,10 @@ import processoComprasDispensaFaseJulgamentoSpec from "./processoCompra/Processo
 import processoComprasDispensaGeraAutorizacaoCompraSpec from "./processoCompra/ProcessoComprasDispensa/processoComprasDispensaGeraAutorizacaoCompra.spec";
 import requisicaoInsereDadosSpec from "./RequisicaoProdutos/requisicaoInsereDados.spec";
 import requisicaoValidaCamposObrigatoriosAbntSpec from "./RequisicaoProdutos/requisicaoValidaValoresAbnt.spec";
+
+import requisicaoSolicitacaoComprasSpec from "./cadastroSolicitacaoCompras/cadastroValidaCamposObrigatorios.spec";
+import cadastroSolicitacaoValidaSaldoFichaSpec from "./cadastroSolicitacaoCompras/cadastroSolicitacaoValidaSaldoFicha.spec";
+import cadastroSolicitacaoCompras from "./cadastroSolicitacaoCompras/cadastroSolicitacaoCompras.spec";
 class setup {
   constructor() {
     describe("Executa Suite Modulo Compras", () => {
@@ -16,13 +20,23 @@ class setup {
         cy.wait(5000);
       });
       //this.requisicaoCompras();
-      this.processoComprasDispensa();
+      //this.processoComprasDispensa();
+      this.solicitacaoCompras();
     });
   }
+  solicitacaoCompras() {
+    //requisiçao]
+    console.log("Chama solicitação de compras");
+    //cadastroSolicitacaoValidaSaldoFichaSpec.validaSaldoFicha("5.000,00");
+    cadastroSolicitacaoCompras.cadInsereDados();
+    //requirsicaoSolicitacaoComprasSpec.ReqvalidaCampos();
+    //requirsicaoSolicitacaoComprasSpec.reqInsereDados();
+  }
+
   requisicaoCompras() {
     //requisiçao]
     console.log("Chama Requisicao COmpras");
-    //requisicaoInsereDadosSpec.reqInsereDados();
+    requisicaoInsereDadosSpec.reqInsereDados();
     requisicaoValidaCamposObrigatoriosAbntSpec.ReqvalidaCampos();
   }
 
