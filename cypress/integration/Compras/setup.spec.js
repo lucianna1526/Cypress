@@ -15,8 +15,8 @@ class setup {
         Utils.preencherLogin();
         cy.wait(5000);
       });
-      this.requisicaoCompras();
-      //this.processoComprasDispensa();
+      //this.requisicaoCompras();
+      this.processoComprasDispensa();
     });
   }
   requisicaoCompras() {
