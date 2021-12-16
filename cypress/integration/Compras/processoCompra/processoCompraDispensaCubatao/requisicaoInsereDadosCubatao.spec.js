@@ -24,6 +24,10 @@ class requisicaoInsereDadosCubatao {
           .click()
           .type("{enter}");
         cy.wait(1000);
+        //Data da Requisição
+        cy.get('input[nat="cadastroRequisicaoComprasData"]')
+          .dblclick()
+          .type("15/12/2021");
         //Organograma
         cy.get(
           'input[nat="cadastroRequisicaoComprasDadosPrincipaisOrganograma"]'
