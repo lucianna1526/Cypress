@@ -1,23 +1,22 @@
 //import acessaModuloCompras from '../AcessaModuloCompras'
 
-class requisicaoInsereDados {
-  reqInsereDados(natureza = 1) {
+class requisicaoInsereDadosCubatao {
+  reqInsereDadosCubatao(natureza = 1) {
     describe("Acessa Tela Cadastro de requisição de compras, Valida inserção de dados", () => {
       it("Acessa Modulo Compras", () => {
         /*if (cy.find('button[nat="botaoSideMenu"]').length == 0){
                 cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
                 }*/
-
-        cy.get("body").then(($body) => {
+        /* cy.get("body").then(($body) => {
           if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
             cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
           }
-        });
+        }); */
       });
       it("Valida inserção de dados", () => {
         //Acessa modulo compras e aguarda 5 segundos
-
-        cy.wait(5000);
+        cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
+        cy.wait(3000);
         cy.get('button[nat="botaoSideMenu"]').click().wait(2000);
 
         cy.get('input[nat="buscaMenuVertical"]')
@@ -118,4 +117,4 @@ class requisicaoInsereDados {
     });
   }
 }
-export default new requisicaoInsereDados();
+export default new requisicaoInsereDadosCubatao();

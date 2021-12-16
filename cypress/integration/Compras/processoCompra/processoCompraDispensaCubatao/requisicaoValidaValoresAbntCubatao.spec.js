@@ -1,16 +1,15 @@
-class requisicaoValidaValoresAbnt {
-  ReqvalidaCampos() {
+class requisicaoValidaValoresAbntCubatao {
+  validaCamposAbntCubataoReq() {
     describe("Acessa Tela Cadastro de requisição de compras, Valida campos obrigátorios", () => {
       it("Acessa Modulo Compras", () => {
         /*if (cy.find('button[nat="botaoSideMenu"]').length == 0){
                 cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
                 }*/
-
-        cy.get("body").then(($body) => {
+        /*  cy.get("body").then(($body) => {
           // if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
           cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
           //}
-        });
+        }); */
       });
       it("Valida campos obrigátorios", () => {
         cy.wait(5000);
@@ -112,4 +111,4 @@ class requisicaoValidaValoresAbnt {
     });
   }
 }
-export default new requisicaoValidaValoresAbnt();
+export default new requisicaoValidaValoresAbntCubatao();
