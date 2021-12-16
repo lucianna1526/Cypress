@@ -13,6 +13,7 @@ import processoComprasDispensaCubataoCapaSpec from "./processoCompra/processoCom
 import processoComprasDispensaCubataoFaseCredenciamentoSpec from "./processoCompra/processoCompraDispensaCubatao/processoComprasDispensaCubataoFaseCredenciamento.spec";
 import processoComprasDispensaCubataoFaseJulgamentoSpec from "./processoCompra/processoCompraDispensaCubatao/processoComprasDispensaCubataoFaseJulgamento.spec";
 import processoComprasDispensaCubataoGeraAutorizacaoCompraSpec from "./processoCompra/processoCompraDispensaCubatao/processoComprasDispensaCubataoGeraAutorizacaoCompra.spec";
+import processoComprasDispensaCubataoAbntSpec from "./processoCompra/processoCompraDispensaCubatao/processoComprasDispensaCubataoAbnt.spec";
 
 import requisicaoInsereDadosSpec from "./RequisicaoProdutos/requisicaoInsereDados.spec";
 import requisicaoValidaCamposObrigatoriosAbntSpec from "./RequisicaoProdutos/requisicaoValidaValoresAbnt.spec";
@@ -66,10 +67,13 @@ class setup {
     //requisicaoValidaCamposObrigatoriosCubataoSpec.validarCamposReqCubatao();
     //requisicaoInsereDadosCubataoSpec.reqInsereDadosCubatao();
     //requisicaoValidaValoresAbntCubataoSpec.validaCamposAbntCubataoReq();
-    processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
-    processoComprasDispensaCubataoFaseCredenciamentoSpec.credenciamentoCubatao();
-    processoComprasDispensaCubataoFaseJulgamentoSpec.julgamentoCubatao();
-    processoComprasDispensaCubataoGeraAutorizacaoCompraSpec.geraAutorizacaoCubatao();
+    //processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
+    //processoComprasDispensaCubataoFaseCredenciamentoSpec.credenciamentoCubatao();
+    //processoComprasDispensaCubataoFaseJulgamentoSpec.julgamentoCubatao();
+    //processoComprasDispensaCubataoGeraAutorizacaoCompraSpec.geraAutorizacaoCubatao();
+    processoComprasDispensaCubataoAbntSpec.validaCapa();
+    processoComprasDispensaCubataoAbntSpec.validaJulgamento();
+    processoComprasDispensaCubataoAbntSpec.validaAutorizacaoCompra();
   }
 }
 
