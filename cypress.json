@@ -2,5 +2,6 @@
   "projectId": "7qzq3j",
   "baseUrl": "http://desenvolvimento.prodataweb.inf.br:8009/sigMarcelo/",
   "viewportHeight": 660,
-  "viewportWidth": 1000
+  "viewportWidth": 1000,
+  "retries": 1
 }

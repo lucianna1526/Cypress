@@ -67,15 +67,16 @@ class setup {
   processoComprasDispensaCubatao() {
     //Executa Suite Processo de Compras Dispensa Cubatao
     //requisicaoValidaCamposObrigatoriosCubataoSpec.validarCamposReqCubatao();
-    //requisicaoInsereDadosCubataoSpec.reqInsereDadosCubatao();
+    requisicaoInsereDadosCubataoSpec.reqInsereDadosCubatao();
+
     //requisicaoValidaValoresAbntCubataoSpec.validaCamposAbntCubataoReq();
     processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
     processoComprasDispensaCubataoFaseCredenciamentoSpec.credenciamentoCubatao();
     processoComprasDispensaCubataoFaseJulgamentoSpec.julgamentoCubatao();
     processoComprasDispensaCubataoGeraAutorizacaoCompraSpec.geraAutorizacaoCubatao();
-    //processoComprasDispensaCubataoAbntSpec.validaCapa();
-    //processoComprasDispensaCubataoAbntSpec.validaJulgamento();
-    //processoComprasDispensaCubataoAbntSpec.validaAutorizacaoCompra();
+    processoComprasDispensaCubataoAbntSpec.validaCapa();
+    processoComprasDispensaCubataoAbntSpec.validaJulgamento();
+    processoComprasDispensaCubataoAbntSpec.validaAutorizacaoCompra();
     processoComprasDispensaCubataoPedidoCompra.pedidoCompraCubatao();
     processoComprasDispensaCubataoEms.emsCubatao();
   }

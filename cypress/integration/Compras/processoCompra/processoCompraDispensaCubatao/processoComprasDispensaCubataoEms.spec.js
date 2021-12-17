@@ -26,7 +26,9 @@ class processoComprasDispensaCubataoEms {
 
       //---Preenche Aba Principal---
       //Data Liquidação
-      cy.get('input[nat="cadastroEmsDtDocumento"]');
+      cy.get('input[nat="cadastroEmsDtDocumento"]')
+        .dblclick()
+        .type("15/12/2021");
       //Transação
       cy.get('input[nat="cadastroEmsPrincipalCdTransacaoDescricao"]')
         .click()
@@ -97,11 +99,11 @@ class processoComprasDispensaCubataoEms {
       ).click();
 
       //Nº Parcela
-      cy.get('input[nat="cadastroEmsLiquidacaoNrParcela"]').type("16/12/2021");
+      cy.get('input[nat="cadastroEmsLiquidacaoNrParcela"]').type("15/12/2021");
 
       //Data Vencimento
       cy.get('input[nat="cadastroEmsLiquidacaoDataVencimento"]').type(
-        "16/12/2021"
+        "15/12/2021"
       );
 
       //Valor

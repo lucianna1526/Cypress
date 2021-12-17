@@ -28,6 +28,17 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
       //Clica no botão para abrir o Pedido de Compras
       cy.get('button[title="Abrir pedido de compra"]').click().wait(5000);
 
+      //cy.get('.pd-crud-popup > [ng-transclude="header"] > ._md > .md-toolbar-tools > [ng-click="fechar()"] > .md-blue-theme')
+      //fecha tela
+      cy.get(
+        '.pd-crud-popup > [ng-transclude="header"] > ._md > .md-toolbar-tools > [ng-click="fechar()"] > .md-blue-theme'
+      )
+        .click()
+        .wait(1000);
+
+      //fecha a tela
+      cy.get('button[ng-click="fechar()"]').click().wait(1000);
+
       /*  //Aperta ESC pra sair das telas
       cy.get(
         '.pd-crud-popup > [ng-transclude="header"] > ._md > .md-toolbar-tools'

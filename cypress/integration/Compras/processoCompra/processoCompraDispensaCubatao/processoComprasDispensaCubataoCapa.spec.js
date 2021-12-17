@@ -3,7 +3,18 @@ class processoComprasDispensaCubatao {
     it("Preenche Processo de Compras - Aba Principal", () => {
       //Acessa modulo compras e aguarda 5 segundos
       //acessaModuloCompras.acessarCompras();
-      cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
+      it("Preenche dados Processo de Compras - Cubatao", () => {
+        /*
+          if (cy.find('button[nat="botaoSideMenu"]').length == 0) {
+            cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
+          }*/
+        cy.get("body").then(($body) => {
+          if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
+            cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
+          }
+        });
+      });
+      //cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
       cy.wait(5000);
       cy.get('button[nat="botaoSideMenu"]').click();
       cy.get('input[nat="buscaMenuVertical"]')
