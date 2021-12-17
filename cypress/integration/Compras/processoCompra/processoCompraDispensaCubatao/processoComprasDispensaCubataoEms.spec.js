@@ -1,6 +1,7 @@
 class processoComprasDispensaCubataoEms {
   emsCubatao() {
     it("Preenche EMS", () => {
+      const dayjs = require("dayjs");
       /*  cy.get("body").then(($body) => {
         if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
           cy.wait(5000);
@@ -26,9 +27,13 @@ class processoComprasDispensaCubataoEms {
 
       //---Preenche Aba Principal---
       //Data Liquidação
+      const onti = dayjs().subtract(1, "day").format("DD/MM/YYYY");
+
       cy.get('input[nat="cadastroEmsDtDocumento"]')
         .dblclick()
-        .type("15/12/2021");
+        //.type("15/12/2021");
+        .type(onti);
+
       //Transação
       cy.get('input[nat="cadastroEmsPrincipalCdTransacaoDescricao"]')
         .click()
@@ -64,7 +69,9 @@ class processoComprasDispensaCubataoEms {
       cy.get('input[nat="cadastroEmsDocumentoNrAidf"]').type("2");
 
       //Nº Série
-      cy.get('input[nat="cadastroEmsDocumentoDataEmissao"]').type("15/12/2021");
+      cy.get('input[nat="cadastroEmsDocumentoDataEmissao"]')
+        //.type("15/12/2021");
+        .type(onti);
 
       //Valor Total NF.
       cy.get('input[nat="cadastroEmsDocumentoValorTotalNf"]').type(
@@ -99,12 +106,14 @@ class processoComprasDispensaCubataoEms {
       ).click();
 
       //Nº Parcela
-      cy.get('input[nat="cadastroEmsLiquidacaoNrParcela"]').type("15/12/2021");
+      cy.get('input[nat="cadastroEmsLiquidacaoNrParcela"]')
+        //.type("15/12/2021");
+        .type(onti);
 
       //Data Vencimento
-      cy.get('input[nat="cadastroEmsLiquidacaoDataVencimento"]').type(
-        "15/12/2021"
-      );
+      cy.get('input[nat="cadastroEmsLiquidacaoDataVencimento"]')
+        //.type("15/12/2021");
+        .type(onti);
 
       //Valor
       cy.get('input[nat="cadastroEmsLiquidacaoValor"]').type("10,62");
@@ -133,6 +142,177 @@ class processoComprasDispensaCubataoEms {
  */
       //Gerar Liquidação
       cy.get('button[nat="cadastroEmsGerarLiquidacao"]').click();
+    });
+  }
+  validaEmsCubatao() {
+    it("acessa modulo EMS", () => {
+      //cy.moduloMenu('[nat="COMPRAS E LICITAÇÕES"]',    "EMS - Entrada de Mercadorias ou Serviços"      );
+
+      cy.get('[nat="COMPRAS E LICITAÇÕES"]').click().wait(5000);
+
+      //Acessa EMS
+      cy.get('button[nat="botaoSideMenu"]').click();
+      cy.get('input[nat="buscaMenuVertical"]')
+        .type("EMS - Entrada de Mercadorias ou Serviços")
+        .wait(1000)
+        .type("{enter}")
+        .wait(5000);
+
+      //14835
+      cy.get('input[nat="cadastroEmsNrEms"]').type("14835").tab().wait(5000);
+    });
+    it("Valida Valor Empenho -> 10,62", () => {
+      cy.get('[nat="cadastroEmsVlEmpenho"]>div>div>span>span').should(
+        "have.text",
+        "R$ 10,62"
+      );
+    });
+    it("Valida Valor Produtos -> 10,62", () => {
+      cy.get('[nat="cadastroEmsVlTotalProd"]>div>div>span>span').should(
+        "have.text",
+        "R$ 10,62"
+      );
+    });
+    it("Valida Valor Notas -> 10,62", () => {
+      cy.get('[nat="cadastroEmsVlTotalDocu"]>div>div>span>span').should(
+        "have.text",
+        "R$ 10,62"
+      );
+    });
+    it("Valida Valor Parcelas -> 10,62", () => {
+      cy.get('[nat="cadastroEmsValorParcelas"]>div>div>span>span').should(
+        "have.text",
+        "R$ 10,62"
+      );
+    });
+    it("Valida Valor Associado -> 10,62", () => {
+      cy.get('[nat="cadastroEmsVlTotalAssoc"]>div>div>span>span').should(
+        "have.text",
+        "R$ 10,62"
+      );
+    });
+  }
+  validaEmsCubataoAbaItem() {
+    it("Valida arredondamento grid aba items 1,7750 -> 1,78", () => {
+      cy.get('li[nat="Itens"]').click().wait(1000);
+
+      //---Clica na Grid Itens da EMS---
+      cy.get(
+        '	div[nat="cadastroEmsItensGrid"]>div>div>div>div[class="ui-grid-canvas"]'
+      ).as("grid");
+
+      //valida 1,7750 e aredondamento para 1,78
+      cy.get("@grid").contains("76212").parents(".row").contains("1,7750");
+      cy.get("@grid")
+        .contains("76212")
+        .parents(".row")
+        .contains("1,78")
+        .should("length", 1);
+    });
+    it("Valida arredondamento grid aba items 1,7650 -> 1,76", () => {
+      //---Clica na Grid Itens da EMS---
+      cy.get(
+        '	div[nat="cadastroEmsItensGrid"]>div>div>div>div[class="ui-grid-canvas"]'
+      ).as("grid");
+
+      //valida 1,7750 e aredondamento para 1,78
+      cy.get("@grid").contains("73539").parents(".row").contains("1,7650");
+      cy.get("@grid")
+        .contains("73539")
+        .parents(".row")
+        .contains("1,76")
+        .should("length", 1);
+    });
+    it("Valida arredondamento grid aba items 1,7751 -> 1,78", () => {
+      //---Clica na Grid Itens da EMS---
+      cy.get(
+        '	div[nat="cadastroEmsItensGrid"]>div>div>div>div[class="ui-grid-canvas"]'
+      ).as("grid");
+      //valida 1,7750 e aredondamento para 1,78
+      cy.get("@grid").contains("73538").parents(".row").contains("1,7751");
+      cy.get("@grid")
+        .contains("73538")
+        .parents(".row")
+        .contains("1,78")
+        .should("length", 1);
+    });
+
+    it("Valida arredondamento grid aba items 1,7651 -> 1,77", () => {
+      //---Clica na Grid Itens da EMS---
+      cy.get(
+        '	div[nat="cadastroEmsItensGrid"]>div>div>div>div[class="ui-grid-canvas"]'
+      ).as("grid");
+      //valida 1,7750 e aredondamento para 1,78
+      cy.get("@grid").contains("73536").parents(".row").as("row");
+      cy.get("@row").contains("1,7651");
+      cy.get("@row").contains("1,77").should("length", 1);
+    });
+
+    it("Valida arredondamento grid aba 1,7649 -> 1,76", () => {
+      //---Clica na Grid Itens da EMS---
+      cy.get(
+        '	div[nat="cadastroEmsItensGrid"]>div>div>div>div[class="ui-grid-canvas"]'
+      ).as("grid");
+      //valida 1,7750 e aredondamento para 1,78
+      cy.get("@grid").contains("73534").parents(".row").as("row");
+      cy.get("@row").contains("1,7649");
+      cy.get("@row").contains("1,76").should("length", 1);
+    });
+
+    it("Valida arredondamento grid aba 1,7749 -> 1,77", () => {
+      //---Clica na Grid Itens da EMS---
+      cy.get(
+        '	div[nat="cadastroEmsItensGrid"]>div>div>div>div[class="ui-grid-canvas"]'
+      ).as("grid");
+      //valida 1,7750 e aredondamento para 1,78
+      cy.get("@grid").contains("73257").parents(".row").as("row");
+      cy.get("@row").contains("1,7749");
+      cy.get("@row").contains("1,77").should("length", 1);
+    });
+    it("Valida soma grid 10,62", () => {
+      cy.get('	div[nat="cadastroEmsItensGrid"]').as("grid");
+      //valida 1,7750 e aredondamento para 1,78
+      cy.get("@grid").find('[title="10,62"]').should("have.text", "10,6210,62");
+    });
+  }
+  validaEmsCubataoAbaDocumentos() {
+    it("valida soma item na grid documentos", () => {
+      cy.get('li[nat="Documentos"]').click().wait(1000);
+      cy.get(
+        'div[nat="cadastroEmsDocumentoGrid"]>div>div>div>div[class="ui-grid-canvas"]'
+      ).as("grid");
+
+      cy.get("@grid")
+        .contains("5-Nota Fiscal")
+        .parents(".row")
+        .contains("10,62")
+        .should("length", 1);
+    });
+
+    it("valida soma no rodape grid ", () => {
+      cy.get('[nat="cadastroEmsDocumentoGrid"]')
+        .contains("10,62")
+        .should("length", 1);
+    });
+  }
+  validaEmsCubataoAbaParcela() {
+    it("valida soma item na grid documentos", () => {
+      cy.get('li[nat="Documentos"]').click().wait(1000);
+      cy.get(
+        'div[nat="cadastroEmsDocumentoGrid"]>div>div>div>div[class="ui-grid-canvas"]'
+      ).as("grid");
+
+      cy.get("@grid")
+        .contains("5-Nota Fiscal")
+        .parents(".row")
+        .contains("10,62")
+        .should("length", 1);
+    });
+
+    it("valida soma na grid ", () => {
+      cy.get('div[nat="cadastroEmsDocumentoGrid"]')
+        .contains("10,62")
+        .should("length", 1);
     });
   }
 }

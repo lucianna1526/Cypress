@@ -73,7 +73,7 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   "moduloMenu",
-  (modulo, menu, voltaModulo = 0, voltaSubModulo = 0) => {
+  function (modulo, menu, voltaModulo = 0, voltaSubModulo = 0) {
     if (voltaModulo > 0) {
       cy.get('[title="Ir para menu geral"]').click();
     }
@@ -86,12 +86,6 @@ Cypress.Commands.add(
     it("Consulta Saldo Ficha", () => {
       cy.wait(5000);
       cy.get(menu).click().wait(2000);
-
-      cy.get('input[nat="buscaMenuVertical"]')
-        .type("Saldo de Fichas")
-        .click()
-        .type("{enter}")
-        .wait(1000);
     });
   }
 );
@@ -178,5 +172,35 @@ Cypress.Commands.add(
         "R$ " + valorEsperado
         //parseFloat(valorEsperado).toFixed(4).replace(".", ",")
       );
+  }
+);
+
+//CRia função procura valores na grid
+Cypress.Commands.add(
+  "procurarValorGrid",
+  (codProduto, quantidade, valorUnitario, valorEsperado) => {
+    cy.get('[class="customer-table"]').as("grid");
+
+    //procura um botão na linha da grid
+    cy.get("@grid")
+      .contains("Holiday,John")
+      .parents(".row")
+      .find("button[nat='botaoEditar']")
+      .screenshot("botaoEditar");
+
+    //procura um texto em qualquer coluna da grid
+    cy.get("@grid")
+      .contains("Holiday,John")
+      .parents(".row")
+      .contains("8675309")
+      .screenshot("8675309");
+
+    //procura um texto em uma coluna especifica da grid
+    cy.get("@grid")
+      .contains("Holiday,John")
+      .parents(".row")
+      .find("div")
+      .eq(2)
+      .screenshot("div");
   }
 );
