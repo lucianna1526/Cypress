@@ -15,10 +15,10 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
       cy.get('button[title="Gerar autorização"]').click().wait(5000);
 
       //Informa local de estoque
-      cy.get('input[nat="popupGeraAutorizacaoComprasLocalEstoque"]')
-        .type("1")
-        .tab()
-        .wait(1000);
+      cy.get('input[nat="popupGeraAutorizacaoComprasLocalEstoqueDescricao"]')
+        .type("ABASTECIMENTO")
+        .wait(1000)
+        .type("{enter}");
 
       //Clica em GERAR NOVA AUTORIZAÇÃO
       cy.get('button[nat="popupGeraAutorizacaoComprasGeraNovaAutorizacao"]')
@@ -28,14 +28,14 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
       //Clica no botão para abrir o Pedido de Compras
       cy.get('button[title="Abrir pedido de compra"]').click().wait(5000);
 
-      //Aperta ESC pra sair das telas
+      /*  //Aperta ESC pra sair das telas
       cy.get(
         '.pd-crud-popup > [ng-transclude="header"] > ._md > .md-toolbar-tools'
       )
         .type("{esc}")
         .wait(1000);
 
-      cy.get('[ng-click="fechar()"] > .md-blue-theme').type("{esc}").wait(1000);
+      cy.get('[ng-click="fechar()"] > .md-blue-theme').type("{esc}").wait(1000); */
     });
   }
 }

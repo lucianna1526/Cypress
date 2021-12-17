@@ -12,10 +12,18 @@ class processoComprasDispensaCubataoFaseCredenciamento {
         .wait(5000);
 
       //Informa o CNPJ do fornecedor
-      cy.get('input[nat="cadastroFornecedorCotacaoFornecedor"]')
+      /*  cy.get('input[nat="cadastroFornecedorCotacaoFornecedor"]')
         .click()
         .type("2744987000184")
-        .tab();
+        .tab();  */
+
+      //Informa descrição do fornecedor
+      cy.get('input[nat="cadastroFornecedorCotacaoFornecedorDescricao"]')
+        .click()
+        .type("PRODATA INFORMATICA")
+        .wait(1000)
+        .type("{enter}");
+      cy.wait(1000);
 
       //Salva e fecha o modal
       cy.get('button[nat="cadastroFornecedorCotacaoCrudSalvarFechar"]')

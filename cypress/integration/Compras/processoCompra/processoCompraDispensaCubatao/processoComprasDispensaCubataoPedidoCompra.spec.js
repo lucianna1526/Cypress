@@ -1,11 +1,11 @@
 class processoComprasDispensaCubataoPedidoCompra {
   pedidoCompraCubatao() {
-    it("Acessa Modulo Compras", () => {
+    it("Pedido de Compras - Adiciona Parcela e Gera Empenho", () => {
       /*if (cy.find('button[nat="botaoSideMenu"]').length == 0){
                 cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
                 }*/
 
-      cy.get("body").then(($body) => {
+      /*   cy.get("body").then(($body) => {
         if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
           cy.wait(10000);
           cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
@@ -25,8 +25,10 @@ class processoComprasDispensaCubataoPedidoCompra {
         .type("{enter}");
 
       //seleciona Pedido
-      cy.get('input[nat="cadastroPedidoCompraNPedido"]').type("17270").tab();
-      cy.wait(10000);
+      cy.get('input[nat="cadastroPedidoCompraNPedido"]')
+        .type("17276")
+        .type("{enter}");
+      cy.wait(10000); */
 
       //Clica na Aba - Dados orçamentários
       cy.get('[nat="Dados orçamentários"] > .nav-link').click();
@@ -34,7 +36,7 @@ class processoComprasDispensaCubataoPedidoCompra {
       //Manter saldo da reserva
       cy.get('[nat="cadastroPedidoCompraDadosOrcamentariosManterSaldoSelect"]')
         .click()
-        .type("NÃO")
+        .type("SIM")
         .wait(500)
         .type("{enter}");
 
@@ -55,28 +57,36 @@ class processoComprasDispensaCubataoPedidoCompra {
       ).click();
 
       //Nº Parcela
-      cy.get('[nat="cadastroPedidoCompraParcelaNParcela"]').type("1");
+      cy.get('input[nat="cadastroPedidoCompraParcelaNParcela"]')
+        .type("1")
+        .tab();
 
       //Data Vencimento
-      cy.get('[nat="cadastroPedidoCompraParcelaDataVencimento"]').type(
-        "15/12/2021"
+      cy.get('input[nat="cadastroPedidoCompraParcelaDataVencimento"]').type(
+        "16/12/2021"
       );
 
       //Valor Parcela
-      cy.get('[nat="cadastroPedidoCompraParcelaValorParcela"]').type("10,62");
+      cy.get('input[nat="cadastroPedidoCompraParcelaValorParcela"]').type(
+        "10,62"
+      );
 
       //Adicionar e Sair
-      cy.get('[nat="cadastroPedidoCompraParcelaCrudSalvarFechar"]').click();
+      cy.get(
+        'button[nat="cadastroPedidoCompraParcelaCrudSalvarFechar"]'
+      ).click();
 
       //---Fim Parcela---
 
       //Gerar Empenho
-      cy.get('[nat="cadastroPedidoCompraGerarEmpenho"]').click();
+      cy.get('[nat="cadastroPedidoCompraGerarEmpenho"]').click().wait(8000);
 
       //Gera Entrega
       cy.get('[nat="cadastroPedidoCompraAbrirAutorizaçãoEntrega"]').click();
       //Adicionar Entrega
       cy.get('[nat="cadastroAutorizacaoEntregaPedidoCrudSalvar"]').click();
+      //Clica botao EMS
+      cy.get('[nat="cadastroAutorizacaoEntregaPedidoAbrirEms"]').click();
     });
   }
 }

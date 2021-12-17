@@ -115,8 +115,13 @@ class requisicaoInsereDadosCubatao {
           .click()
           .wait(1000);
 
+        //Informa a data da reserva
+        cy.get('input[nat="pdPopupPromptConfirmInput"]')
+          .dblclick()
+          .type("15/12/2021");
+
         //Clicar em OK Popup 'Informe a data da reserva'
-        cy.get('button[nat="pdPopupPromptConfirmOk"]').click().wait(1000);
+        cy.get('button[nat="pdPopupPromptConfirmOk"]').click().wait(5000);
       });
     });
   }

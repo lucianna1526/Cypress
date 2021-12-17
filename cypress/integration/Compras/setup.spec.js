@@ -14,6 +14,8 @@ import processoComprasDispensaCubataoFaseCredenciamentoSpec from "./processoComp
 import processoComprasDispensaCubataoFaseJulgamentoSpec from "./processoCompra/processoCompraDispensaCubatao/processoComprasDispensaCubataoFaseJulgamento.spec";
 import processoComprasDispensaCubataoGeraAutorizacaoCompraSpec from "./processoCompra/processoCompraDispensaCubatao/processoComprasDispensaCubataoGeraAutorizacaoCompra.spec";
 import processoComprasDispensaCubataoAbntSpec from "./processoCompra/processoCompraDispensaCubatao/processoComprasDispensaCubataoAbnt.spec";
+import processoComprasDispensaCubataoPedidoCompra from "./processoCompra/processoCompraDispensaCubatao/processoComprasDispensaCubataoPedidoCompra.spec";
+import processoComprasDispensaCubataoEms from "./processoCompra/processoCompraDispensaCubatao/processoComprasDispensaCubataoEms.spec";
 
 import requisicaoInsereDadosSpec from "./RequisicaoProdutos/requisicaoInsereDados.spec";
 import requisicaoValidaCamposObrigatoriosAbntSpec from "./RequisicaoProdutos/requisicaoValidaValoresAbnt.spec";
@@ -67,13 +69,15 @@ class setup {
     //requisicaoValidaCamposObrigatoriosCubataoSpec.validarCamposReqCubatao();
     //requisicaoInsereDadosCubataoSpec.reqInsereDadosCubatao();
     //requisicaoValidaValoresAbntCubataoSpec.validaCamposAbntCubataoReq();
-    //processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
-    //processoComprasDispensaCubataoFaseCredenciamentoSpec.credenciamentoCubatao();
-    //processoComprasDispensaCubataoFaseJulgamentoSpec.julgamentoCubatao();
-    //processoComprasDispensaCubataoGeraAutorizacaoCompraSpec.geraAutorizacaoCubatao();
-    processoComprasDispensaCubataoAbntSpec.validaCapa();
-    processoComprasDispensaCubataoAbntSpec.validaJulgamento();
-    processoComprasDispensaCubataoAbntSpec.validaAutorizacaoCompra();
+    processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
+    processoComprasDispensaCubataoFaseCredenciamentoSpec.credenciamentoCubatao();
+    processoComprasDispensaCubataoFaseJulgamentoSpec.julgamentoCubatao();
+    processoComprasDispensaCubataoGeraAutorizacaoCompraSpec.geraAutorizacaoCubatao();
+    //processoComprasDispensaCubataoAbntSpec.validaCapa();
+    //processoComprasDispensaCubataoAbntSpec.validaJulgamento();
+    //processoComprasDispensaCubataoAbntSpec.validaAutorizacaoCompra();
+    processoComprasDispensaCubataoPedidoCompra.pedidoCompraCubatao();
+    processoComprasDispensaCubataoEms.emsCubatao();
   }
 }
 
