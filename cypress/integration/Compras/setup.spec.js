@@ -33,9 +33,9 @@ class setup {
         Utils.preencherLogin();
         cy.wait(5000);
       });
-      //this.requisicaoCompras();
+      this.requisicaoCompras();
       //this.processoComprasDispensa();
-      this.processoComprasDispensaCubatao();
+      //this.processoComprasDispensaCubatao();
       //this.solicitacaoCompras();
     });
   }
@@ -51,7 +51,7 @@ class setup {
   requisicaoCompras() {
     //requisiçao]
     console.log("Chama Requisicao Compras");
-    requisicaoInsereDadosSpec.reqInsereDados();
+    //requisicaoInsereDadosSpec.reqInsereDados();
     requisicaoValidaCamposObrigatoriosAbntSpec.ReqvalidaCampos();
   }
 
