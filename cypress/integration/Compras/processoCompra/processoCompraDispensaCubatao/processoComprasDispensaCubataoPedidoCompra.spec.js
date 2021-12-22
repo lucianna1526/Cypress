@@ -62,9 +62,9 @@ class processoComprasDispensaCubataoPedidoCompra {
         .tab();
 
       //Data Vencimento
-      cy.get('input[nat="cadastroPedidoCompraParcelaDataVencimento"]').type(
-        "17/12/2021"
-      );
+      cy.get('input[nat="cadastroPedidoCompraParcelaDataVencimento"]')
+        .dblclick()
+        .type(formatedDate2PtBR());
 
       //Valor Parcela
       cy.get('input[nat="cadastroPedidoCompraParcelaValorParcela"]').type(

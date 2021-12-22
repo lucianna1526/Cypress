@@ -113,7 +113,7 @@ class requisicaoInsereDados {
 
       cy.get('input[nat="pdPopupPromptConfirmInput"]')
         .clear()
-        .type("15/12/2021");
+        .type(formatedDate2PtBR());
 
       //Clicar em OK Popup 'Informe a data da reserva'
       cy.get('button[nat="pdPopupPromptConfirmOk"]').click().wait(1000);

@@ -102,12 +102,12 @@ class requisicaoValidaValoresAbnt {
       cy.requisicaoValidaProduto("73534", "1", "1.7649", "1,76");
     });
 
-    it("Validação 6 RETORNO BANCO  - arredondamento 1,7749 para 1,79", () => {
+    it("Validação 6 RETORNO BANCO  - arredondamento 1,7749 para 1,77", () => {
       // --INSERE ITEM 5 NA REQUISIÇÃO--
       cy.requisicaoValidaProduto("73257", "1", "1.7749", "1,77");
     });
 
-    it("valida grid aba Reservas", () => {
+    it("Valida grid aba Reservas", () => {
       cy.get('li[nat="Reservas"]').click().wait(1000);
       cy.get(
         //'div[nat="cadastroRequisicaoComprasReservasGrid"]>div>div>div>div[class="ui-grid-canvas"]'
@@ -115,7 +115,7 @@ class requisicaoValidaValoresAbnt {
       ).as("grid");
 
       cy.get("@grid")
-        .contains("20211506")
+        .find('button[nat="botaoAuditar"]')
         .parents(".ui-grid-row")
         .find(".ui-grid-cell-contents")
         .as("coluna");

@@ -45,7 +45,7 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
       ).as("grid");
 
       cy.get("@grid").within(($list) => {
-        cy.get('span:contains("1,77")').should("length", 5);
+        cy.get('span:contains("1,77")').should("length", 6);
         /*cy.find("span")
           .contains(new RegExp("^" + "1,77" + "$", "g"))
           .should("length", 3);*/
@@ -108,7 +108,7 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
         .type("{enter}")
         .wait(5000);
 
-      cy.get('[title="10,6200"]').should("length", 1);
+      cy.get('[title="10,6200"]').should("length", 2);
     });
 
     it("Valida Saldo Cadastro de pedido de compra", () => {
@@ -136,7 +136,7 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
       ).as("grid");
 
       cy.get("@grid").within(($list) => {
-        cy.get('span:contains("1,77")').should("length", 2);
+        cy.get('span:contains("1,77")').should("length", 4);
         /*cy.find("span")
             .contains(new RegExp("^" + "1,77" + "$", "g"))
             .should("length", 3);*/

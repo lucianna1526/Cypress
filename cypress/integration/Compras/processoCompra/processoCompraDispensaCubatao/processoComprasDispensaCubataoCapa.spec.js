@@ -14,7 +14,7 @@ class processoComprasDispensaCubatao {
           }
         });
       });
-      //cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
+      cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
       cy.wait(5000);
       cy.get('button[nat="botaoSideMenu"]').click();
       cy.get('input[nat="buscaMenuVertical"]')

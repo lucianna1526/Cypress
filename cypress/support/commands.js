@@ -202,5 +202,50 @@ Cypress.Commands.add(
       .find("div")
       .eq(2)
       .screenshot("div");
+
+    //############## METODO 2
+    it("valida grid aba Reservas", () => {
+      cy.get('li[nat="Reservas"]').click().wait(1000);
+      cy.get(
+        //'div[nat="cadastroRequisicaoComprasReservasGrid"]>div>div>div>div[class="ui-grid-canvas"]'
+        'div[nat="cadastroRequisicaoComprasReservasGrid"]'
+      ).as("grid");
+      //localiza a grid e seta um alias com o as
+
+      cy.get("@grid")
+        .contains("20211506") //contais pesquisa dentro da grid
+        .parents(".ui-grid-row") //localiza a linha da grid
+        .find(".ui-grid-cell-contents")
+        .as("coluna");
+      //localiza a coluna e seta um alias com o as
+
+      cy.get("@coluna").eq(3).contains("10,62").should("length", 1);
+      //eq() transforma o resultado em um array
+
+      cy.get("@coluna").eq(5).contains("10,62").should("length", 1);
+    });
+    it("Procura valor na grid scrollando pro final", () => {
+      //localiza a grid e seta um alias com o as
+      cy.get('div[nat="ConsultaExecucaoOrcamentariaGrid"]').as("grid"); //caputra a grid
+
+      //localiza a linha da grid e scrola ate o final
+      cy.get("@grid")
+        .contains("20211498")
+        .parents(".ui-grid-viewport")
+        .scrollTo("right", {
+          easing: "linear",
+          duration: 2000,
+        })
+
+        .find(".ui-grid-cell-contents")
+        .as("coluna");
+
+      //localiza a coluna e seta um alias com o as
+      cy.get("@coluna").contains("35.000,00").should("length", 1);
+    });
   }
 );
+
+Cypress.Commands.add("text", { prevSubject: true }, (subject, options) => {
+  return subject.text();
+});

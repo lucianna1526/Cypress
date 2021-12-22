@@ -16,6 +16,8 @@ import processoComprasDispensaCubataoGeraAutorizacaoCompraSpec from "./processoC
 import processoComprasDispensaCubataoAbntSpec from "./processoCompra/processoCompraDispensaCubatao/processoComprasDispensaCubataoAbnt.spec";
 import processoComprasDispensaCubataoPedidoCompra from "./processoCompra/processoCompraDispensaCubatao/processoComprasDispensaCubataoPedidoCompra.spec";
 import processoComprasDispensaCubataoEms from "./processoCompra/processoCompraDispensaCubatao/processoComprasDispensaCubataoEms.spec";
+import consultaSaldoFichaReservaSpec from "./processoCompra/processoCompraDispensaCubatao/consultaSaldoFichaReserva.spec";
+import liberaRequisicaoComprasSpec from "./processoCompra/processoCompraDispensaCubatao/liberaRequisicaoCompras.spec";
 
 import requisicaoInsereDadosSpec from "./RequisicaoProdutos/requisicaoInsereDados.spec";
 import requisicaoValidaCamposObrigatoriosAbntSpec from "./RequisicaoProdutos/requisicaoValidaValoresAbnt.spec";
@@ -33,9 +35,9 @@ class setup {
         Utils.preencherLogin();
         cy.wait(5000);
       });
-      this.requisicaoCompras();
+      //this.requisicaoCompras();
       //this.processoComprasDispensa();
-      //this.processoComprasDispensaCubatao();
+      this.processoComprasDispensaCubatao();
       //this.solicitacaoCompras();
     });
   }
@@ -65,20 +67,36 @@ class setup {
   }
 
   processoComprasDispensaCubatao() {
-    //Executa Suite Processo de Compras Dispensa Cubatao
+    //---Executa Suite Processo de Compras Dispensa Cubatao---//
     //requisicaoValidaCamposObrigatoriosCubataoSpec.validarCamposReqCubatao();
-    //requisicaoInsereDadosCubataoSpec.reqInsereDadosCubatao();
+    /* 
+    //----Consulta saldo inicial, gera requisição e valida saldo final----/
+    consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
+    consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoInicial();
+    consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaInicial();
 
-    //requisicaoValidaValoresAbntCubataoSpec.validaCamposAbntCubataoReq();
-    //processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
-    //processoComprasDispensaCubataoFaseCredenciamentoSpec.credenciamentoCubatao();
-    //processoComprasDispensaCubataoFaseJulgamentoSpec.julgamentoCubatao();
-    //processoComprasDispensaCubataoGeraAutorizacaoCompraSpec.geraAutorizacaoCubatao();
-    //processoComprasDispensaCubataoAbntSpec.validaCapa();
-    //processoComprasDispensaCubataoAbntSpec.validaJulgamento();
-    //processoComprasDispensaCubataoAbntSpec.validaAutorizacaoCompra();
-    //processoComprasDispensaCubataoPedidoCompra.pedidoCompraCubatao();
-    //processoComprasDispensaCubataoEms.emsCubatao();
+    requisicaoInsereDadosCubataoSpec.reqInsereDadosCubatao();
+    requisicaoValidaValoresAbntCubataoSpec.validaCamposAbntCubataoReq();
+
+    consultaSaldoFichaReservaSpec.consultaSaldoFichasFinal();
+    consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoFinal();
+    consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaFinal();
+
+    //----Libera requisição de compra e valida o saldo inicial----/
+    liberaRequisicaoComprasSpec.liberaRequisicao();
+    consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
+    consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoInicial();
+    consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaInicial();  */
+
+    processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
+    processoComprasDispensaCubataoFaseCredenciamentoSpec.credenciamentoCubatao();
+    processoComprasDispensaCubataoFaseJulgamentoSpec.julgamentoCubatao();
+    processoComprasDispensaCubataoGeraAutorizacaoCompraSpec.geraAutorizacaoCubatao();
+    processoComprasDispensaCubataoAbntSpec.validaCapa();
+    processoComprasDispensaCubataoAbntSpec.validaJulgamento();
+    processoComprasDispensaCubataoAbntSpec.validaAutorizacaoCompra();
+    processoComprasDispensaCubataoPedidoCompra.pedidoCompraCubatao();
+    processoComprasDispensaCubataoEms.emsCubatao();
     processoComprasDispensaCubataoEms.validaEmsCubatao();
     processoComprasDispensaCubataoEms.validaEmsCubataoAbaItem();
     processoComprasDispensaCubataoEms.validaEmsCubataoAbaDocumentos();
