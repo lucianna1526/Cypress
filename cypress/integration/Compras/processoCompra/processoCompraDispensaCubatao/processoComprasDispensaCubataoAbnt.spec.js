@@ -40,9 +40,12 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
         .screenshot("Item 1")
         .wait(5000);*/
 
-      cy.get(
-        'div[nat="processodeComprasPrincipalItensGrid"]>div>div>div>div[class="ui-grid-canvas"]'
-      ).as("grid");
+      cy.get('div[nat="processodeComprasPrincipalItensGrid"]').as("grid");
+
+      cy.get("@grid").find(".ui-grid-viewport").first().scrollTo("right", {
+        easing: "linear",
+        duration: 2000,
+      });
 
       cy.get("@grid").within(($list) => {
         cy.get('span:contains("1,77")').should("length", 6);
@@ -131,9 +134,13 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
     it("Valida Aba Saldo", () => {
       cy.get('[nat="Saldo"]').click().wait(5000);
 
-      cy.get(
-        'div[nat="cadastroPedidoComprasSaldoPedidoGrid"]>div>div>div>div[class="ui-grid-canvas"]'
-      ).as("grid");
+      cy.get('div[nat="cadastroPedidoComprasSaldoPedidoGrid"]').as("grid");
+      cy.get('div[nat="cadastroPedidoComprasSaldoPedidoGrid"]')
+        .find(".ui-grid-viewport")
+        .scrollTo("right", {
+          easing: "linear",
+          duration: 2000,
+        });
 
       cy.get("@grid").within(($list) => {
         cy.get('span:contains("1,77")').should("length", 4);
