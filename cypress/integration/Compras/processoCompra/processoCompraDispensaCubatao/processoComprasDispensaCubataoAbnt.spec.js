@@ -1,18 +1,19 @@
 class processoComprasDispensaCubataoGeraAutorizacaoCompra {
   validaCapa() {
+    it("Acessa Tela Cadastro de requisição de compras", () => {
+      /*
+        if (cy.find('button[nat="botaoSideMenu"]').length == 0) {
+          cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
+        }*/
+      cy.get("body").then(($body) => {
+        if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
+          cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
+        }
+      });
+    });
     it("Acessa - Capa Processo de compra", () => {
       cy.wait(5000);
-      it("Acessa Tela Cadastro de requisição de compras", () => {
-        /*
-          if (cy.find('button[nat="botaoSideMenu"]').length == 0) {
-            cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
-          }*/
-        cy.get("body").then(($body) => {
-          if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
-            cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
-          }
-        });
-      });
+
       cy.wait(5000);
       cy.get('button[nat="botaoSideMenu"]').click();
       cy.get('input[nat="buscaMenuVertical"]')
@@ -40,27 +41,87 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
         .screenshot("Item 1")
         .wait(5000);*/
 
+      cy.get('input[nat="cadastroProcessoCompraNProcessoCompra"]')
+        .invoke("text") // for input or textarea, .invoke('val')
+        .then((text) => {
+          const someText = text;
+          if (someText < 1) {
+            cy.get(
+              'button[nat="cadastroProcessoCompraNProcessoCompraAnterior"]'
+            )
+              .click()
+              .wait(5000);
+          }
+          cy.log(someText);
+        });
+
       cy.get('div[nat="processodeComprasPrincipalItensGrid"]').as("grid");
 
-      cy.get("@grid").find(".ui-grid-viewport").first().scrollTo("right", {
-        easing: "linear",
-        duration: 2000,
-      });
+      //VALIDA ITEM 1 - 76212 - T DE 1/2"
+      cy.get("@grid")
+        .contains('76212 - T DE 1/2"') //contais pesquisa dentro da grid
+        .parents(".ui-grid-row") //localiza a linha da grid
+        .find(".ui-grid-cell-contents")
+        .as("coluna");
+      //localiza a coluna e seta um alias com o as
 
-      cy.get("@grid").within(($list) => {
-        cy.get('span:contains("1,77")').should("length", 6);
-        /*cy.find("span")
-          .contains(new RegExp("^" + "1,77" + "$", "g"))
-          .should("length", 3);*/
-      });
+      cy.get("@coluna").eq(8).contains("1,7750").should("length", 1);
+      cy.get("@coluna").eq(9).contains("1,78").should("length", 1);
 
-      cy.get("@grid").within(($list) => {
-        cy.get('span:contains("1,78")').should("length", 2);
-      });
-      /*
-      cy.get("@grid").within(($list) => {
-        cy.get('span:contains("1,76")').should("length", 4);
-      });*/
+      //VALIDA ITEM 2 - 73539 - SUPORTE PARA FERRO DE T 1/2"
+      cy.get("@grid")
+        .contains('73539 - SUPORTE PARA FERRO DE T 1/2"') //contais pesquisa dentro da grid
+        .parents(".ui-grid-row") //localiza a linha da grid
+        .find(".ui-grid-cell-contents")
+        .as("coluna");
+      //localiza a coluna e seta um alias com o as
+
+      cy.get("@coluna").eq(8).contains("1,7650").should("length", 1);
+      cy.get("@coluna").eq(9).contains("1,76").should("length", 1);
+
+      //VALIDA ITEM 3 - 73538 - REGISTRO ESFERA 1/2"
+      cy.get("@grid")
+        .contains('73538 - REGISTRO ESFERA 1/2"') //contais pesquisa dentro da grid
+        .parents(".ui-grid-row") //localiza a linha da grid
+        .find(".ui-grid-cell-contents")
+        .as("coluna");
+      //localiza a coluna e seta um alias com o as
+
+      cy.get("@coluna").eq(8).contains("1,7751").should("length", 1);
+      cy.get("@coluna").eq(9).contains("1,78").should("length", 1);
+
+      //VALIDA ITEM 4 - 73536 - UNIÃO 3/8""
+      cy.get("@grid")
+        .contains('73536 - UNIÃO 3/8"') //contais pesquisa dentro da grid
+        .parents(".ui-grid-row") //localiza a linha da grid
+        .find(".ui-grid-cell-contents")
+        .as("coluna");
+      //localiza a coluna e seta um alias com o as
+
+      cy.get("@coluna").eq(8).contains("1,7651").should("length", 1);
+      cy.get("@coluna").eq(9).contains("1,77").should("length", 1);
+
+      //VALIDA ITEM 5 - 73534 - UNIÃO 1/2"
+      cy.get("@grid")
+        .contains('73534 - UNIÃO 1/2"') //contais pesquisa dentro da grid
+        .parents(".ui-grid-row") //localiza a linha da grid
+        .find(".ui-grid-cell-contents")
+        .as("coluna");
+      //localiza a coluna e seta um alias com o as
+
+      cy.get("@coluna").eq(8).contains("1,7649").should("length", 1);
+      cy.get("@coluna").eq(9).contains("1,76").should("length", 1);
+
+      //VALIDA ITEM 6 - 73257 - POSTE DE CONCRETO
+      cy.get("@grid")
+        .contains("73257 - POSTE DE CONCRETO") //contais pesquisa dentro da grid
+        .parents(".ui-grid-row") //localiza a linha da grid
+        .find(".ui-grid-cell-contents")
+        .as("coluna");
+      //localiza a coluna e seta um alias com o as
+
+      cy.get("@coluna").eq(8).contains("1,7749").should("length", 1);
+      cy.get("@coluna").eq(9).contains("1,77").should("length", 1);
     });
   }
   validaJulgamento() {
@@ -135,32 +196,83 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
       cy.get('[nat="Saldo"]').click().wait(5000);
 
       cy.get('div[nat="cadastroPedidoComprasSaldoPedidoGrid"]').as("grid");
-      cy.get('div[nat="cadastroPedidoComprasSaldoPedidoGrid"]')
-        .find(".ui-grid-viewport")
-        .scrollTo("right", {
-          easing: "linear",
-          duration: 2000,
-        });
 
-      cy.get("@grid").within(($list) => {
-        cy.get('span:contains("1,77")').should("length", 4);
-        /*cy.find("span")
-            .contains(new RegExp("^" + "1,77" + "$", "g"))
-            .should("length", 3);*/
+      //VALIDA ITEM 1 - 76212 - T DE 1/2"
+      cy.get("@grid")
+        .contains('76212 - T DE 1/2"') //contais pesquisa dentro da grid
+        .parents(".ui-grid-row") //localiza a linha da grid
+        .as("linha2");
+
+      //localiza a coluna e seta um alias com o as
+
+      //VALIDA ITEM 2 - 73539 - SUPORTE PARA FERRO DE T 1/2"
+      cy.get("@grid")
+        .contains('73539 - SUPORTE PARA FERRO DE T 1/2"') //contais pesquisa dentro da grid
+        .parents(".ui-grid-row") //localiza a linha da grid
+        .as("linha2");
+
+      //VALIDA ITEM 3 - 73538 - REGISTRO ESFERA 1/2"
+      cy.get("@grid")
+        .contains('73538 - REGISTRO ESFERA 1/2"') //contais pesquisa dentro da grid
+        .parents(".ui-grid-row") //localiza a linha da grid
+        .as("linha3");
+
+      //VALIDA ITEM 4 - 73536 - UNIÃO 3/8""
+      cy.get("@grid")
+        .contains('73536 - UNIÃO 3/8"') //contais pesquisa dentro da grid
+        .parents(".ui-grid-row") //localiza a linha da grid
+        .as("linha4");
+
+      //VALIDA ITEM 5 - 73534 - UNIÃO 1/2"
+      cy.get("@grid")
+        .contains('73534 - UNIÃO 1/2"') //contais pesquisa dentro da grid
+        .parents(".ui-grid-row") //localiza a linha da grid
+        .as("linha5");
+
+      //VALIDA ITEM 6 - 73257 - POSTE DE CONCRETO
+      cy.get("@grid")
+        .contains("73257 - POSTE DE CONCRETO") //contais pesquisa dentro da grid
+        .parents(".ui-grid-row") //localiza a linha da grid
+        .as("linha6");
+      //localiza a coluna e seta um alias com o as
+
+      //SCROLA GRID PARA DIREITA
+      cy.get("@grid").find(".ui-grid-viewport").scrollTo("right", {
+        easing: "linear",
+        duration: 2000,
       });
 
-      cy.get("@grid").within(($list) => {
-        cy.get('span:contains("1,76")').should("length", 2);
-        /*cy.find("span")
-            .contains(new RegExp("^" + "1,77" + "$", "g"))
-            .should("length", 3);*/
-      });
-      cy.get("@grid").within(($list) => {
-        cy.get('span:contains("1,78")').should("length", 2);
-        /*cy.find("span")
-            .contains(new RegExp("^" + "1,77" + "$", "g"))
-            .should("length", 3);*/
-      });
+      //localiza a coluna e seta um alias com o as
+      cy.get("@linha1")
+        .find(".ui-grid-cell-contents")
+        .eq(8)
+        .contains("1,78")
+        .should("length", 1);
+      cy.get("@linha2")
+        .find(".ui-grid-cell-contents")
+        .eq(8)
+        .contains("1,76")
+        .should("length", 1);
+      cy.get("@linha3")
+        .find(".ui-grid-cell-contents")
+        .eq(8)
+        .contains("1,78")
+        .should("length", 1);
+      cy.get("@linha4")
+        .find(".ui-grid-cell-contents")
+        .eq(8)
+        .contains("1,77")
+        .should("length", 1);
+      cy.get("@linha5")
+        .find(".ui-grid-cell-contents")
+        .eq(8)
+        .contains("1,76")
+        .should("length", 1);
+      cy.get("@linha6")
+        .find(".ui-grid-cell-contents")
+        .eq(8)
+        .contains("1,77")
+        .should("length", 1);
     });
   }
   geraAutorizacaoCubatao() {

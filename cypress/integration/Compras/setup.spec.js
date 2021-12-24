@@ -88,15 +88,15 @@ class setup {
     consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoInicial();
     consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaInicial();  */
 
-    processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
-    processoComprasDispensaCubataoFaseCredenciamentoSpec.credenciamentoCubatao();
-    processoComprasDispensaCubataoFaseJulgamentoSpec.julgamentoCubatao();
-    processoComprasDispensaCubataoGeraAutorizacaoCompraSpec.geraAutorizacaoCubatao();
+    //processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
+    //processoComprasDispensaCubataoFaseCredenciamentoSpec.credenciamentoCubatao();
+    //processoComprasDispensaCubataoFaseJulgamentoSpec.julgamentoCubatao();
+    //processoComprasDispensaCubataoGeraAutorizacaoCompraSpec.geraAutorizacaoCubatao();
     processoComprasDispensaCubataoAbntSpec.validaCapa();
     processoComprasDispensaCubataoAbntSpec.validaJulgamento();
     processoComprasDispensaCubataoAbntSpec.validaAutorizacaoCompra();
-    processoComprasDispensaCubataoPedidoCompra.pedidoCompraCubatao();
-    processoComprasDispensaCubataoEms.emsCubatao();
+    //processoComprasDispensaCubataoPedidoCompra.pedidoCompraCubatao();
+    //processoComprasDispensaCubataoEms.emsCubatao();
     processoComprasDispensaCubataoEms.validaEmsCubatao();
     processoComprasDispensaCubataoEms.validaEmsCubataoAbaItem();
     processoComprasDispensaCubataoEms.validaEmsCubataoAbaDocumentos();

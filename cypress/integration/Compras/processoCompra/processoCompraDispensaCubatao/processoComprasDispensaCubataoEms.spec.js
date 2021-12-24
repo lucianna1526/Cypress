@@ -1,7 +1,6 @@
 class processoComprasDispensaCubataoEms {
   emsCubatao() {
     it("Preenche EMS", () => {
-      const dayjs = require("dayjs");
       /*  cy.get("body").then(($body) => {
         if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
           cy.wait(5000);
@@ -27,7 +26,6 @@ class processoComprasDispensaCubataoEms {
 
       //---Preenche Aba Principal---
       //Data Liquidação
-      const onti = dayjs().subtract(1, "day").format("DD/MM/YYYY");
 
       cy.get('input[nat="cadastroEmsDtDocumento"]')
         .dblclick()
@@ -223,7 +221,7 @@ class processoComprasDispensaCubataoEms {
     });
     it("Valida arredondamento grid aba items 1,7751 -> 1,78", () => {
       //---Clica na Grid Itens da EMS---
-      cy.get('	div[nat="cadastroEmsItensGrid"]').as("grid");
+      cy.get('div[nat="cadastroEmsItensGrid"]').as("grid");
       //valida 1,7750 e aredondamento para 1,78
       cy.get("@grid").contains("73538").parents(".row").contains("1,7751");
       cy.get("@grid")
@@ -235,7 +233,7 @@ class processoComprasDispensaCubataoEms {
 
     it("Valida arredondamento grid aba items 1,7651 -> 1,77", () => {
       //---Clica na Grid Itens da EMS---
-      cy.get('	div[nat="cadastroEmsItensGrid"]').as("grid");
+      cy.get('div[nat="cadastroEmsItensGrid"]').as("grid");
       //valida 1,7750 e aredondamento para 1,78
       cy.get("@grid").contains("73536").parents(".row").as("row");
       cy.get("@row").contains("1,7651");
@@ -244,7 +242,7 @@ class processoComprasDispensaCubataoEms {
 
     it("Valida arredondamento grid aba 1,7649 -> 1,76", () => {
       //---Clica na Grid Itens da EMS---
-      cy.get('	div[nat="cadastroEmsItensGrid"]').as("grid");
+      cy.get('div[nat="cadastroEmsItensGrid"]').as("grid");
       //valida 1,7750 e aredondamento para 1,78
       cy.get("@grid").contains("73534").parents(".row").as("row");
       cy.get("@row").contains("1,7649");
@@ -253,14 +251,14 @@ class processoComprasDispensaCubataoEms {
 
     it("Valida arredondamento grid aba 1,7749 -> 1,77", () => {
       //---Clica na Grid Itens da EMS---
-      cy.get('	div[nat="cadastroEmsItensGrid"]').as("grid");
+      cy.get('div[nat="cadastroEmsItensGrid"]').as("grid");
       //valida 1,7750 e aredondamento para 1,78
       cy.get("@grid").contains("73257").parents(".row").as("row");
       cy.get("@row").contains("1,7749");
       cy.get("@row").contains("1,77").should("length", 1);
     });
     it("Valida soma grid 10,62", () => {
-      cy.get('	div[nat="cadastroEmsItensGrid"]').as("grid");
+      cy.get('div[nat="cadastroEmsItensGrid"]').as("grid");
       //valida 1,7750 e aredondamento para 1,78
       cy.get("@grid").find('[title="10,62"]').should("have.text", "10,6210,62");
     });

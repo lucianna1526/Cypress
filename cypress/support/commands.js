@@ -7,7 +7,9 @@ Cypress.Commands.add(
   }
 ); */
 //########FIM#######
-
+const dayjs = require("dayjs");
+const onti = dayjs().subtract(1, "day").format("DD/MM/YYYY");
+const hoji = dayjs().format("DD/MM/YYYY");
 //Preenche Requisição - Aba Produto
 Cypress.Commands.add(
   "requisicaoAdicionarProduto",
