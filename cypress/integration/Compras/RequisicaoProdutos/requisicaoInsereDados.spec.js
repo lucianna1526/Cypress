@@ -1,4 +1,4 @@
-//import acessaModuloCompras from '../AcessaModuloCompras'
+import { formatedDate2PtBR } from "../../Utils/helpers.js";
 
 class requisicaoInsereDados {
   reqInsereDados(natureza = 1) {

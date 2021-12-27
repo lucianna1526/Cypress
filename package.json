@@ -5,6 +5,7 @@
     "cypress-plugin-tab": "^1.0.5"
   },
   "scripts": {
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "cy:run:chrome": "cypress run --browser chrome"
   }
 }

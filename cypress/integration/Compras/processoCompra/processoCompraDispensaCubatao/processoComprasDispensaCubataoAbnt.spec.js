@@ -199,39 +199,39 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
 
       //VALIDA ITEM 1 - 76212 - T DE 1/2"
       cy.get("@grid")
-        .contains('76212 - T DE 1/2"') //contais pesquisa dentro da grid
+        .contains('T DE 1/2"') //contais pesquisa dentro da grid
         .parents(".ui-grid-row") //localiza a linha da grid
-        .as("linha2");
+        .as("linha1");
 
       //localiza a coluna e seta um alias com o as
 
       //VALIDA ITEM 2 - 73539 - SUPORTE PARA FERRO DE T 1/2"
       cy.get("@grid")
-        .contains('73539 - SUPORTE PARA FERRO DE T 1/2"') //contais pesquisa dentro da grid
+        .contains('SUPORTE PARA FERRO DE T 1/2"') //contais pesquisa dentro da grid
         .parents(".ui-grid-row") //localiza a linha da grid
         .as("linha2");
 
       //VALIDA ITEM 3 - 73538 - REGISTRO ESFERA 1/2"
       cy.get("@grid")
-        .contains('73538 - REGISTRO ESFERA 1/2"') //contais pesquisa dentro da grid
+        .contains('REGISTRO ESFERA 1/2"') //contais pesquisa dentro da grid
         .parents(".ui-grid-row") //localiza a linha da grid
         .as("linha3");
 
       //VALIDA ITEM 4 - 73536 - UNIÃO 3/8""
       cy.get("@grid")
-        .contains('73536 - UNIÃO 3/8"') //contais pesquisa dentro da grid
+        .contains('UNIÃO 3/8"') //contais pesquisa dentro da grid
         .parents(".ui-grid-row") //localiza a linha da grid
         .as("linha4");
 
       //VALIDA ITEM 5 - 73534 - UNIÃO 1/2"
       cy.get("@grid")
-        .contains('73534 - UNIÃO 1/2"') //contais pesquisa dentro da grid
+        .contains('UNIÃO 1/2"') //contais pesquisa dentro da grid
         .parents(".ui-grid-row") //localiza a linha da grid
         .as("linha5");
 
       //VALIDA ITEM 6 - 73257 - POSTE DE CONCRETO
       cy.get("@grid")
-        .contains("73257 - POSTE DE CONCRETO") //contais pesquisa dentro da grid
+        .contains("POSTE DE CONCRETO") //contais pesquisa dentro da grid
         .parents(".ui-grid-row") //localiza a linha da grid
         .as("linha6");
       //localiza a coluna e seta um alias com o as
@@ -273,6 +273,10 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
         .eq(8)
         .contains("1,77")
         .should("length", 1);
+    });
+    it("Volta para o inicio", () => {
+      cy.get('[ng-click="fechar()"]').first().click().wait(5000);
+      cy.get('[ng-click="fechar()"]').first().click().wait(5000);
     });
   }
   geraAutorizacaoCubatao() {

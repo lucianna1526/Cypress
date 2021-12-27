@@ -52,8 +52,7 @@ class setup {
 
   requisicaoCompras() {
     //requisiçao]
-    console.log("Chama Requisicao Compras");
-    //requisicaoInsereDadosSpec.reqInsereDados();
+    requisicaoInsereDadosSpec.reqInsereDados();
     requisicaoValidaCamposObrigatoriosAbntSpec.ReqvalidaCampos();
   }
 
@@ -69,7 +68,7 @@ class setup {
   processoComprasDispensaCubatao() {
     //---Executa Suite Processo de Compras Dispensa Cubatao---//
     //requisicaoValidaCamposObrigatoriosCubataoSpec.validarCamposReqCubatao();
-    /* 
+
     //----Consulta saldo inicial, gera requisição e valida saldo final----/
     consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
     consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoInicial();
@@ -83,24 +82,24 @@ class setup {
     consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaFinal();
 
     //----Libera requisição de compra e valida o saldo inicial----/
-    liberaRequisicaoComprasSpec.liberaRequisicao();
-    consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
-    consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoInicial();
-    consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaInicial();  */
-
-    //processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
-    //processoComprasDispensaCubataoFaseCredenciamentoSpec.credenciamentoCubatao();
-    //processoComprasDispensaCubataoFaseJulgamentoSpec.julgamentoCubatao();
-    //processoComprasDispensaCubataoGeraAutorizacaoCompraSpec.geraAutorizacaoCubatao();
+    //liberaRequisicaoComprasSpec.liberaRequisicao();
+    //consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
+    //consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoInicial();
+    //consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaInicial();
+    /* 
+    processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
+    processoComprasDispensaCubataoFaseCredenciamentoSpec.credenciamentoCubatao();
+    processoComprasDispensaCubataoFaseJulgamentoSpec.julgamentoCubatao();
+    processoComprasDispensaCubataoGeraAutorizacaoCompraSpec.geraAutorizacaoCubatao();
     processoComprasDispensaCubataoAbntSpec.validaCapa();
     processoComprasDispensaCubataoAbntSpec.validaJulgamento();
     processoComprasDispensaCubataoAbntSpec.validaAutorizacaoCompra();
-    //processoComprasDispensaCubataoPedidoCompra.pedidoCompraCubatao();
-    //processoComprasDispensaCubataoEms.emsCubatao();
+    processoComprasDispensaCubataoPedidoCompra.pedidoCompraCubatao();
+    processoComprasDispensaCubataoEms.emsCubatao();
     processoComprasDispensaCubataoEms.validaEmsCubatao();
     processoComprasDispensaCubataoEms.validaEmsCubataoAbaItem();
     processoComprasDispensaCubataoEms.validaEmsCubataoAbaDocumentos();
-    processoComprasDispensaCubataoEms.validaEmsCubataoAbaParcela();
+    processoComprasDispensaCubataoEms.validaEmsCubataoAbaParcela(); */
   }
 }
 

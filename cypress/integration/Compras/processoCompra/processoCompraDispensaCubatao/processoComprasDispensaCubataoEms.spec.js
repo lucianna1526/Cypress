@@ -146,7 +146,11 @@ class processoComprasDispensaCubataoEms {
     it("acessa modulo EMS", () => {
       //cy.moduloMenu('[nat="COMPRAS E LICITAÇÕES"]',    "EMS - Entrada de Mercadorias ou Serviços"      );
 
-      cy.get('[nat="COMPRAS E LICITAÇÕES"]').click().wait(5000);
+      cy.get("body").then(($body) => {
+        if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
+          cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
+        }
+      });
 
       //Acessa EMS
       cy.get('button[nat="botaoSideMenu"]').click();
@@ -157,7 +161,7 @@ class processoComprasDispensaCubataoEms {
         .wait(5000);
 
       //14835
-      cy.get('input[nat="cadastroEmsNrEms"]').type("14835").tab().wait(5000);
+      cy.get('input[nat="cadastroEmsNrEms"]').type("14915").tab().wait(5000);
     });
     it("Valida Valor Empenho -> 10,62", () => {
       cy.get('[nat="cadastroEmsVlEmpenho"]>div>div>span>span').should(
