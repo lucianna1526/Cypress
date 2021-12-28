@@ -274,10 +274,10 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
         .contains("1,77")
         .should("length", 1);
     });
-    it("Volta para o inicio", () => {
+    /*  it("Volta para o inicio", () => {
       cy.get('[ng-click="fechar()"]').first().click().wait(5000);
       cy.get('[ng-click="fechar()"]').first().click().wait(5000);
-    });
+    }); */
   }
   geraAutorizacaoCubatao() {
     it("Acessa - Fase Gera autorização de compra", () => {
@@ -308,14 +308,14 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
       //Clica no botão para abrir o Pedido de Compras
       cy.get('button[title="Abrir pedido de compra"]').click().wait(5000);
 
-      //Aperta ESC pra sair das telas
+      /*  //Aperta ESC pra sair das telas
       cy.get(
         '.pd-crud-popup > [ng-transclude="header"] > ._md > .md-toolbar-tools'
       )
         .type("{esc}")
         .wait(1000);
 
-      cy.get('[ng-click="fechar()"] > .md-blue-theme').type("{esc}").wait(1000);
+      cy.get('[ng-click="fechar()"] > .md-blue-theme').type("{esc}").wait(1000); */
     });
   }
 }

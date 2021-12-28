@@ -1,3 +1,5 @@
+import { formatedDate2PtBR } from "../../../Utils/helpers";
+
 class processoComprasDispensaCubataoEms {
   emsCubatao() {
     it("Preenche EMS", () => {
@@ -25,12 +27,6 @@ class processoComprasDispensaCubataoEms {
       cy.wait(5000); */
 
       //---Preenche Aba Principal---
-      //Data Liquidação
-
-      cy.get('input[nat="cadastroEmsDtDocumento"]')
-        .dblclick()
-        //.type("15/12/2021");
-        .type(onti);
 
       //Transação
       cy.get('input[nat="cadastroEmsPrincipalCdTransacaoDescricao"]')
@@ -63,23 +59,16 @@ class processoComprasDispensaCubataoEms {
       //Nº Série
       cy.get('input[nat="cadastroEmsDocumentoNrSerie"]').type("2");
 
-      //Nº Série
+      //Nº AIDF
       cy.get('input[nat="cadastroEmsDocumentoNrAidf"]').type("2");
 
-      //Nº Série
+      //Nº Data Emissão
       cy.get('input[nat="cadastroEmsDocumentoDataEmissao"]')
         //.type("15/12/2021");
-        .type(onti);
+        .type(formatedDate2PtBR());
 
       //Valor Total NF.
-      cy.get('input[nat="cadastroEmsDocumentoValorTotalNf"]').type(
-        "16/12/2021"
-      );
-
-      //Data NF.
-      cy.get('input[nat="cadastroEmsDocumentoValorTotalNf"]').type(
-        "16/12/2021"
-      );
+      cy.get('input[nat="cadastroEmsDocumentoValorTotalNf"]').type("10,62");
 
       //Tipo de Documento
       cy.get('[nat="cadastroEmsDocumentoTipoDocumentoSelect"]')
@@ -104,14 +93,12 @@ class processoComprasDispensaCubataoEms {
       ).click();
 
       //Nº Parcela
-      cy.get('input[nat="cadastroEmsLiquidacaoNrParcela"]')
-        //.type("15/12/2021");
-        .type(onti);
+      cy.get('input[nat="cadastroEmsLiquidacaoNrParcela"]').type("1");
 
       //Data Vencimento
       cy.get('input[nat="cadastroEmsLiquidacaoDataVencimento"]')
         //.type("15/12/2021");
-        .type(onti);
+        .type(formatedDate2PtBR());
 
       //Valor
       cy.get('input[nat="cadastroEmsLiquidacaoValor"]').type("10,62");
@@ -145,8 +132,7 @@ class processoComprasDispensaCubataoEms {
   validaEmsCubatao() {
     it("acessa modulo EMS", () => {
       //cy.moduloMenu('[nat="COMPRAS E LICITAÇÕES"]',    "EMS - Entrada de Mercadorias ou Serviços"      );
-
-      cy.get("body").then(($body) => {
+      /* cy.get("body").then(($body) => {
         if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
           cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
         }
@@ -158,10 +144,11 @@ class processoComprasDispensaCubataoEms {
         .type("EMS - Entrada de Mercadorias ou Serviços")
         .wait(1000)
         .type("{enter}")
-        .wait(5000);
-
-      //14835
+        .wait(5000); */
+      /* //14835
       cy.get('input[nat="cadastroEmsNrEms"]').type("14915").tab().wait(5000);
+      //volta anterior
+      cy.get('[nat="cadastroEmsNrEmsAnterior"]').click().wait(5000); */
     });
     it("Valida Valor Empenho -> 10,62", () => {
       cy.get('[nat="cadastroEmsVlEmpenho"]>div>div>span>span').should(

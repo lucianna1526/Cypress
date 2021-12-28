@@ -18,6 +18,7 @@ import processoComprasDispensaCubataoPedidoCompra from "./processoCompra/process
 import processoComprasDispensaCubataoEms from "./processoCompra/processoCompraDispensaCubatao/processoComprasDispensaCubataoEms.spec";
 import consultaSaldoFichaReservaSpec from "./processoCompra/processoCompraDispensaCubatao/consultaSaldoFichaReserva.spec";
 import liberaRequisicaoComprasSpec from "./processoCompra/processoCompraDispensaCubatao/liberaRequisicaoCompras.spec";
+import cancelaLiberacaoRequisicaoCompras from "./processoCompra/processoCompraDispensaCubatao/cancelaLiberacaoRequisicaoCompras.spec";
 
 import requisicaoInsereDadosSpec from "./RequisicaoProdutos/requisicaoInsereDados.spec";
 import requisicaoValidaCamposObrigatoriosAbntSpec from "./RequisicaoProdutos/requisicaoValidaValoresAbnt.spec";
@@ -25,6 +26,7 @@ import requisicaoValidaCamposObrigatoriosAbntSpec from "./RequisicaoProdutos/req
 import requisicaoSolicitacaoComprasSpec from "./cadastroSolicitacaoCompras/cadastroValidaCamposObrigatorios.spec";
 import cadastroSolicitacaoValidaSaldoFichaSpec from "./cadastroSolicitacaoCompras/cadastroSolicitacaoValidaSaldoFicha.spec";
 import cadastroSolicitacaoCompras from "./cadastroSolicitacaoCompras/cadastroSolicitacaoCompras.spec";
+import cancelaLiberacaoRequisicaoComprasSpec from "./processoCompra/processoCompraDispensaCubatao/cancelaLiberacaoRequisicaoCompras.spec";
 //import requisicaoValidaValoresAbntCubataoSpec from "./processoCompra/processoCompraDispensaCubatao/requisicaoValidaValoresAbntCubatao.spec";
 class setup {
   constructor() {
@@ -70,7 +72,7 @@ class setup {
     //requisicaoValidaCamposObrigatoriosCubataoSpec.validarCamposReqCubatao();
 
     //----Consulta saldo inicial, gera requisição e valida saldo final----/
-    consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
+    /*   consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
     consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoInicial();
     consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaInicial();
 
@@ -80,14 +82,14 @@ class setup {
     consultaSaldoFichaReservaSpec.consultaSaldoFichasFinal();
     consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoFinal();
     consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaFinal();
-
+ */
     //----Libera requisição de compra e valida o saldo inicial----/
-    //liberaRequisicaoComprasSpec.liberaRequisicao();
-    //consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
-    //consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoInicial();
-    //consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaInicial();
-    /* 
-    processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
+    //cancelaLiberacaoRequisicaoComprasSpec.cancelaLiberacaoRequisicao();
+    /* consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
+    consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoInicial();
+    consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaInicial();*/
+    liberaRequisicaoComprasSpec.liberaRequisicao();
+    /* processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
     processoComprasDispensaCubataoFaseCredenciamentoSpec.credenciamentoCubatao();
     processoComprasDispensaCubataoFaseJulgamentoSpec.julgamentoCubatao();
     processoComprasDispensaCubataoGeraAutorizacaoCompraSpec.geraAutorizacaoCubatao();

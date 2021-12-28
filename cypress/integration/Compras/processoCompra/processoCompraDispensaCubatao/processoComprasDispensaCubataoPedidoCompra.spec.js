@@ -1,20 +1,21 @@
+import { formatedDate2PtBR } from "../../../Utils/helpers.js";
 class processoComprasDispensaCubataoPedidoCompra {
   pedidoCompraCubatao() {
     it("Pedido de Compras - Adiciona Parcela e Gera Empenho", () => {
-      /*if (cy.find('button[nat="botaoSideMenu"]').length == 0){
-                cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
-                }*/
+      /* if (cy.find('button[nat="botaoSideMenu"]').length == 0) {
+        cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
+      }
 
-      /*   cy.get("body").then(($body) => {
+      cy.get("body").then(($body) => {
         if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
           cy.wait(10000);
           cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
           cy.wait(10000);
         }
       });
-    });
+    }); */
 
-    it("Preenche Pedido de Compras", () => {
+      /* it("Preenche Pedido de Compras", () => {
       //Acessa Pedido de Compras
       cy.wait(10000);
       cy.get('button[nat="botaoSideMenu"]').click();
@@ -22,15 +23,20 @@ class processoComprasDispensaCubataoPedidoCompra {
         .type("Pedido de compra")
         .click()
         .type("{downarrow}")
-        .type("{enter}");
+        .type("{enter}"); */
 
-      //seleciona Pedido
-      cy.get('input[nat="cadastroPedidoCompraNPedido"]')
+      //seleciona Pedido -- descomente esse trecho para teste direto no pedido
+      /* cy.get('input[nat="cadastroPedidoCompraNPedido"]')
         .type("17276")
         .type("{enter}");
-      cy.wait(10000); */
+        //Volta para o ultimo pedido
+        cy.get('button[nat="cadastroPedidoCompraNPedidoAnterior"]')
+        .click()
+        .wait(3000);
+        cy.wait(10000); */
 
       //Clica na Aba - Dados orçamentários
+
       cy.get('[nat="Dados orçamentários"] > .nav-link').click();
 
       //Manter saldo da reserva
@@ -58,14 +64,14 @@ class processoComprasDispensaCubataoPedidoCompra {
 
       //Nº Parcela
       cy.get('input[nat="cadastroPedidoCompraParcelaNParcela"]')
-        .type("1")
+        .wait(1000)
         .tab();
 
       //Data Vencimento
       cy.get('input[nat="cadastroPedidoCompraParcelaDataVencimento"]')
         .dblclick()
-        //.type(formatedDate2PtBR());
-        .type(joiformatedDate2PtBR());
+        .type(formatedDate2PtBR());
+      //.type(joiformatedDate2PtBR());
 
       //Valor Parcela
       cy.get('input[nat="cadastroPedidoCompraParcelaValorParcela"]').type(
@@ -83,11 +89,17 @@ class processoComprasDispensaCubataoPedidoCompra {
       cy.get('[nat="cadastroPedidoCompraGerarEmpenho"]').click().wait(8000);
 
       //Gera Entrega
-      cy.get('[nat="cadastroPedidoCompraAbrirAutorizaçãoEntrega"]').click();
+      cy.get('[nat="cadastroPedidoCompraAbrirAutorizaçãoEntrega"]')
+        .click()
+        .wait(2000);
       //Adicionar Entrega
-      cy.get('[nat="cadastroAutorizacaoEntregaPedidoCrudSalvar"]').click();
+      cy.get('[nat="cadastroAutorizacaoEntregaPedidoCrudSalvar"]')
+        .click()
+        .wait(2000);
       //Clica botao EMS
-      cy.get('[nat="cadastroAutorizacaoEntregaPedidoAbrirEms"]').click();
+      cy.get('[nat="cadastroAutorizacaoEntregaPedidoAbrirEms"]')
+        .click()
+        .wait(2000);
     });
   }
 }
