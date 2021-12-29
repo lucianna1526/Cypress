@@ -29,6 +29,8 @@ import cadastroSolicitacaoValidaSaldoFichaSpec from "./cadastroSolicitacaoCompra
 import cadastroSolicitacaoCompras from "./cadastroSolicitacaoCompras/cadastroSolicitacaoCompras.spec";
 import cancelaLiberacaoRequisicaoComprasSpec from "./processoCompra/processoCompraDispensaCubatao/cancelaLiberacaoRequisicaoCompras.spec";
 //import requisicaoValidaValoresAbntCubataoSpec from "./processoCompra/processoCompraDispensaCubatao/requisicaoValidaValoresAbntCubatao.spec";
+
+import anulacaoEmpenhoSpec from "./processoCompra/processoCompraDispensaCubatao/anulacaoEmpenho.spec";
 class setup {
   constructor() {
     describe("Executa Suite Modulo Compras", () => {
@@ -73,7 +75,7 @@ class setup {
     //requisicaoValidaCamposObrigatoriosCubataoSpec.validarCamposReqCubatao();
 
     //----Consulta saldo inicial, gera requisição e valida saldo final----/
-    /* consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
+    consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
     consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoInicial();
     consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaInicial();
 
@@ -82,10 +84,10 @@ class setup {
 
     consultaSaldoFichaReservaSpec.consultaSaldoFichasFinal();
     consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoFinal();
-    consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaFinal(); */
+    consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaFinal(); 
     //----Libera requisição de compra e valida o saldo inicial----/
 
-    /* cancelaLiberacaoRequisicaoComprasSpec.cancelaLiberacaoRequisicao();
+     cancelaLiberacaoRequisicaoComprasSpec.cancelaLiberacaoRequisicao();
     consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
     consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoInicial();
     consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaInicial();
@@ -102,11 +104,15 @@ class setup {
     processoComprasDispensaCubataoEms.validaEmsCubatao();
     processoComprasDispensaCubataoEms.validaEmsCubataoAbaItem();
     processoComprasDispensaCubataoEms.validaEmsCubataoAbaDocumentos();
-    processoComprasDispensaCubataoEms.validaEmsCubataoAbaParcela();*/
-    consultaEmpenhoSaldoReservaSpec.validaEmpenhoSaldoReservaSim();
-    /*  consultaSaldoFichaReservaSpec.consultaSaldoFichasFinal();
+    processoComprasDispensaCubataoEms.validaEmsCubataoAbaParcela();
+     consultaEmpenhoSaldoReservaSpec.validaEmpenhoSaldoReservaSim();
+      consultaSaldoFichaReservaSpec.consultaSaldoFichasFinal();
     consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoFinal();
-    consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaFinal(); */
+    consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaFinal(); 
+    anulacaoEmpenhoSpec.anulaEmpenhoEMS();
+   anulacaoEmpenhoSpec.anulacaoEmpenho();
+    anulacaoEmpenhoSpec.validaSaldoFicha();
+    
   }
 }
 

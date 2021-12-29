@@ -103,19 +103,19 @@ class consultaSaldoFichaReserva {
       cy.get('input[nat="ConsultaExecucaoOrcamentariaAno input"]')
         .type("2021")
         .tab()
-        .wait(500);
+        .wait(2000);
 
       //Mes
       cy.get('input[nat="ConsultaExecucaoOrcamentariaMes"]')
         .type("12")
         .tab()
-        .wait(500);
+        .wait(2000);
 
       //Ficha
       cy.get('input[nat="ConsultaExecucaoOrcamentariaFicha"]')
         .type("20211498")
         .tab()
-        .wait(500);
+        .wait(100);
 
       //Clica no botão PESQUISAR
       cy.get('button[nat="ConsultaExecucaoOrcamentariaPesquisar"')
@@ -241,19 +241,19 @@ class consultaSaldoFichaReserva {
       cy.get('input[nat="ConsultaExecucaoOrcamentariaAno input"]')
         .type("2021")
         .tab()
-        .wait(500);
+        .wait(2000);
 
       //Mes
       cy.get('input[nat="ConsultaExecucaoOrcamentariaMes"]')
         .type("12")
         .tab()
-        .wait(500);
+        .wait(2000);
 
       //Ficha
       cy.get('input[nat="ConsultaExecucaoOrcamentariaFicha"]')
         .type("20211498")
         .tab()
-        .wait(500);
+        .wait(1000);
 
       //Clica no botão PESQUISAR
       cy.get('button[nat="ConsultaExecucaoOrcamentariaPesquisar"')
