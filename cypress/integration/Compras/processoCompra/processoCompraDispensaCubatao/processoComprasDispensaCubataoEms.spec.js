@@ -11,7 +11,6 @@ class processoComprasDispensaCubataoEms {
         }
       });
     });
-
     it("Preenche Pedido de Compras", () => {
       //Acessa Pedido de Compras
       cy.wait(5000);
@@ -21,7 +20,6 @@ class processoComprasDispensaCubataoEms {
         .click()
         .type("{downarrow}")
         .type("{enter}");
-
       //seleciona Pedido
       cy.get('input[nat="cadastroEmsNrEms"]').type("14829").type("{enter}");
       cy.wait(5000); */
@@ -137,7 +135,6 @@ class processoComprasDispensaCubataoEms {
           cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
         }
       });
-
       //Acessa EMS
       cy.get('button[nat="botaoSideMenu"]').click();
       cy.get('input[nat="buscaMenuVertical"]')

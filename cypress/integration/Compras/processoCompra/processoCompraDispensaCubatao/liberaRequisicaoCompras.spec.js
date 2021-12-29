@@ -33,27 +33,30 @@ class liberaRequisicaoCompras {
         .click()
         .wait(1000);
 
+      //digita o valor que vamos procurar 10,62
+      cy.get('input[nat="pesquisaRequisicaoComprasTotalPrevisto"]').type(
+        "10,62"
+      );
+
+      //pesquisa no banco o valor
+      cy.get('button[nat="pesquisaRequisicaoComprasPesquisar"]')
+        .click()
+        .wait(1000);
+
       cy.get('[nat="pesquisaRequisicaoComprasGrid"]').as("grid");
 
       cy.get("@grid")
-        .contains("0") //contais pesquisa dentro da grid
+        .find('[title="0"]')
         .parents(".ui-grid-row") //localiza a linha da grid
-        //.contains("0")
         .as("linha1");
 
-      cy.get("@linha1")
-        .find(".ui-grid-cell-contents")
-        .eq(6)
-        .contains("0")
-        .should("length", 1);
+      //Clica no botão CARREGAR
+      cy.get("@linha1").find('button[nat="botaoCarregar"]').click();
       //.parents(".row").contains("1,7650");
       //Clica no botão PESQUISAR
       /* cy.get('button[nat="pesquisaRequisicaoComprasPesquisar"]')
         .click()
         .wait(1000); */
-
-      //Clica no botão CARREGAR
-      cy.get('[nat="botaoCarregar"]').click().wait(1000);
 
       //Enviar
       cy.get('button[nat="cadastroRequisicaoComprasEnviar"]')

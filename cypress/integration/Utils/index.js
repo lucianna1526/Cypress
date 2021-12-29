@@ -10,6 +10,7 @@ class Utils {
     //clica em entrar
     cy.get("input.ng-scope").click();
     cy.wait("@getUrl");
+    cy.get('[nat="COMPRAS E LICITAÇÕES"]', { timeout: 30000 });
   }
   0;
 }

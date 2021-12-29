@@ -41,18 +41,17 @@ class processoComprasDispensaCubataoGeraAutorizacaoCompra {
         .screenshot("Item 1")
         .wait(5000);*/
 
+      //valida campo de numero de processo de compra se estiver em branco puxa o ultimo registro
       cy.get('input[nat="cadastroProcessoCompraNProcessoCompra"]')
-        .invoke("text") // for input or textarea, .invoke('val')
-        .then((text) => {
-          const someText = text;
-          if (someText < 1) {
+        .invoke("val")
+        .then((sometext) => {
+          if (sometext == "") {
             cy.get(
               'button[nat="cadastroProcessoCompraNProcessoCompraAnterior"]'
             )
               .click()
               .wait(5000);
           }
-          cy.log(someText);
         });
 
       cy.get('div[nat="processodeComprasPrincipalItensGrid"]').as("grid");

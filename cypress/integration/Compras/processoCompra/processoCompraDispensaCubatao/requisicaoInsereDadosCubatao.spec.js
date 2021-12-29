@@ -81,6 +81,7 @@ class requisicaoInsereDadosCubatao {
     //**************Valida lançamento com Valor maior que o saldo da Ficha **************/
     it("Validação de lançamento maior que o saldo da ficha", () => {
       //Informa o Produto
+      cy.wait(5000);
       cy.get('input[nat="cadastroItemRequisicaoComprasProduto"]')
         .type(76212)
         .type("{enter}")
