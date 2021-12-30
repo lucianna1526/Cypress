@@ -31,7 +31,7 @@ class liberaRequisicaoCompras {
       //Pesquisa Requisição com data do dia
       cy.get('button[nat="cadastroRequisicaoComprasCodigoPesquisa"]')
         .click()
-        .wait(1000);
+        .wait(3000);
 
       //digita o valor que vamos procurar 10,62
       cy.get('input[nat="pesquisaRequisicaoComprasTotalPrevisto"]').type(
@@ -51,7 +51,7 @@ class liberaRequisicaoCompras {
         .as("linha1");
 
       //Clica no botão CARREGAR
-      cy.get("@linha1").find('button[nat="botaoCarregar"]').click();
+      cy.get("@linha1").find('button[nat="botaoCarregar"]').click().wait(1000);
       //.parents(".row").contains("1,7650");
       //Clica no botão PESQUISAR
       /* cy.get('button[nat="pesquisaRequisicaoComprasPesquisar"]')

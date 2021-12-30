@@ -25,7 +25,7 @@ class anulaEmpenho {
         cy.get('textarea[nat="popupAnulacaoLiquidacaoJustificativa"]',{ timeout: 10000 }).type("Anulação de Empenho Cypress");
         
         cy.get('button[nat="popupAnulacaoLiquidacaoAnular"]',{ timeout: 10000 }).click();
-        cy.get(".md-toast-text").should("have.text", "      Registro excluído com sucesso!    ");
+        cy.get(".md-toast-text").should("have.text", "      Liquidação anulada com sucesso.    ");
 
     });
     it("EMS - Abre EMS", () => {
@@ -50,17 +50,33 @@ class anulaEmpenho {
       cy.get('button[nat="pdBtnAlertOKSim"]',{ timeout: 10000 }).click();
       cy.get(".md-toast-text").should("have.text", "      Registro excluído com sucesso!    ").wait(5000);
     });
+
+
+    //Acessa Ordem de Fornecimento - Entrega
+    it("Acessa Ordem de Fornecimento - Entrega", () => {      
+     
+      cy.get('button[nat="botaoSideMenu"]',{ timeout: 10000 }).click();
+      cy.get('input[nat="buscaMenuVertical"]')
+      .type("Autorização de entrega pelo pedido")
+        .click()
+        .type("{downarrow}")
+        .type("{enter}");
+    });    
+
     it("EMS - Exclui autorizacao de entrega", () => {
-      cy.get('button[nat="cadastroEmsNrEntregaCadastro"]',{ timeout: 10000 }).click();
+     
       cy.get('button[nat="cadastroAutorizacaoEntregaPedidoCodigoAnterior"]',{ timeout: 10000 }).click();
       cy.get('button[nat="cadastroAutorizacaoEntregaPedidoCrudExcluir"]',{ timeout: 10000 }).click();
       cy.get('button[nat="pdBtnAlertOKSim"]',{ timeout: 10000 }).click();
       cy.get(".md-toast-text").should("have.text", "      Registro excluído com sucesso!    ");
+      
     });
 
   }
+
   anulacaoEmpenho() {
     it("ACESA EMS COMPRAS", () => {
+      cy.get('img[title="Ir para menu geral"]').click().wait(2000);
       cy.get('[nat="COMPRAS E LICITAÇÕES"]',{ timeout: 10000 })
       .click();
      

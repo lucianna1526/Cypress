@@ -75,7 +75,8 @@ class setup {
     //requisicaoValidaCamposObrigatoriosCubataoSpec.validarCamposReqCubatao();
 
     //----Consulta saldo inicial, gera requisição e valida saldo final----/
-    consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
+    //Parte 1 
+   /*  consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
     consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoInicial();
     consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaInicial();
 
@@ -87,12 +88,14 @@ class setup {
     consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaFinal(); 
     //----Libera requisição de compra e valida o saldo inicial----/
 
-     cancelaLiberacaoRequisicaoComprasSpec.cancelaLiberacaoRequisicao();
+    cancelaLiberacaoRequisicaoComprasSpec.cancelaLiberacaoRequisicao();
     consultaSaldoFichaReservaSpec.consultaSaldoFichasInicial();
     consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoInicial();
-    consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaInicial();
-    liberaRequisicaoComprasSpec.liberaRequisicao(); 
-    processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
+    consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaInicial();  
+    liberaRequisicaoComprasSpec.liberaRequisicao();   */
+
+    //Parte 2
+  /*    processoComprasDispensaCubataoCapaSpec.processoComprasCubatao();
     processoComprasDispensaCubataoFaseCredenciamentoSpec.credenciamentoCubatao();
     processoComprasDispensaCubataoFaseJulgamentoSpec.julgamentoCubatao();
     processoComprasDispensaCubataoGeraAutorizacaoCompraSpec.geraAutorizacaoCubatao();
@@ -104,14 +107,16 @@ class setup {
     processoComprasDispensaCubataoEms.validaEmsCubatao();
     processoComprasDispensaCubataoEms.validaEmsCubataoAbaItem();
     processoComprasDispensaCubataoEms.validaEmsCubataoAbaDocumentos();
-    processoComprasDispensaCubataoEms.validaEmsCubataoAbaParcela();
-     consultaEmpenhoSaldoReservaSpec.validaEmpenhoSaldoReservaSim();
+    processoComprasDispensaCubataoEms.validaEmsCubataoAbaParcela(); */
+
+      //Parte 3
+      consultaEmpenhoSaldoReservaSpec.validaEmpenhoSaldoReservaSim();
       consultaSaldoFichaReservaSpec.consultaSaldoFichasFinal();
     consultaSaldoFichaReservaSpec.consultaSaldoReservaDotacaoFinal();
     consultaSaldoFichaReservaSpec.consultaSaldoExecucaoOrcamentariaFinal(); 
     anulacaoEmpenhoSpec.anulaEmpenhoEMS();
    anulacaoEmpenhoSpec.anulacaoEmpenho();
-    anulacaoEmpenhoSpec.validaSaldoFicha();
+    anulacaoEmpenhoSpec.validaSaldoFicha();  
     
   }
 }

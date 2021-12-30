@@ -152,11 +152,9 @@ class consultaSaldoFichaReserva {
   //Função para consultar o saldo Final da ficha modulo compras tela - Saldo de ficha
   consultaSaldoFichasFinal() {
     it("Valida Saldo Final na Tela: Saldo de Fichas", () => {
-      cy.get("body").then(($body) => {
-        if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
-          cy.get('[nat="ORÇAMENTO"]').click();
-        }
-      });
+      cy.get('img[title="Ir para menu geral"]').click().wait(2000);
+          cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
+        
       //Acessa Saldo de fichas
       cy.get('button[nat="botaoSideMenu"]').click();
       cy.get('input[nat="buscaMenuVertical"]')
