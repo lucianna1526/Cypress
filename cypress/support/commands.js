@@ -75,22 +75,70 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   "moduloMenu",
-  function (modulo, menu, voltaModulo = 0, voltaSubModulo = 0) {
-    if (voltaModulo > 0) {
+  (modulo, menu, voltaModulo = 0, voltaSubModulo = 0)=>{
+    /*if (voltaModulo > 0) {
       cy.get('[title="Ir para menu geral"]').click();
     }
     if (voltaSubModulo > 0) {
       cy.get('[title="Ir para menu geral"]').click();
-    }
-    it("Acessa Modulo Compras", () => {
-      cy.get(modulo).wait(1000).click();
+    }*/
+    
+    
+
+    cy.get(".md-toolbar-tools>a").invoke('text').then((text) => {
+      console.log(text.trim());
+      
+      cy.intercept('GET', '**/sigAutomacao/rest/menu/getMenu?modulo=menu').as('getUrl');
+      
+      /*if(text.trim() != `SIG - ${modulo}` && (text.trim() !="SIG - Sistema Integrado de Gestão")){
+        console.log('volta para o menu principal');
+        cy.get('[title="Ir para menu geral"]').click();
+        cy.wait('@getUrl')
+      }*/
+      
+      
+      
+      if(text.trim() != `SIG - ${modulo}` && (text.trim() !="SIG - Sistema Integrado de Gestão")){
+        console.log('volta para o menu principal');
+        cy.get('[title="Ir para menu geral"]').click();
+        cy.wait('@getUrl')
+      }
     });
-    it("Consulta Saldo Ficha", () => {
-      cy.wait(5000);
-      cy.get(menu).click().wait(2000);
-    });
-  }
-);
+
+      cy.get("body").then(($body) => {
+        //verifica o nome do modulo
+        //procura menu, se não encontrar clica no modulo
+
+        if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
+          cy.intercept('GET', '**/getTipoDeUsuarioNoModulo?codigoModulo=SCH2').as('getModulo');
+          cy.get(`pd-botao-menu[nat="${modulo}"]`,{timeout: 15000}).wait(1000).click();
+          //cy.wait('@getModulo');
+        }
+
+      });
+    
+
+    //prepara interncep para o carregamento do menu
+    cy.intercept('GET', '**/rest/**').as('getMenu');
+    //sigAutomacao/app/views/painel-controle-compras/abas/aba-principal.html
+    
+    //clica no menu Sanduiche
+    cy.get('[nat="botaoSideMenu"]',{timeout:10000}).click();
+
+    //digita no input o menu 
+    cy.get('input[nat="buscaMenuVertical"]').type(menu);
+    
+    cy.get("UL[class='dropdown-menu']",{timeout:10000}).contains('span',menu).click();
+    //cy.get("UL[class='dropdown-menu']").contains(RegExp(`^(${option})`, "g"))
+    
+    //cy.wait(1000);
+
+
+
+
+      cy.wait('@getMenu');
+    
+  });
 
 //VALIDA LOAD PRODUTOS TELA REQUISIÇÃO
 Cypress.Commands.add(
@@ -250,4 +298,25 @@ Cypress.Commands.add(
 
 Cypress.Commands.add("text", { prevSubject: true }, (subject, options) => {
   return subject.text();
+});
+
+Cypress.Commands.add(
+  "angularCheck", 
+  (componente) => {
+  cy.get(componente).invoke('attr', 'aria-checked')
+            .then((valor) => {
+                if(valor == 'false'){
+                    cy.get(componente).click();
+                }
+            });
+});
+Cypress.Commands.add(
+  "angularUnCheck", 
+  (componente) => {
+  cy.get(`${componente}`).invoke('attr', 'aria-checked')
+            .then((valor) => {
+                if(valor == 'true'){
+                    cy.get(`${componente}`).click();
+                }
+            });
 });

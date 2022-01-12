@@ -4,5 +4,6 @@
         "botao",
         "downarrow",
         "Liquidacao"
-    ]
+    ],
+    "npm-scripts.showStartNotification": false
 }

@@ -5,7 +5,9 @@
     "cypress-plugin-tab": "^1.0.5"
   },
   "scripts": {
+    "lint": "npx standard",
+    "lint:fix": "npx standard --fix",
     "cypress:open": "cypress open",
-    "cy:run:chrome": "cypress run --browser chrome"
+    "cy:open": "cypress open"
   }
 }

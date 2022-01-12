@@ -35,7 +35,7 @@ class liberaRequisicaoCompras {
 
       //digita o valor que vamos procurar 10,62
       cy.get('input[nat="pesquisaRequisicaoComprasTotalPrevisto"]').type(
-        "100,00"
+        "10,62"
       );
 
       //pesquisa no banco o valor
