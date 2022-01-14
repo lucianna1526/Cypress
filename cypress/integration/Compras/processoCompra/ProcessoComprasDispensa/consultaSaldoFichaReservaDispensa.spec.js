@@ -9,7 +9,7 @@ class consultaSaldoFichaReservaDispensa {
   //Função para consultar o saldo Inicial da ficha modulo compras tela - Saldo de ficha
   consultaSaldoFichasInicial() {
     it("Valida Saldo Inicial na Tela: Saldo de Fichas", () => {
-      cy.get("body").then(($body) => {
+      /*cy.get("body").then(($body) => {
         if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
           cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
         }
@@ -20,7 +20,9 @@ class consultaSaldoFichaReservaDispensa {
         .type("Saldo de fichas")
         .click()
         .type("{enter}");
-      cy.wait(2000);
+      cy.wait(2000);*/
+      cy.moduloMenu("COMPRAS E LICITAÇÕES","Saldo de fichas")
+      
 
       //Pesquisa Ficha
       cy.get('button[nat="consultaSaldoFichaFichaPesquisa"]')
@@ -62,7 +64,7 @@ class consultaSaldoFichaReservaDispensa {
         }
       });
       //Acessa Saldo de fichas
-      cy.get('button[nat="botaoSideMenu"]').click();
+      cy.get('button[nat="botaoSideMenu"]',{timeout:10000}).click();
       cy.get('input[nat="buscaMenuVertical"]')
         .type("Reserva de dotação")
         .click()
@@ -197,7 +199,7 @@ class consultaSaldoFichaReservaDispensa {
   //Função para consultar o saldo Final da Reserva de Dotação modulo Orçamento tela - Reserva de dotação
   consultaSaldoReservaDotacaoFinal() {
     it("Valida Saldo Final na Tela: Reserva de dotação", () => {
-      cy.get("body").then(($body) => {
+      /*cy.get("body").then(($body) => {
         if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
           cy.get('[nat="ORÇAMENTO"]').click();
         }
@@ -208,8 +210,8 @@ class consultaSaldoFichaReservaDispensa {
         .type("Reserva de dotação")
         .click()
         .type("{enter}");
-      cy.wait(1000);
-
+      cy.wait(1000);*/
+      cy.moduloMenu("ORÇAMENTO","Reserva de dotação")
       //Ficha
       cy.get('input[nat="fichaInfoFicha"]').type("20222076").tab().wait(500);
 

@@ -10,7 +10,7 @@ class cancelaLiberacaoRequisicaoCompras {
   //Função para cancelar a liberação da requisição de compra
   cancelaLiberacaoRequisicao() {
     it("Cancela liberação de requisição de compras", () => {
-      cy.get("body").then(($body) => {
+      /*cy.get("body").then(($body) => {
         if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
           cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
         }
@@ -21,7 +21,8 @@ class cancelaLiberacaoRequisicaoCompras {
         .type("Libera requisições compras")
         .click()
         .type("{enter}");
-      cy.wait(2000);
+      cy.wait(2000);*/
+      cy.moduloMenu("COMPRAS E LICITAÇÕES","Libera requisições compras")
 
       //Informa o TIPO
       cy.get('[nat="liberaRequisicaoComprasTipoSelect"]')

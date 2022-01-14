@@ -98,7 +98,7 @@ Cypress.Commands.add(
       
       
       
-      if(text.trim() != `SIG - ${modulo}` && (text.trim() !="SIG - Sistema Integrado de Gestão")){
+      if(text.trim().toLowerCase() != (`SIG - ${modulo}`).toLowerCase() && (text.trim() !="SIG - Sistema Integrado de Gestão")){
         console.log('volta para o menu principal');
         cy.get('[title="Ir para menu geral"]').click();
         cy.wait('@getUrl')

@@ -67,18 +67,28 @@ class setup {
   processoComprasDispensa() {
     //Executa Suite Processo de Compras Dispensa com Reserva de Dotação
     ativaDesativaReservaDotacaoSpec.ativaReserva();
-    /* consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial();
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoInicial();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaInicial(); 
     
-    processoComprasDispensaRequisicaoSpec.requisicao(); */
+    processoComprasDispensaRequisicaoSpec.requisicao(); 
 
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasFinal();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoFinal();
-    consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaFinal(); 
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaFinal();
+    cancelaLiberacaoRequisicaoComprasSpec.cancelaLiberacaoRequisicao(); 
 
-    //liberaRequisicaoComprasSpec.liberaRequisicao();
-    //cancelaLiberacaoRequisicaoComprasSpec.cancelaLiberacaoRequisicao();
+    liberaRequisicaoComprasSpec.liberaRequisicao();
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoFinal();
+    cancelaLiberacaoRequisicaoComprasSpec.cancelaLiberacaoRequisicao();
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial();
+
+    liberaRequisicaoComprasSpec.liberaRequisicao();
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoFinal();
+    cancelaLiberacaoRequisicaoComprasSpec.cancelaLiberacaoRequisicao();
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial(); 
+   
+
      
     /*  processoComprasDispensaCapaSpec.processoCompras();
     processoComprasDispensaFaseCredenciamentoSpec.credenciamento();
