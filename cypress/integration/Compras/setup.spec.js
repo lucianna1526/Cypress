@@ -6,6 +6,10 @@ import processoComprasDispensaCapaSpec from "./processoCompra/ProcessoComprasDis
 import processoComprasDispensaFaseCredenciamentoSpec from "./processoCompra/ProcessoComprasDispensa/processoComprasDispensaFaseCredenciamento.spec";
 import processoComprasDispensaFaseJulgamentoSpec from "./processoCompra/ProcessoComprasDispensa/processoComprasDispensaFaseJulgamento.spec";
 import processoComprasDispensaGeraAutorizacaoCompraSpec from "./processoCompra/ProcessoComprasDispensa/processoComprasDispensaGeraAutorizacaoCompra.spec";
+import processoComprasDispensaPedidoComprasSpec from "././processoCompra/ProcessoComprasDispensa/processoComprasDispensaPedidoCompra.spec";
+import processoComprasDispensaOfSpec from './processoCompra/ProcessoComprasDispensa/processoComprasDispensaOf.spec'
+import processoComprasDispensaValidaPedidoSimNaoSpec from './processoCompra/ProcessoComprasDispensa/processoComprasDispensaValidaPedidoSimNao.spec'	
+import anulacaoEmpenhoDispensaSpec from "./processoCompra/ProcessoComprasDispensa/anulacaoEmpenhoDispensa.spec";
 
 import requisicaoInsereDadosCubataoSpec from "./processoCompra/processoCompraDispensaCubatao/requisicaoInsereDadosCubatao.spec";
 import requisicaoValidaCamposObrigatoriosCubataoSpec from "./processoCompra/processoCompraDispensaCubatao/requisicaoValidaCamposObrigatoriosCubatao.spec";
@@ -22,6 +26,7 @@ import liberaRequisicaoComprasSpec from "./processoCompra/processoCompraDispensa
 import cancelaLiberacaoRequisicaoCompras from "./processoCompra/processoCompraDispensaCubatao/cancelaLiberacaoRequisicaoCompras.spec";
 import consultaEmpenhoSaldoReservaSpec from "./processoCompra/processoCompraDispensaCubatao/consultaEmpenhoSaldoReserva.spec";
 import validaSaldoReservaPedidoComprasSpec from "./processoCompra/processoCompraDispensaCubatao/validaSaldosReservaPedidoCompras/validaSaldoReservaPedidoCompras.spec";
+import processoComprasDispensaEmsSpec from "././processoCompra/ProcessoComprasDispensa/processoComprasDispensaEms.spec"
 
 import requisicaoInsereDadosSpec from "./RequisicaoProdutos/requisicaoInsereDados.spec";
 import requisicaoValidaCamposObrigatoriosAbntSpec from "./RequisicaoProdutos/requisicaoValidaValoresAbnt.spec";
@@ -34,6 +39,7 @@ import cancelaLiberacaoRequisicaoComprasSpec from "./processoCompra/processoComp
 
 import ativaDesativaReservaDotacaoSpec from "./processoCompra/ProcessoComprasDispensa/ativaDesativaReservaDotacao.spec";
 import anulacaoEmpenhoSpec from "./processoCompra/processoCompraDispensaCubatao/anulacaoEmpenho.spec";
+import processoComprasDispensaValidaPedidoSIMNAOSpec from "./processoCompra/ProcessoComprasDispensa/processoComprasDispensaValidaPedidoSIMNAO.spec";
 class setup {
   constructor() {
     describe("Executa Suite Modulo Compras", () => {
@@ -66,17 +72,17 @@ class setup {
 
   processoComprasDispensa() {
     //Executa Suite Processo de Compras Dispensa com Reserva de Dotação
-    ativaDesativaReservaDotacaoSpec.ativaReserva();
-    consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial();
+    //ativaDesativaReservaDotacaoSpec.ativaReserva();
+    /* consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoInicial();
-    consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaInicial(); 
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaInicial(); */
     
-    processoComprasDispensaRequisicaoSpec.requisicao(); 
+    //processoComprasDispensaRequisicaoSpec.requisicao(); 
 
-    consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasFinal();
+    /* consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasFinal();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoFinal();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaFinal();
-    cancelaLiberacaoRequisicaoComprasSpec.cancelaLiberacaoRequisicao(); 
+    cancelaLiberacaoRequisicaoComprasSpec.cancelaLiberacaoRequisicao();  
 
     liberaRequisicaoComprasSpec.liberaRequisicao();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoFinal();
@@ -86,15 +92,28 @@ class setup {
     liberaRequisicaoComprasSpec.liberaRequisicao();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoFinal();
     cancelaLiberacaoRequisicaoComprasSpec.cancelaLiberacaoRequisicao();
-    consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial(); 
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial();
+    liberaRequisicaoComprasSpec.liberaRequisicao();  */
    
 
      
-    /*  processoComprasDispensaCapaSpec.processoCompras();
+    /* processoComprasDispensaCapaSpec.processoCompras();
     processoComprasDispensaFaseCredenciamentoSpec.credenciamento();
     processoComprasDispensaFaseJulgamentoSpec.julgamento();
-    processoComprasDispensaGeraAutorizacaoCompraSpec.geraAutorizacao(); */
-    //ativaDesativaReservaDotacaoSpec.desativaReserva();
+    processoComprasDispensaGeraAutorizacaoCompraSpec.geraAutorizacao();
+    processoComprasDispensaValidaPedidoSimNaoSpec.validaPedidoSimNao();
+    processoComprasDispensaOfSpec.entregaDispensa();
+    processoComprasDispensaEmsSpec.emsDispensa();*/
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasFinal(); 
+    
+    anulacaoEmpenhoDispensaSpec.anulaEmpenhoEMS();
+    anulacaoEmpenhoDispensaSpec.anulacaoEmpenho();
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial();
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoInicial();
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaInicial();
+    ativaDesativaReservaDotacaoSpec.ativaReserva();
+   // ativaDesativaReservaDotacaoSpec.desativaReserva();
+    
   }
 
   processoComprasDispensaCubatao() {

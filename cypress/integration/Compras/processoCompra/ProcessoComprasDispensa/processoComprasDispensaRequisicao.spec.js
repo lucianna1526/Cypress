@@ -112,6 +112,7 @@ class processoComprasDispensaRequisicao {
       cy.get('input[nat="pdPopupPromptConfirmInput"]')
         .dblclick()
         .type(formatedDate2PtBR());
+
       //Clicar em OK Popup 'Informe a data da reserva'
       cy.get('button[nat="pdPopupPromptConfirmOk"]').click().wait(2000);
       //Valida Mensagem de erro

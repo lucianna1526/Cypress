@@ -3,15 +3,8 @@ class processoComprasDispensa {
   processoCompras() {
     it("Preenche Processo de Compras - Aba Principal", () => {
       //Acessa modulo compras e aguarda 5 segundos
-      //acessaModuloCompras.acessarCompras();
-      cy.wait(5000);
-      cy.get('button[nat="botaoSideMenu"]').click();
-      cy.get('input[nat="buscaMenuVertical"]')
-        .type("Processo de compras")
-        .click()
-        .type("{downarrow}")
-        .type("{enter}");
-      cy.wait(1000);
+      cy.moduloMenu('COMPRAS E LICITAÇÕES','Processo de compras')
+      
 
       //Modalidade
       cy.get('input[nat="processodeComprasPrincipalModalidade"]').type("1");
@@ -19,7 +12,7 @@ class processoComprasDispensa {
       //Organograma
       cy.get('input[nat="processodeComprasPrincipalOrganograma"]')
         .click()
-        .type("13.2201.0042.2194");
+        .type("19.1901.0034.2139");
 
       //Tipo julgamento
       cy.get('input[nat="processodeComprasPrincipalTipoJulgamento"]')
@@ -62,6 +55,12 @@ class processoComprasDispensa {
         "TESTE DE COMPRAS AUTOMATIZADO"
       );
 
+      //Solicitante
+      cy.get('input[nat="processodeComprasPrincipalSolicitante"]').type("SOLICITANTE TESTE AUTOMATIZADO");
+
+      //Processo Protocolo
+      cy.get('input[nat="processodeComprasPrincipalProcessoProtocolo"]').type("2022014911");
+
       //Adicionar e Sair
       cy.get('button[nat="cadastroProcessoCompraCrudSalvar"]').click();
 
@@ -74,7 +73,8 @@ class processoComprasDispensa {
           "          Registro salvo com sucesso!              OK      "
         )
         .screenshot();
-
+    });
+          it('Modal', () => {
       cy.get('[nat="processodeComprasPrincipalAdicionar"]').click();
 
       cy.wait(5000);
@@ -82,7 +82,7 @@ class processoComprasDispensa {
       //Seleciona vinculo de requisições
       cy.get(
         '[class="ui-grid-cell-contents ui-grid-disable-selection clickable"]'
-      ).click();
+      ).first().click();
 
       //vincula as requisições
       cy.get('[nat="pesquisaRequisicoesComprasVincularRequisicoes"]').click();
