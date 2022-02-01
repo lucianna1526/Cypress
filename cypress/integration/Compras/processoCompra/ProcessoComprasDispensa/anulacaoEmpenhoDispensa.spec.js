@@ -76,17 +76,8 @@ class anulaEmpenhoDispensa {
 
   anulacaoEmpenho() {
     it("ACESA EMS COMPRAS", () => {
-      cy.get('img[title="Ir para menu geral"]').click().wait(2000);
-      cy.get('[nat="COMPRAS E LICITAÇÕES"]',{ timeout: 10000 })
-      .click();
-     
-      //Acessa Pedido de Compras
-      cy.get('button[nat="botaoSideMenu"]',{ timeout: 10000 }).click();
-      cy.get('input[nat="buscaMenuVertical"]')
-        .type("Anulação de empenho")
-        .click()
-        .type("{downarrow}")
-        .type("{enter}");
+      
+        cy.moduloMenu('COMPRAS E LICITAÇÕES','Anulação de empenho');
     });
     it("Anulação de Empenho", () => {
       cy.get('[nat="anulacaoEmpenhoComprasNrPedidoAnterior"]',{ timeout: 10000 }).click();
@@ -131,8 +122,72 @@ class anulaEmpenhoDispensa {
       cy.get(".md-toast-text").should("have.text", "      Anulação removida com sucesso!    "); */
 
     });
-    //it retorna para o menu principal do sistema
   }
+
+  excluiAnulacaoEmpenhoPedido() {
+    it('Exclui anulação de empenho - Pedido de compra', () => {
+      cy.moduloMenu('COMPRAS E LICITAÇÕES','Anulação de empenho');
+        cy.get('[nat="anulacaoEmpenhoComprasNrPedidoAnterior"]',{ timeout: 10000 }).click();
+        
+        //Aguarda o load da grid
+        cy.get('div[nat="cadastroAnulacaoEmpenhoComprasItensGrid"]>div>div>div>div[class="ui-grid-canvas"]>.ui-grid-row',{ timeout: 10000 });
+  
+        //seleciona todos os elementos da grid
+        cy.get('.ui-grid-selection-row-header-buttons').eq(0).click();
+      //seleciona a anualação do item depois que volta do modal
+      cy.get('div[nat="cadastroAnulacaoEmpenhoComprasGrid1"]>div>div>div>div[class="ui-grid-canvas"]>.ui-grid-row',{ timeout: 10000 }).click();
+
+      //exlui a anulação do item
+      cy.get('button[nat="cadastroAnulacaoEmpenhoComprasExcluirAnulacao"]',{ timeout: 10000 }).click();
+
+      //confirma exclusão
+      cy.get('button[nat="pdBtnAlertOKSim"]',{ timeout: 10000 }).click();
+
+      //valida exclusão
+      cy.get(".md-toast-text").should("have.text", "      Anulação removida com sucesso!    ");
+    })
+  }
+  
+  anulacaoEmpenhoMantemSaldo() {
+      it("Acessa anulação de empenho - Pedido Compras", () => {
+       //volta para o menu principal
+      cy.get('img[title="Ir para menu geral"]').click().wait(2000);
+          cy.moduloMenu('COMPRAS E LICITAÇÕES', 'Anulação de empenho');
+      });
+      it("Anulação de Empenho", () => {
+        cy.get('[nat="anulacaoEmpenhoComprasNrPedidoAnterior"]',{ timeout: 10000 }).click();
+        
+        //Aguarda o load da grid
+        cy.get('div[nat="cadastroAnulacaoEmpenhoComprasItensGrid"]>div>div>div>div[class="ui-grid-canvas"]>.ui-grid-row',{ timeout: 10000 });
+  
+        //seleciona todos os elementos da grid
+        cy.get('.ui-grid-selection-row-header-buttons').eq(0).click();
+  
+        //Abre modal Anula Itens GLOBAL
+        cy.get('button[nat="cadastroAnulacaoEmpenhoComprasAnularItensSelecionadosGlobal"]',{ timeout: 10000 }).click();
+  
+        //abre modal para seleciona um protocolo
+        cy.get('[nat="cadastroAnulacaoEmpenhoComprasProcessoPesquisa"]',{timeout: 10000}).click();
+  
+        //Seleciona o primeiro protocolo
+        cy.get('button[nat="botaoCarregar"]',{ timeout: 10000 }).first().click();
+  
+        //marca cancelamento "Não reservar novamente"
+        cy.get('[nat="cadastroAnulacaoEmpenhoComprasNaoReservarNovamente"]>.md-ink-ripple',{ timeout: 10000 }).click();
+  
+        //historico
+        cy.get('textarea[nat="cadastroAnulacaoEmpenhoComprasHistorico"]').type("Anulação de Empenho Cypress");
+  
+        //clica em anular empenho no modal
+        cy.get('button[nat="cadastroAnulacaoEmpenhoComprasAnularItens"]',{ timeout: 10000 }).click();
+  
+        //Valida mensagem Anulação dos itens
+        cy.get(".md-toast-text").should("have.text", "      Anulação dos itens realizada com sucesso!    ");       
+      }); 
+    }  
+
+
+  
   validaSaldoFicha() {
     it("ACESA ORÇAMENTO - RESERVA DE DOTAÇÃO", () => {
       //volta para o menu principal

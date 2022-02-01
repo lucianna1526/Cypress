@@ -83,7 +83,19 @@ Cypress.Commands.add(
       cy.get('[title="Ir para menu geral"]').click();
     }*/
     
-    
+    //função para clica no ok de modal chato pra kralho
+    //cy.get('button[nat="pdBtnAlertOK"]').click().wait(1000);
+    cy.get("body").then(($body) => {
+      if ($body.find('button[nat="pdBtnAlertOK"]').length > 0) {
+        cy.get('button[nat="pdBtnAlertOK"]').first().click().wait(1000);
+        //cy.wait('@getModulo');
+      }
+      if ($body.find('button[ng-click="fechar()"]').length > 0) {
+        cy.get('button[ng-click="fechar()"]').first().click().wait(1000);
+        //cy.wait('@getModulo');
+      }
+      
+    });
 
     cy.get(".md-toolbar-tools>a").invoke('text').then((text) => {
       console.log(text.trim());
@@ -128,15 +140,19 @@ Cypress.Commands.add(
     //digita no input o menu 
     cy.get('input[nat="buscaMenuVertical"]').type(menu);
     
-    cy.get("UL[class='dropdown-menu']",{timeout:10000}).contains('span',menu).click();
-    //cy.get("UL[class='dropdown-menu']").contains(RegExp(`^(${option})`, "g"))
+    //cy.get("UL[class='dropdown-menu']",{timeout:10000}).contains('span',menu).click();
+    const exp = new RegExp(`(${menu})`, "g");
+    //cy.get("UL[class='dropdown-menu']").contains(exp).click();
     
+    cy.get("UL[class='dropdown-menu']>li").each(($el, index, $list) => {
+      if ($el.text().trim() === menu) {
+        cy.wrap($el).click();        
+      }
+    });
+    /*cy.get("UL[class='dropdown-menu']",{timeout:10000}).contains('span',menu).click();
+    .contains(new RegExp(regex, 'g'));*/
     //cy.wait(1000);
-
-
-
-
-      cy.wait('@getMenu');
+    cy.wait('@getMenu');
     
   });
 

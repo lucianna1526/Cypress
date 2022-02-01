@@ -30,9 +30,11 @@ class processoComprasDispensaRequisicao {
         'input[nat="cadastroRequisicaoComprasDadosPrincipaisOrganograma"]'
       ).type("19.1901.0034.2139");
       //Subgrupo
-      cy.get('input[nat="cadastroRequisicaoComprasDadosPrincipaisSubGrupo"]')
+      cy.get('input[nat="cadastroRequisicaoComprasDadosPrincipaisSubGrupoDescricao"]')
         .click()
-        .type("17");
+        .type("MATERIAL DE PROCESSAMENTO DE DADOS")
+        .wait(2000)
+        .type("{enter}");
       //Ficha
       cy.get('input[nat="cadastroRequisicaoComprasDadosPrincipaisFicha"]')
         .click()
@@ -208,6 +210,7 @@ class processoComprasDispensaRequisicao {
           .wait(1000);
 
         //Enviar e Liberar
+        cy.wait(5000);
         cy.get('button[nat="cadastroRequisicaoComprasEnviarLiberar"]')
           .click()
           .wait(1000);

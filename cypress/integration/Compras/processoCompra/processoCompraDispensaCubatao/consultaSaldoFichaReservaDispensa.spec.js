@@ -85,22 +85,14 @@ class consultaSaldoFichaReserva {
 
   //Função para consultar o saldo Inicial da Execução orçamentária modulo Orçamento tela - Consulta Execução orçamentária
   consultaSaldoExecucaoOrcamentariaInicial() {
+    it("Valida Saldo Inicial na Tela: Execução orçamentária", () => {
+      cy.moduloMenu("ORÇAMENTO", "Execução orçamentária");
+    });
     it("Valida Saldo Inicial na Tela: Consulta execução orçamentária", () => {
-      cy.get("body").then(($body) => {
-        if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
-          cy.get('[nat="ORÇAMENTO"]').click();
-        }
-      });
-      //Acessa Consulta de execução orçamentária
-      cy.get('button[nat="botaoSideMenu"]').click();
-      cy.get('input[nat="buscaMenuVertical"]')
-        .type("Consulta de execução orçamentária")
-        .click()
-        .type("{enter}");
-      cy.wait(1000);
+      
 
       //Ano
-      cy.get('input[nat="ConsultaExecucaoOrcamentariaAno input"]')
+      cy.get('input[nat="ConsultaExecucaoOrcamentariaAno input"]', { timeout: 10000 })
         .type("2021")
         .tab()
         .wait(2000);
