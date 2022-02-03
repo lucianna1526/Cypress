@@ -1,12 +1,11 @@
 {
-  "projectId": "7qzq3j",
-  "numTestsKeptInMemory": 0,
-  "baseUrl": "http://desenvolvimento.prodataweb.inf.br:8008/sigAutomacao/",
+  "projectId": "7qzq3j",  
+  "baseUrl": "http://desenvolvimento.prodataweb.inf.br:8008/sigAutomacao",
   "viewportHeight": 768,
   "viewportWidth": 1280,
   "retries": 1,
   "requestTimeout" : 30000,
-    "numTestsKeptInMemory": 2,
+    "numTestsKeptInMemory": 5,
     "responseTimeout" : 50000,
     "pageLoadTimeout": 100000
 }

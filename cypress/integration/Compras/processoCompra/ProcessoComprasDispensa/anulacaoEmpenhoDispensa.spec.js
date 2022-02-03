@@ -21,6 +21,10 @@ class anulaEmpenhoDispensa {
     it("Anula Parcela Liquidação", () => {
       cy.get('[nat="Parcelas da liquidação"]')
         .click();
+        //Aguarda o load da grid
+        cy.get('div[nat="cadastroEmsLiquidacaoGrid"]>div>div>div>div[class="ui-grid-canvas"]>div>div',{ timeout: 10000 });
+
+        
         cy.get('button[title="Anular Liquidação"]',{ timeout: 10000 }).click();
         cy.get('textarea[nat="popupAnulacaoLiquidacaoJustificativa"]',{ timeout: 10000 }).type("Anulação de Empenho Cypress").wait(2000);
         
@@ -107,7 +111,7 @@ class anulaEmpenhoDispensa {
       cy.get('button[nat="cadastroAnulacaoEmpenhoComprasAnularItens"]',{ timeout: 10000 }).click();
 
       //Valida mensagem Anulação dos itens
-      cy.get(".md-toast-text").should("have.text", "      Anulação dos itens realizada com sucesso!    ");
+      cy.get(".md-toast-text",{timeout: 10000}).should("have.text", "      Anulação dos itens realizada com sucesso!    ");
 
       /* //seleciona a anualação do item depois que volta do modal
       cy.get('div[nat="cadastroAnulacaoEmpenhoComprasGrid1"]>div>div>div>div[class="ui-grid-canvas"]>.ui-grid-row',{ timeout: 10000 }).click();

@@ -82,7 +82,7 @@ class processoComprasDispensaRequisicao {
     it("Validação de lançamento maior que o saldo da ficha", () => {
       //Informa o Produto
       cy.wait(5000);
-      cy.get('input[nat="cadastroItemRequisicaoComprasProduto"]')
+      cy.get('input[nat="cadastroItemRequisicaoComprasProduto"]', { timeout: 10000 })
         .type(2829875)
         .type("{enter}")
         .wait(1000);
@@ -111,7 +111,7 @@ class processoComprasDispensaRequisicao {
         .click()
         .wait(1000);
       //Informa a data da reserva
-      cy.get('input[nat="pdPopupPromptConfirmInput"]')
+      cy.get('input[nat="pdPopupPromptConfirmInput"]', { timeout: 10000 })
         .dblclick()
         .type(formatedDate2PtBR());
 

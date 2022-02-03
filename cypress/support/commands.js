@@ -86,6 +86,11 @@ Cypress.Commands.add(
     //função para clica no ok de modal chato pra kralho
     //cy.get('button[nat="pdBtnAlertOK"]').click().wait(1000);
     cy.get("body").then(($body) => {
+      //pdBtnAlertOKNao
+      if ($body.find('button[nat="pdBtnAlertOKNao"]').length > 0) {
+        cy.get('button[nat="pdBtnAlertOKNao"]').first().click().wait(1000);
+        //cy.wait('@getModulo');
+      }
       if ($body.find('button[nat="pdBtnAlertOK"]').length > 0) {
         cy.get('button[nat="pdBtnAlertOK"]').first().click().wait(1000);
         //cy.wait('@getModulo');
@@ -149,6 +154,17 @@ Cypress.Commands.add(
         cy.wrap($el).click();        
       }
     });
+
+    //confirma troca de tela se a atual quebrou e não salvou
+    cy.get("body").then(($body) => {
+      //pdBtnAlertOKNao
+      if ($body.find('button[nat="pdBtnAlertOKNao"]').length > 0) {
+        cy.get('button[nat="pdBtnAlertOKNao"]').first().click().wait(1000);
+        //cy.wait('@getModulo');
+      }
+    });
+
+
     /*cy.get("UL[class='dropdown-menu']",{timeout:10000}).contains('span',menu).click();
     .contains(new RegExp(regex, 'g'));*/
     //cy.wait(1000);

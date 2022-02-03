@@ -7,6 +7,7 @@ class processoComprasDispensaCubataoFaseCredenciamento {
       //Abre modal credenciamento
       cy.get(
         'button[nat="consultaFornecedorCotacaoFornedorGridabrirTelaDeCadastro"]'
+        ,{timeout:10000}
       )
         .click()
         .wait(5000);

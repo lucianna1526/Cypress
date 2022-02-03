@@ -82,6 +82,7 @@ class processoComprasDispensa {
       //Seleciona vinculo de requisições
       cy.get(
         '[class="ui-grid-cell-contents ui-grid-disable-selection clickable"]'
+        ,{timeout: 10000}
       ).first().click();
 
       //vincula as requisições

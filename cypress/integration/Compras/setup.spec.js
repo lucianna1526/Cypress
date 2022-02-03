@@ -73,14 +73,15 @@ class setup {
 
   processoComprasDispensa() {
     //Executa Suite Processo de Compras Dispensa com Reserva de Dotação
-    //ativaDesativaReservaDotacaoSpec.ativaReserva();
-   /*  consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial();
+    //PARTE 1
+    ativaDesativaReservaDotacaoSpec.ativaReserva();
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoInicial();
-    consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaInicial(); */
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaInicial(); 
     
-   // processoComprasDispensaRequisicaoSpec.requisicao(); 
- 
-    /* consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasFinal();
+    processoComprasDispensaRequisicaoSpec.requisicao();  
+  
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasFinal();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoFinal();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaFinal();
     cancelaLiberacaoRequisicaoComprasSpec.cancelaLiberacaoRequisicao();  
@@ -94,19 +95,20 @@ class setup {
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoFinal();
     cancelaLiberacaoRequisicaoComprasSpec.cancelaLiberacaoRequisicao();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial();
-    liberaRequisicaoComprasSpec.liberaRequisicao();  */
+    liberaRequisicaoComprasSpec.liberaRequisicao(); 
 
-        
-    processoComprasDispensaCapaSpec.processoCompras();
+     //PARTE 2  
+  /*    processoComprasDispensaCapaSpec.processoCompras();
     processoComprasDispensaFaseCredenciamentoSpec.credenciamento();
     processoComprasDispensaFaseJulgamentoSpec.julgamento();
     processoComprasDispensaGeraAutorizacaoCompraSpec.geraAutorizacao();
     processoComprasDispensaValidaPedidoSimNaoSpec.validaPedidoSimNao();
     processoComprasDispensaOfSpec.entregaDispensa();
     processoComprasDispensaEmsSpec.emsDispensa();
-    consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasFinal(); 
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasFinal();  */
     
-    anulacaoEmpenhoDispensaSpec.anulaEmpenhoEMS();
+    //PARTE 3
+    /* anulacaoEmpenhoDispensaSpec.anulaEmpenhoEMS();
     anulacaoEmpenhoDispensaSpec.anulacaoEmpenho();  
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial(); 
     validaSaldoReservaAnulacaoEmpenhoSpec.validaGeraEmpenhoSaldoCotacaoCancelado();
@@ -124,14 +126,14 @@ class setup {
     validaSaldoReservaAnulacaoEmpenhoSpec.geraEmpenhoAposExcluiAnulacao()   
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial(); 
 
-    processoComprasDispensaValidaPedidoSimNaoSpec.validaPedidoSimNao();
+    processoComprasDispensaValidaPedidoSimNaoSpec.validaPedidoSimNao(); 
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasFinal();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoFinal();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaFinal();
     anulacaoEmpenhoDispensaSpec.anulacaoEmpenho();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial();
     consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoInicial();
-    consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaInicial();
+    consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaInicial(); */
   
    
     

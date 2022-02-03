@@ -214,18 +214,8 @@ class consultaSaldoFichaReserva {
   //Função para consultar o saldo Final da Execução orçamentária modulo Orçamento tela - Consulta Execução orçamentária
   consultaSaldoExecucaoOrcamentariaFinal() {
     it("Valida Saldo Final na Tela: Consulta execução orçamentária", () => {
-      cy.get("body").then(($body) => {
-        if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
-          cy.get('[nat="ORÇAMENTO"]').click();
-        }
-      });
-      //Acessa Consulta de execução orçamentária
-      cy.get('button[nat="botaoSideMenu"]').click();
-      cy.get('input[nat="buscaMenuVertical"]')
-        .type("Consulta de execução orçamentária")
-        .click()
-        .type("{enter}");
-      cy.wait(1000);
+      
+      cy.moduloMenu("ORÇAMENTO","Consulta de execução orçamentária");
 
       //Ano
       cy.get('input[nat="ConsultaExecucaoOrcamentariaAno input"]')

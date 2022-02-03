@@ -8,15 +8,21 @@ class processoComprasDispensaGeraAutorizacaoCompra {
                 .click()
                 .wait(5000);
                 
-                //Seleciona Fornecedores vencedores
+                //clica no select do fornecedor
                 cy.get('div[nat="consultaAutorizacaoComprasCdFornecSelect"]')
                 .wait(500)
                 .click()
-                .type('{downarrow}')
-                .type('{enter}')
+                .wait(500)
+
+                //seleciona o fornecedor vencedor
+                cy.get('div[nat="consultaAutorizacaoComprasCdFornecSelect"] > ul > li >div > span',{ timeout: 10000 })
+                .last()
+                .click()
+
+
 
                 //Clica no botao engrenagem para abrir a tela "Gerar Autorização de compras"
-                cy.get('button[title="Gerar autorização"]')
+                cy.get('button[title="Gerar autorização"]',{ timeout: 10000 })
                 .click()
                 .wait(5000);
 

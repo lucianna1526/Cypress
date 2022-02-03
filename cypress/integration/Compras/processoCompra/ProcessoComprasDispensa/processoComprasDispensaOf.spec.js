@@ -1,33 +1,14 @@
 class processoComprasDispensaOfEntrega {
     entregaDispensa() {
-      it("Acessa Modulo Compras", () => {
-        /*if (cy.find('button[nat="botaoSideMenu"]').length == 0){
-                  cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
-                  }*/
-  
-        cy.get("body").then(($body) => {
-          if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
-            cy.wait(5000);
-            cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
-            cy.wait(5000);
-          }
-        });
+      it("Acessa Modulo Compras - Preenche Ordem de Fornecimento/Entrega", () => {
+        cy.moduloMenu("COMPRAS E LICITAÇÕES","Autorização de entrega pelo pedido")
       });
-  
-      it("Preenche Ordem de Fornecimento/Entrega", () => {
-        //Acessa Pedido de Compras
-        cy.wait(5000);
-        cy.get('button[nat="botaoSideMenu"]').click();
-        cy.get('input[nat="buscaMenuVertical"]')
-          .type("Autorização de entrega pelo pedido")
-          .click()
-          .type("{downarrow}")
-          .type("{enter}");
-      });
-
       it("Seleciona ultimo Pedido de compras gerado", () => {
         //Clica em Pesquisar Pedido
-        cy.get('button[nat="cadastroAutorizacaoEntregaPedidoPedidoPesquisa"]').click();
+        cy.get('button[nat="cadastroAutorizacaoEntregaPedidoPedidoPesquisa"]',{timeout:10000}).click();
+
+        //aguarda grid carregar
+        cy.get('div[nat="pesquisaPedidoCompraGrid"]>div>div>div>div[class="ui-grid-canvas"]>div>div',{timeout:10000});
 
         //Seleciona ultimo pedido na grid de pesquisa
         cy.get(
@@ -37,7 +18,7 @@ class processoComprasDispensaOfEntrega {
         cy.get('[nat="botaoCarregar"]').first().click();
 
         //Clica em SALVAR
-        cy.get('button[nat="cadastroAutorizacaoEntregaPedidoCrudSalvar"]').click();
+        cy.get('button[nat="cadastroAutorizacaoEntregaPedidoCrudSalvar"]',{timeout:10000}).click();
 
           //Valida Mensagem de sucesso
        cy.get(".md-toast-text",{timeout:10000}).should('contain', 'Registro salvo com sucesso!');
