@@ -84,26 +84,19 @@ class consultaEmpenhoSaldoReserva {
 
       cy.get("@footer").eq(4).contains("10,62").should("length", 1);
 
-      //Acessa Saldo de fichas
-      //volta para o menu principal
-      cy.get('img[title="Ir para menu geral"]').click().wait(2000);
-      cy.get("body").then(($body) => {
-        if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
-          cy.wait(5000);
-          cy.get('[nat="ORÇAMENTO"]').click();
-          cy.wait(5000);
-        }
-      });
-
-      cy.get('button[nat="botaoSideMenu"]').click();
-      cy.get('input[nat="buscaMenuVertical"]')
-        .type("Reserva de dotação")
-        .click()
-        .type("{enter}");
-      cy.wait(1000);
+      //Acessa Reserva de dotação
+    });
+    it("COMPRAS E LICITAÇÕES: Reserva de dotação", () => {
+      cy.moduloMenu("COMPRAS E LICITAÇÕES","Reserva de dotação");
+    })
+    it("Valida Reserva de dotação", () => {
+      
 
       //Ficha
-      cy.get('input[nat="fichaInfoFicha"]').type("20211498").tab().wait(500);
+      cy.get('input[nat="fichaInfoFicha"]',{timeout:100000})
+      .type("20211498")
+      .tab()
+      .wait(500);
 
       //validação do saldo inicial da ficha
       cy.get('[nat="fichaInfoSaldoAtual"]', { timeout: 10000 })

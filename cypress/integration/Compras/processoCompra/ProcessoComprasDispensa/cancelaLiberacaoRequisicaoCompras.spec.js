@@ -9,22 +9,14 @@ class cancelaLiberacaoRequisicaoCompras {
   //*****************************************************************************************************************************
   //Função para cancelar a liberação da requisição de compra
   cancelaLiberacaoRequisicao() {
+    it("COMPRAS E LICITAÇÕES: Libera requisições compras", () => {
+      cy.moduloMenu("COMPRAS E LICITAÇÕES","Libera requisições compras");
+    })
     it("Cancela liberação de requisição de compras", () => {
-      cy.get("body").then(($body) => {
-        if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
-          cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
-        }
-      });
-      //Acessa Saldo de fichas
-      cy.get('button[nat="botaoSideMenu"]').click();
-      cy.get('input[nat="buscaMenuVertical"]')
-        .type("Libera requisições compras")
-        .click()
-        .type("{enter}");
-      cy.wait(2000);
+      
 
       //Informa o TIPO
-      cy.get('[nat="liberaRequisicaoComprasTipoSelect"]')
+      cy.get('[nat="liberaRequisicaoComprasTipoSelect"]',{timeout:10000})
         .click()
         .type("Liberados")
         .type("{enter}");

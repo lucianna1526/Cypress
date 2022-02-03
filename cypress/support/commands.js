@@ -96,7 +96,7 @@ Cypress.Commands.add(
         //cy.wait('@getModulo');
       }
       if ($body.find('button[ng-click="fechar()"]').length > 0) {
-        cy.get('button[ng-click="fechar()"]').first().click().wait(1000);
+        cy.get('button[ng-click="fechar()"]').first().click({ force: true }).wait(1000);
         //cy.wait('@getModulo');
       }
       

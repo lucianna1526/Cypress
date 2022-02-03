@@ -9,5 +9,8 @@
     "lint:fix": "npx standard --fix",
     "cypress:open": "cypress open",
     "cy:open": "cypress open"
+  },
+  "dependencies": {
+    "yarn": "^1.22.17"
   }
 }

@@ -1,3 +1,4 @@
+import { formatedMonth2PtBR } from "../../../Utils/helpers";
 class consultaSaldoFichaReservaDispensa {
   //Consulta Saldo Ficha
   //Descrição: Consulta o saldo da reserva (ficha)
@@ -8,24 +9,12 @@ class consultaSaldoFichaReservaDispensa {
   //*****************************************************************************************************************************
   //Função para consultar o saldo Inicial da ficha modulo compras tela - Saldo de ficha
   consultaSaldoFichasInicial() {
+    it("COMPRAS E LICITAÇÕES: Saldo de fichas", () => {
+      cy.moduloMenu("COMPRAS E LICITAÇÕES","Saldo de fichas");
+    })
     it("Valida Saldo Inicial na Tela: Saldo de Fichas", () => {
-      /*cy.get("body").then(($body) => {
-        if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
-          cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
-        }
-      });
-      //Acessa Saldo de fichas
-      cy.get('button[nat="botaoSideMenu"]').click();
-      cy.get('input[nat="buscaMenuVertical"]')
-        .type("Saldo de fichas")
-        .click()
-        .type("{enter}");
-      cy.wait(2000);*/
-      cy.moduloMenu("COMPRAS E LICITAÇÕES","Saldo de fichas")
-      
-
       //Pesquisa Ficha
-      cy.get('button[nat="consultaSaldoFichaFichaPesquisa"]')
+      cy.get('button[nat="consultaSaldoFichaFichaPesquisa"]', { timeout: 10000 })
         .click()
         .wait(3000);
       //Informa numero da ficha no campo de pesquisa
@@ -76,9 +65,12 @@ class consultaSaldoFichaReservaDispensa {
 
   //Função para consultar o saldo Inicial da Execução orçamentária modulo Orçamento tela - Consulta Execução orçamentária
   consultaSaldoExecucaoOrcamentariaInicial() {
+    it("ORÇAMENTO: Consulta de execução orçamentária", () => {
+      cy.moduloMenu("ORÇAMENTO","Consulta de execução orçamentária");
+    })
     it("Valida Saldo Inicial na Tela: Consulta execução orçamentária", () => {
       
-      cy.moduloMenu("ORÇAMENTO","Consulta de execução orçamentária");
+      
       //Ano
       cy.get('input[nat="ConsultaExecucaoOrcamentariaAno input"]', { timeout: 10000 })
         .clear()
@@ -89,7 +81,7 @@ class consultaSaldoFichaReservaDispensa {
       //Mes
       cy.get('input[nat="ConsultaExecucaoOrcamentariaMes"]')
         .clear()
-        .type("1")
+        .type(`${formatedMonth2PtBR()}`)
         .tab()
         .wait(2000);
 
@@ -134,20 +126,12 @@ class consultaSaldoFichaReservaDispensa {
 
   //Função para consultar o saldo Final da ficha modulo compras tela - Saldo de ficha
   consultaSaldoFichasFinal() {
+    it("COMPRAS E LICITAÇÕES: Saldo de fichas", () => {
+      cy.moduloMenu("COMPRAS E LICITAÇÕES","Saldo de fichas");
+    })
     it("Valida Saldo Final na Tela: Saldo de Fichas", () => {
-      cy.get('img[title="Ir para menu geral"]').click().wait(2000);
-          cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
-        
-      //Acessa Saldo de fichas
-      cy.get('button[nat="botaoSideMenu"]').click();
-      cy.get('input[nat="buscaMenuVertical"]')
-        .type("Saldo de fichas")
-        .click()
-        .type("{enter}");
-      cy.wait(1000);
-
       //Ficha
-      cy.get('input[nat="consultaSaldoFichaFicha"]')
+      cy.get('input[nat="consultaSaldoFichaFicha"]', { timeout: 10000 })
         .clear()
         .type("20222076")
         .wait(500)
@@ -179,22 +163,18 @@ class consultaSaldoFichaReservaDispensa {
 
   //Função para consultar o saldo Final da Reserva de Dotação modulo Orçamento tela - Reserva de dotação
   consultaSaldoReservaDotacaoFinal() {
-    it("Valida Saldo Final na Tela: Reserva de dotação", () => {
-      /*cy.get("body").then(($body) => {
-        if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
-          cy.get('[nat="ORÇAMENTO"]').click();
-        }
-      });
-      //Acessa Saldo de fichas
-      cy.get('button[nat="botaoSideMenu"]').click();
-      cy.get('input[nat="buscaMenuVertical"]')
-        .type("Reserva de dotação")
-        .click()
-        .type("{enter}");
-      cy.wait(1000);*/
+    it("ORÇAMENTO: Reserva de dotação", () => {
       cy.moduloMenu("ORÇAMENTO","Reserva de dotação")
+    })
+    it("Valida Saldo Final na Tela: Reserva de dotação", () => {
+      
       //Ficha
-      cy.get('input[nat="fichaInfoFicha"]').type("20222076").tab().wait(500);
+      cy.get('input[nat="fichaInfoFicha"]', { timeout: 10000 })
+        .clear()
+        .wait(500)
+        .type("20222076")
+        .tab()
+        .wait(500);
 
       //validação do saldo inicial da ficha
       cy.get('[nat="fichaInfoSaldoAtual"]')
@@ -209,9 +189,10 @@ class consultaSaldoFichaReservaDispensa {
 
   //Função para consultar o saldo Final da Execução orçamentária modulo Orçamento tela - Consulta Execução orçamentária
   consultaSaldoExecucaoOrcamentariaFinal() {
+    it("ORÇAMENTO: Consulta de execução orçamentária", () => {
+      cy.moduloMenu("ORÇAMENTO","Consulta de execução orçamentária");
+    })
     it("Valida Saldo Final na Tela: Consulta execução orçamentária", () => {
-      
-      cy.moduloMenu("ORÇAMENTO","Consulta de execução orçamentária")
       //Ano
       cy.get('input[nat="ConsultaExecucaoOrcamentariaAno input"]')
         .type("2022")
@@ -220,7 +201,7 @@ class consultaSaldoFichaReservaDispensa {
 
       //Mes
       cy.get('input[nat="ConsultaExecucaoOrcamentariaMes"]')
-        .type("1")
+      .type(`${formatedMonth2PtBR()}`)
         .tab()
         .wait(2000);
 

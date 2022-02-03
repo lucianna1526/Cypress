@@ -1,24 +1,13 @@
 class requisicaoValidaSaldoFicha {
   validaSaldoFicha() {
     //describe("Acessa Tela Cadastro de requisição de compras, Valida campos obrigátorios", () => {
-    it("Acessa Modulo Compras", () => {
-      cy.get("body").then(($body) => {
-        if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
-          cy.get('[nat="COMPRAS E LICITAÇÕES"]').click();
-        }
-      });
-    });
+    it("COMPRAS E LICITAÇÕES: Saldo de fichas", () => {
+        cy.moduloMenu("COMPRAS E LICITAÇÕES","Saldo de fichas");
+    })
     it("Consulta Saldo Ficha", () => {
-      cy.wait(5000);
-      cy.get('button[nat="botaoSideMenu"]').click().wait(2000);
+      
 
-      cy.get('input[nat="buscaMenuVertical"]')
-        .type("Saldo de Fichas")
-        .click()
-        .type("{enter}")
-        .wait(1000);
-
-      cy.get('input[nat="consultaSaldoFichaFicha"]')
+      cy.get('input[nat="consultaSaldoFichaFicha"]',{timeout:10000})
         .type("20211506")
         .tab()
         .wait(2000);
