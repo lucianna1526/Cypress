@@ -177,7 +177,7 @@ class setup {
       
       processoComprasDispensaRequisicaoSemReservaSpec.requisicaoSemReserva(); 
     
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
+      /* consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoReservaDotacaoInicialSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoExecucaoOrcamentariaInicialSemReserva(); 
       cancelaLiberacaoRequisicaoComprasSemReservaSpec.cancelaLiberacaoRequisicaoSemReserva();   
@@ -192,7 +192,7 @@ class setup {
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoReservaDotacaoInicialSemReserva();
       cancelaLiberacaoRequisicaoComprasSemReservaSpec.cancelaLiberacaoRequisicaoSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
-      liberaRequisicaoComprasSemReservaSpec.liberaRequisicaoSemReserva(); 
+      liberaRequisicaoComprasSemReservaSpec.liberaRequisicaoSemReserva();  */
       });
   
   /* 

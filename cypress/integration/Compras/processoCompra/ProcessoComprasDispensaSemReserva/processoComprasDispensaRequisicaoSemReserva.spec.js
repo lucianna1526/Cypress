@@ -14,10 +14,19 @@ class processoComprasDispensaRequisicaoSemReserva {
       cy.get('input[nat="cadastroRequisicaoComprasData"]', { timeout: 60000 })
         .dblclick()
         .type(formatedDate2PtBR());
+
+        cy.intercept('**/rest/gestaoController/consultarCodigoDescricao')
+      .as('consultarCodigoDescricao')
       //Organograma
       cy.get(
         'input[nat="cadastroRequisicaoComprasDadosPrincipaisOrganograma"]'
-      ).type("19.1901.0034.2139");
+      )
+      .clear()
+      .wait(500)
+      .type("19.1901.0034.2139")
+      .tab()
+      .wait(500);
+      cy.wait('@consultarCodigoDescricao');
       //Subgrupo
       cy.get('input[nat="cadastroRequisicaoComprasDadosPrincipaisSubGrupoDescricao"]')
         .click()

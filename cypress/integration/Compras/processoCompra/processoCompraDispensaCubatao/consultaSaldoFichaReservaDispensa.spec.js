@@ -14,10 +14,9 @@ class consultaSaldoFichaReserva {
     it("Valida Saldo Inicial na Tela: Saldo de Fichas", () => {
       //Pesquisa Ficha
       cy.get('button[nat="consultaSaldoFichaFichaPesquisa"]', { timeout: 10000 })
-        .click()
-        .wait(3000);
+        .click();
       //Informa numero da ficha no campo de pesquisa
-      cy.get('input[nat="fichaOrcamentariaFicha"]').type("20211498");
+      cy.get('input[nat="fichaOrcamentariaFicha"]',{timeout:10000}).wait(500).type("20211498");
       //clica no botão pesquisar
       cy.get('button[nat="Pesquisar"]').click().wait(2000);
       //Carrega a ficha na grid
