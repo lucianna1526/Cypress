@@ -55,7 +55,7 @@ class consultaSaldoFichaReservaDispensaSemReserva {
       
       cy.moduloMenu("ORÇAMENTO","Reserva de dotação");
       //Ficha
-      cy.get('input[nat="fichaInfoFicha"]').type("20222076").tab().wait(500);
+      cy.get('input[nat="fichaInfoFicha"]').type("20222076").type('{enter}').tab().wait(500);
 
       //validação do saldo inicial da ficha
       cy.get('[nat="fichaInfoSaldoAtual"]')
@@ -165,6 +165,7 @@ class consultaSaldoFichaReservaDispensaSemReserva {
       cy.get('img[title="Ir para menu geral"]').click().wait(2000);
     });
   }
+  
 
   //Função para consultar o saldo Final da Reserva de Dotação modulo Orçamento tela - Reserva de dotação
   consultaSaldoReservaDotacaoFinalSemReserva() {

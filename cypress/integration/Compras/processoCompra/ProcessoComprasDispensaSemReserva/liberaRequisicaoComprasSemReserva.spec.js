@@ -89,13 +89,7 @@ class liberaRequisicaoComprasSemReserva {
       //Clica no botão LIBERAR REQUISIÇÂO
 
       cy.get('[nat="liberaRequisicaoComprasLiberarRequisicao"]').click();
-      //Informa a data da reserva
-      cy.get('input[nat="pdPopupPromptConfirmInput"]', { timeout: 10000 })
-        .dblclick()
-        .type(formatedDate2PtBR());
-
-      //Clicar em OK Popup 'Informe a data da reserva'
-      cy.get('button[nat="pdPopupPromptConfirmOk"]').click().wait(5000);
+      
     });
   }
 }

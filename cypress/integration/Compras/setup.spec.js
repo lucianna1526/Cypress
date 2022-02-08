@@ -177,64 +177,54 @@ class setup {
       
       processoComprasDispensaRequisicaoSemReservaSpec.requisicaoSemReserva(); 
     
-      /* consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoReservaDotacaoInicialSemReserva();
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoExecucaoOrcamentariaInicialSemReserva(); 
+      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();     
       cancelaLiberacaoRequisicaoComprasSemReservaSpec.cancelaLiberacaoRequisicaoSemReserva();   
   
       liberaRequisicaoComprasSemReservaSpec.liberaRequisicaoSemReserva();
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoReservaDotacaoInicialSemReserva();
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoExecucaoOrcamentariaInicialSemReserva();
-      cancelaLiberacaoRequisicaoComprasSemReservaSpec.cancelaLiberacaoRequisicaoSemReserva();  
-  
+      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();     
       
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoReservaDotacaoInicialSemReserva();
-      cancelaLiberacaoRequisicaoComprasSemReservaSpec.cancelaLiberacaoRequisicaoSemReserva();
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
-      liberaRequisicaoComprasSemReservaSpec.liberaRequisicaoSemReserva();  */
       });
-  
-  /* 
+  /*
+   
       describe("Parte 2", () => { 
       processoComprasDispensaCapaSemReservaSpec.processoComprasSemReserva();
       processoComprasDispensaFaseCredenciamentoSemReservaSpec.credenciamentoSemReserva();
       processoComprasDispensaFaseJulgamentoSemReservaSpec.julgamentoSemReserva();
       processoComprasDispensaGeraAutorizacaoCompraSemReservaSpec.geraAutorizacaoSemReserva();
-      processoComprasDispensaValidaPedidoSimNaoSemReservaSpec.validaPedidoSimNao();
+      processoComprasDispensaValidaPedidoSimNaoSemReservaSpec.validaPedidoSimNaoSemReserva();
       processoComprasDispensaOfSemReservaSpec.entregaDispensaSemReserva();
       processoComprasDispensaEmsSemReservaSpec.emsDispensaSemReserva();
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasFinalSemReserva();
+      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasFinalSemReserva(); 
       });
       
       //PARTE 3
       describe("Parte 3", () => {
       anulacaoEmpenhoDispensaSemReservaSpec.anulaEmpenhoEMSSemReserva();
-      anulacaoEmpenhoDispensaSemReservaSpec.anulacaoEmpenhoSemReserva();  
+      anulacaoEmpenhoDispensaSemReservaSpec.anulacaoEmpenhoCancelaSaldoSemReserva() 
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva(); 
       validaSaldoReservaAnulacaoEmpenhoSemReservaSpec.validaGeraEmpenhoSaldoCotacaoCanceladoSemReserva();
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
-      ativaDesativaReservaDotacaoSemReservaSpec.desativaReservaSemReserva();
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoReservaDotacaoInicialSemReserva();
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoExecucaoOrcamentariaInicialSemReserva();
+      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasFinalSemReserva();
       ativaDesativaReservaDotacaoSemReservaSpec.ativaReservaSemReserva(); 
+      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoReservaDotacaoFinalSemReserva();
+      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoExecucaoOrcamentariaFinalSemReserva();
+      ativaDesativaReservaDotacaoSemReservaSpec.desativaReservaSemReserva(); 
       
    
-      validaSaldoReservaAnulacaoEmpenhoSemReservaSpec.validaGeraEmpenhoSaldoCotacaoCancelado()
-      anulacaoEmpenhoDispensaSemReservaSpec.excluiAnulacaoEmpenhoPedido();
-      anulacaoEmpenhoDispensaSemReservaSpec.anulacaoEmpenhoMantemSaldo();
+      validaSaldoReservaAnulacaoEmpenhoSemReservaSpec.validaGeraEmpenhoSaldoCotacaoCanceladoSemReserva();
+      anulacaoEmpenhoDispensaSemReservaSpec.excluiAnulacaoEmpenhoPedidoSemReserva();
+      anulacaoEmpenhoDispensaSemReservaSpec.anulacaoEmpenhoMantemSaldoSemReserva();
       validaSaldoReservaAnulacaoEmpenhoSemReservaSpec.geraEmpenhoAposExcluiAnulacaoSemReserva()   
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicial();  
+      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();  
   
       processoComprasDispensaValidaPedidoSimNaoSemReservaSpec.validaPedidoSimNaoSemReserva(); 
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasFinalSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoReservaDotacaoFinalSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoExecucaoOrcamentariaFinalSemReserva();
-      anulacaoEmpenhoDispensaSemReservaSpec.anulacaoEmpenhoSemReserva();
+      anulacaoEmpenhoDispensaSemReservaSpec.anulacaoEmpenhoCancelaSaldoSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoReservaDotacaoInicialSemReserva();
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoExecucaoOrcamentariaInicialSemReserva();
-      }); */
+      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoExecucaoOrcamentariaInicialSemReserva(); 
+      });*/
   }
 
   processoComprasDispensaCubatao() {

@@ -78,12 +78,15 @@ class anulaEmpenhoDispensaSemReserva {
 
   }
 
-  anulacaoEmpenhoSemReserva() {
-    it("ACESA EMS COMPRAS", () => {
-      
-        cy.moduloMenu('COMPRAS E LICITAÇÕES','Anulação de empenho');
+  anulacaoEmpenhoCancelaSaldoSemReserva() {
+    it("Anula Empenho 'Cancela Saldo' sem Reserva de Dotaçao", () => {
+    
+      //volta para o menu principal
+      cy.get('img[title="Ir para menu geral"]').click().wait(2000);
+    
+      cy.moduloMenu('COMPRAS E LICITAÇÕES','Anulação de empenho');
     });
-    it("Anulação de Empenho", () => {
+    it("Anulação de Empenho 'Cancela Saldo' sem reserva de dotaçao", () => {
       cy.get('[nat="anulacaoEmpenhoComprasNrPedidoAnterior"]',{ timeout: 10000 }).click();
       
       //Aguarda o load da grid
@@ -129,7 +132,10 @@ class anulaEmpenhoDispensaSemReserva {
   }
 
   excluiAnulacaoEmpenhoPedidoSemReserva() {
-    it('Exclui anulação de empenho - Pedido de compra', () => {
+    it('Exclui anulação de empenho sem Reserva de Dotaçao - Pedido de compra', () => {
+      //volta para o menu principal
+      cy.get('img[title="Ir para menu geral"]').click().wait(2000);
+      //Acessa tela de Anulação de Empenho
       cy.moduloMenu('COMPRAS E LICITAÇÕES','Anulação de empenho');
         cy.get('[nat="anulacaoEmpenhoComprasNrPedidoAnterior"]',{ timeout: 10000 }).click();
         
