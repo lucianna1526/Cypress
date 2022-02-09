@@ -180,6 +180,13 @@ Cypress.Commands.add(
 
 //VALIDA LOAD PRODUTOS TELA REQUISIÇÃO
 Cypress.Commands.add(
+  "validaPDF",
+  (textoNoPDF, quantidade, valorUnitario, valorEsperado) => {
+
+  });
+
+//VALIDA LOAD PRODUTOS TELA REQUISIÇÃO
+Cypress.Commands.add(
   "requisicaoValidaProduto",
   (codProduto, quantidade, valorUnitario, valorEsperado) => {
     //Fecha  do teste anterior se existir

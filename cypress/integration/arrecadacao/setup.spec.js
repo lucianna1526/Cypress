@@ -4,7 +4,7 @@ import pesquisaContribuinteSpec from "./dividaAtiva/pesquisaContribuinte.spec";
 
 class setup {
   constructor() {
-    describe("Executa Suite Modulo Compras", () => {
+    describe("Executa Suite Modulo Arrecadação", () => {
       before(() => {
         localStorage.clear();
         Utils.goHome();
@@ -20,7 +20,7 @@ class setup {
     });
   }
   ccp() {
-    describle("CCP - Contribuinte", () => {
+    describe("CCP - Contribuinte", () => {
       pesquisaContribuinteSpec.atualizaDivida();
     })
     
