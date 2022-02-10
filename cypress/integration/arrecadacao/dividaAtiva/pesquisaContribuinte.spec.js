@@ -35,7 +35,7 @@ class pesquisaContribuinte {
       cy.get('[nat="consultaPessoaImprimirDuam"]').click();
 
       cy.get('div[nat="popupTalaoDividaDuamGrid"]>div>div>div>div[class="ui-grid-canvas"]>div>div', {timeout: 60000});
-      //cy.get('[nat="popupTalaoDividaDuamImprimir"]',{timeout:10000}).click();
+      cy.get('[nat="popupTalaoDividaDuamImprimir"]',{timeout:10000}).click();
 
       cy.validaPDF("KEISCIANE");
 
