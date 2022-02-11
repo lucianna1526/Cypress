@@ -85,11 +85,64 @@ class pesquisaContribuinte {
 
       cy.get('[ng-click="fechar()"]',{timeout:10000}).first().click({force:true});
     });
-    it('Repactuação', () => {
+    it('Repactuação -> Simular', () => {
+      cy.get('[nat="consultaPessoaRepactuacao"]',{timeout:10000}).click();
+
+      
+
+      cy.get('input[nat="repactuacaoReceita"]')
+      .clear()
+      .type('4602')
+      
+
+      cy.get('[nat="repactuacaoReceitaDescricao"]').click();
+
+      cy.get('[nat="repactuacaoDtVencimentoBotaoPopUp"]').click();
+      
+      cy.get('.uib-datepicker-current',{timeout:10000}).click();
+
+      cy.get('[nat="repactuacaoPesquisar"]').click();
+      
+
+      cy.get('div[nat="repactuacaoGridReceitaPesquisa"]>div>div>div>div[class="ui-grid-canvas"]',{timeout:10000}).click();
+
+      cy.get('[nat="repactuacaoSimular"]').click();
+
+      //valida mensagem de conformação
+      cy.get('.md-toast-text',{timeout:10000}).should('contain', 'Ação realizado com sucesso!');
+
+      cy.get('.md-action').click({force: true});
     });
-    it('Pagamento a vista', () => {
+      it('Repactuação -> Repactuações Anteriores', () => {
+
+      cy.get('[nat="repactuacaoGetSimulacoesAnteriores"]',{timeout:10000}).click();
+
+      cy.get('div[nat="popupOutrasSimulacoesGrid"]>div>div>div>div[class="ui-grid-canvas"]>div>div',{timeout:10000}).should('exist');
+      //clica no botao fechar
+      cy.get('[ng-click="fechar()"]',{timeout:10000}).first().click({force:true});
+
+      });
+    it("Repactuação -> Homologa Simulação",()=>{
+      cy.get('[nat="repactuacaoHomologar"]').click();
+
+      cy.get('[nat="pdBtnAlertOKSim"',{timeout:10000}).click();
+
+      cy.get('input[nat="popupTermoConfissaoDividaCarta"]',{timeout:10000}).clear().type('1').tab();
+
+      //cy.get('input[nat="popupTermoConfissaoDividaCartaDescricao"]').click();
+
+      cy.get('[nat="popupTermoConfissaoDividaImprimir"]').click();
+
+      cy.get('body').contains('Favor, informar um termo de confissão.').should('not.exist')
+      //fechar modal
+      cy.get('[ng-click="fechar()"]',{timeout:10000}).last().click({force:true});
+      
+      cy.get('[ng-click="fechar()"]',{timeout:10000}).first().click({force:true});
+
     });
-    it('Testa certidão Negativa', () => {
+    it.skip('Pagamento a vista', () => {
+    });
+    it.skip('Testa certidão Negativa', () => {
     });
   }
 }
