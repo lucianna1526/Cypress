@@ -365,3 +365,13 @@ Cypress.Commands.add(
                 }
             });
 });
+/*
+Aguarda Carregamento da grid
+@param {string} nat - nat da grid a ser aguardada
+*/
+Cypress.Commands.add(
+  'aguardarGrid',
+  (componente) => {
+    cy.get(`${componente}>div>div>div>div[class="ui-grid-canvas"]>div>div`, {timeout: 60000});
+  }
+);
