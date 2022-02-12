@@ -9,14 +9,14 @@ Para executar o projeto você precisa:
 - [git](https://git-scm.com/downloads) (Usar a versão `2.33.0` a utilizada no momento da descrição desse documento)
 - [nodejs](https://nodejs.org/en/blog/release/v14.18.0) (Usar a versão `14.18.0` a utilizada no momento da descrição desse documento)
 - NPM (Usar a versão `6.14.15` a utilizada no momento da descrição desse documento)
-- [Google Chrome](https://www.google.com/intl/pt_br/chrome/) (Usar a versao `96.0.4664.110` a utilizada no momento da descrição desse documento)
-- [Visual Studio Code](https://code.visualstudio.com/Download) (Pode ser utilizado sempre a ultima versao disponivel)
+- [Google Chrome](https://www.google.com/intl/pt_br/chrome/) (Usar a versão `96.0.4664.110` a utilizada no momento da descrição desse documento)
+- [Visual Studio Code](https://code.visualstudio.com/Download) (Pode ser utilizado sempre a ultima versão disponível)
 
 **Nota:** Ao instalar o nodejs, o NPM é instalado automaticamente.
 
 ## Instalação
 
-- Para instalar as dependencias de desenvolvimento, execute: npm install
+- Para instalar as dependências de desenvolvimento, execute: npm install
 - Para instalar o nodejs v14.18.0: https://nodejs.org/en/blog/release/v14.18.0
 - Para instalar o cypress executar: npm install cypress@9.1.1 --save-dev
 
@@ -30,7 +30,7 @@ Faça uma cópia do [`cypress.env.example.json`](./cypress.env.example.json) arq
 
 ## Executando os testes
 
-Neste projeto, você pode executar testes em modos interativos(grafico) e em modo headless(terminal).
+Neste projeto, você pode executar testes em modos interativos(gráfico) e em modo headless(terminal).
 
 ## Modo Headless
 
@@ -40,9 +40,9 @@ npx cypress run --spec .\cypress\integration\Compras\setup.spec.js
 
 ./node_modules/.bin/cypress open
 
-## Documentaçao Oficial do Departamento de Testes da Prodata Informatica
-- Solicitar acesso a gerencia
-[Google Drive Oficial da Empresa](https://drive.google.com/drive/u/0/folders/1I3KUViNwOIG0_4_uzthtyKbvNuGqf6FB)
+## Documentação Oficial do Departamento de Testes da Prodata Informática
+- Solicitar acesso a gerência
+- [Google Drive Oficial da Empresa](https://drive.google.com/drive/u/0/folders/1I3KUViNwOIG0_4_uzthtyKbvNuGqf6FB)
 
 ## Desenvolvido pela equipe de testes:
 
