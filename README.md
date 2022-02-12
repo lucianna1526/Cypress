@@ -46,5 +46,5 @@ npx cypress run --spec .\cypress\integration\Compras\setup.spec.js
 
 ## Desenvolvido pela equipe de testes:
 
-[Jeandes Wesley Martins](https://github.com/jeandeswesley).
-[Hevener Ancelmo Pereira](https://github.com/hevener10).
+- [Jeandes Wesley Martins](https://github.com/jeandeswesley).
+- [Hevener Ancelmo Pereira](https://github.com/hevener10).
