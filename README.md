@@ -10,14 +10,14 @@ Para executar o projeto você precisa:
 - [nodejs](https://nodejs.org/en/blog/release/v14.18.0) (Usar a versão `14.18.0` a utilizada no momento da descrição desse documento)
 - NPM (Usar a versão `6.14.15` a utilizada no momento da descrição desse documento)
 - [Google Chrome](https://www.google.com/intl/pt_br/chrome/) (Usar a versao `96.0.4664.110` a utilizada no momento da descrição desse documento)
-- [Visual Studio Code(https://code.visualstudio.com/Download) (Pode ser utilizado sempre a ultima versao disponivel)]
+- [Visual Studio Code](https://code.visualstudio.com/Download) (Pode ser utilizado sempre a ultima versao disponivel)
 
 **Nota:** Ao instalar o nodejs, o NPM é instalado automaticamente.
 
 ## Instalação
 
 - Para instalar as dependencias de desenvolvimento, execute: npm install
-- Para instalar o nodejs: https://nodejs.org/en/
+- Para instalar o nodejs v14.18.0: https://nodejs.org/en/blog/release/v14.18.0
 - Para instalar o cypress executar: npm install cypress@9.1.1 --save-dev
 
 ## Configuração das variáveis do ambiente
