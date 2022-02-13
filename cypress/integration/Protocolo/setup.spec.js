@@ -17,8 +17,10 @@ class setup {
   }
   protocolo() {
     describe("Fluxo - Protocolo", () => {
-      //autuacaoProcessoSpec.cadastroProcessoCapa();
+      autuacaoProcessoSpec.cadastroProcessoCapa();
       autuacaoProcessoSpec.anexarDocumento();
+      autuacaoProcessoSpec.dadosTCMGoias();
+      autuacaoProcessoSpec.enderecoCorrespondencia();
       
     })
     

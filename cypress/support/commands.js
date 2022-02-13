@@ -378,9 +378,14 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   'autoComplete',
-  (componente, texto) => {
+  (componente, texto,textoAutoComplete="") => {
     
     cy.get(`${componente}`,{timeout:10000}).clear().type(texto).wait(1000);
+    if(textoAutoComplete == ""){
             cy.get(`[title="${texto}"]`,{timeout:10000}).click();           
+    }else{
+        cy.get(`[title="${textoAutoComplete}"]`,{timeout:10000}).click();
+    }
+
   }
 );

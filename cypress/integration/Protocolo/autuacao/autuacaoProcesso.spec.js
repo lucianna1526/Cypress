@@ -69,12 +69,12 @@ class autuacaoProcesso{
 
     }
     anexarDocumento(){
-        it("PROTOCOLO: Autuação / processo", () => {
+        /*it("PROTOCOLO: Autuação / processo", () => {
             cy.moduloMenu('PROTOCOLO','Autuação / processo');
-        });
+        });*/
         it("Anexar Documento", () => {
-            cy.get('button[nat="cadastroProcessoCrudLimpar"]',{timeout:10000}).click();
-            cy.get('button[nat="cadastroProcessoProcessoAnterior"]',{timeout:10000}).click();
+            //cy.get('button[nat="cadastroProcessoCrudLimpar"]',{timeout:10000}).click();
+            //cy.get('button[nat="cadastroProcessoProcessoAnterior"]',{timeout:10000}).click();
             cy.get('[nat="Anexos do processo"]',{timeout:10000}).click();
             cy.get('[nat="cadastroProcessoAnexoGridabrirTelaDeCadastro"]',{timeout:10000}).click();
             //cy.get('input[nat="cadastroAnexoProcessoArquivoUploadInput"]',{timeout:10000}).attachFile('testeDePDF.pdf');
@@ -236,6 +236,87 @@ class autuacaoProcesso{
                 //valida mensagem de exclusao
                 cy.get('.md-toast-text',{timeout:10000}).should('contain', 'Registro excluído com sucesso!');
               });
+        });
+    }
+    dadosTCMGoias(){
+        
+        it("Acessar Aba TCM/GO", () => {
+            cy.get('[nat="Dados TCM/GO"]',{timeout:10000}).click();
+            cy.get('button[nat="cadastroProcessoDadosTcmGridabrirTelaDeCadastro"]',{timeout:10000}).click();           
+        });
+        it("Acessar Aba TCM/GO -> Valida Campos em Branco", () => {
+            cy.get('button[nat="CadastroTcmgoProcessoCrudSalvar"]',{timeout:10000}).click();
+            //valida mensagem de erro
+            cy.get('[nat="pdBtnAlertOKBody"]',{timeout:10000}).should('contain', 'Favor preencher o campo: Processo TCM.\nFavor preencher o campo: Ano.\n');
+            cy.get('[nat="pdBtnAlertOK"]',{timeout:10000}).click();
+        });
+        it("Acessar Aba TCM/GO -> Valida Gravação", () => {
+            cy.get('input[nat="CadastroTcmgoProcessoProcessoTcm"]').type('123')
+            cy.get('button[nat="CadastroTcmgoProcessoAno BotaoReadonly"]').click();
+            cy.get('.uib-datepicker-current',{timeout:10000}).click();
+            cy.get('input[nat="CadastroTcmgoProcessoAssunto"]').type('Teste Automação');
+            cy.get('input[nat="CadastroTcmgoProcessoResolucao"]').type('123');
+            cy.get('input[nat="CadastroTcmgoProcessoDecisao"]').type('Favorável');
+            cy.get('input[nat="CadastroTcmgoProcessoNumeroRemessa"]').type('123');
+            cy.get('button[nat="CadastroTcmgoProcessoDataRetornoBotaoPopUp"]').click();
+            cy.get('.uib-datepicker-current',{timeout:10000}).click();
+            cy.get('textarea[nat="CadastroTcmgoProcessoObservacao"]').type('Teste Automático');
+
+            
+            cy.get('button[nat="CadastroTcmgoProcessoCrudSalvar"]').click();
+            //valida mensagem de sucesso
+            cy.get('.md-toast-text',{timeout:10000}).should('contain', 'Registro salvo com sucesso!');
+            cy.get('.md-toast-content>button',{timeout:10000}).click();
+            
+        });
+        it("Acessar Aba TCM/GO -> Valida Alteração", () => {
+            
+            cy.get('textarea[nat="CadastroTcmgoProcessoObservacao"]').clear().type('Teste Automático de alteração');
+
+            
+            cy.get('button[nat="CadastroTcmgoProcessoCrudSalvar"]').click();
+            //valida mensagem de sucesso
+            cy.get('.md-toast-text',{timeout:10000}).should('contain', 'Registro salvo com sucesso!');
+            cy.get('.md-toast-content>button',{timeout:10000}).click();
+        });
+        it("Acessar Aba TCM/GO -> Valida Exclusão", () => {
+            cy.get('button[nat="CadastroTcmgoProcessoCrudExcluir"]').click();
+            //confirma exclusão
+            cy.get('button[nat="pdBtnAlertOKSim"]').click();
+            cy.get('.md-toast-text',{timeout:10000}).should('contain', 'Registro excluído com sucesso!');
+            cy.get('.md-toast-content>button').click();
+            //fecha modal
+            cy.get('[ng-click="fechar()"]',{timeout:10000}).click({force:true});
+        });
+    }
+    enderecoCorrespondencia(){
+        it("Acessar Aba Endereço correspondência", () => {
+            cy.get('[nat="Endereço correspondência"]',{timeout:10000}).click();
+        });
+        it('Endereço correspondência -> Auto Complete Logradouro', () => {
+            cy.autoComplete('input[nat="cadastroProcessoEnderecoCorrespondenciaLogradouroDescricao"]','FEBRONIO MARTINS ARRRUDA');
+        });
+        it.skip('Endereço correspondência -> Pesquisa Modal Logradouro (Sem nat)', () => {
+            //teste não realizado por falta de nat
+        });
+        it('Endereço correspondência -> Auto Complete Bairro', () => {
+            cy.autoComplete('input[nat="cadastroProcessoEnderecoCorrespondenciaBairroCompleteDescricao"]','RESIDENCIAL JARDIM PROGRESSO');
+        });
+        it.skip('Endereço correspondência -> Pesquisa Modal Bairro (Sem nat)', () => {
+            //teste não realizado por falta de nat
+        });
+        it('Endereço correspondência -> Auto Complete Cidade', () => {
+            cy.autoComplete('input[nat="cadastroProcessoEnderecoCorrespondenciaCidadeDescricao"]','GOIANIA','GOIANIA - GO');
+        });
+        it.skip('Endereço correspondência -> Pesquisa Modal Cidade (Sem nat)', () => {
+            //teste não realizado por falta de nat
+        });
+        it("Grava dados do endereço correspondência", () => {
+            cy.get('button[nat="cadastroProcessoCrudSalvar"]').click();
+            cy.get('button[nat="pdBtnAlertOKSim"]',{timeout:10000}).click();
+            
+            cy.get('.md-toast-text',{timeout:10000}).should('contain', 'Registro salvo com sucesso!');
+            cy.get('.md-toast-content>button').click();
         });
     }
 }
