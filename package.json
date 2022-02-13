@@ -9,8 +9,9 @@
     "lint:fix": "npx standard --fix",
     "cypress:open": "cypress open",
     "cy:open": "cypress open",
-    "cy:compras": "cypress run --spec ./cypress/integration/Compras/setup.spec.js",
-    "cy:protocolo": "cypress run --spec ./cypress/integration/Protocolo/setup.spec.js"
+    "cy:arrecadacao": "cypress run --spec ./cypress/integration/Arrecadacao/setup.spec.js",
+    "cy:compras": "cypress run --spec     ./cypress/integration/Compras/setup.spec.js",
+    "cy:protocolo": "cypress run --spec   ./cypress/integration/Protocolo/setup.spec.js"
 
   },
   "dependencies": {
