@@ -375,3 +375,12 @@ Cypress.Commands.add(
     cy.get(`${componente}>div>div>div>div[class="ui-grid-canvas"]>div>div`, {timeout: 60000});
   }
 );
+
+Cypress.Commands.add(
+  'autoComplete',
+  (componente, texto) => {
+    
+    cy.get(`${componente}`,{timeout:10000}).clear().type(texto).wait(1000);
+            cy.get(`[title="${texto}"]`,{timeout:10000}).click();           
+  }
+);

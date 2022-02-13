@@ -12,11 +12,7 @@ class setup {
         //cy.wait(5000);
       });
       this.ccp();
-      //this.requisicaoCompras();
-      //this.processoComprasDispensa();
-      //this.processoComprasDispensaSemReserva();
-      //this.processoComprasDispensaCubatao();
-      //this.solicitacaoCompras();
+      
     });
   }
   ccp() {
