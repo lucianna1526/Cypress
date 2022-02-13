@@ -41,7 +41,7 @@ npx cypress run --spec .\cypress\integration\Compras\setup.spec.js
 ./node_modules/.bin/cypress open
 
 ## Documentação Oficial do Departamento de Testes da Prodata Informática
-- Solicitar acesso a gerência
+- Solicitar acesso a gerência de desenvolvimento:
 - [Google Drive Oficial da Empresa](https://drive.google.com/drive/u/0/folders/1I3KUViNwOIG0_4_uzthtyKbvNuGqf6FB)
 
 ## Desenvolvido pela equipe de testes:
