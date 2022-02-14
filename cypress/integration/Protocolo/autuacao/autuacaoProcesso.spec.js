@@ -5,9 +5,8 @@ class autuacaoProcesso{
             cy.moduloMenu('PROTOCOLO','Autuação / processo');
         });
         it("Interessado - Valida Auto Complete", () => {
-            cy.autoComplete('[nat="cadastroProcessoDadosCadastroInteressadoDescricao"]','JESUSMAR TAVARES DE SOUZA TESTE');
-            /*cy.get('[nat="cadastroProcessoDadosCadastroInteressadoDescricao"]',{timeout:10000}).clear().type('JESUSMAR TAVARES DE SOUZA TESTE').wait(100);
-            cy.get('[title="JESUSMAR TAVARES DE SOUZA TESTE"]',{timeout:10000}).click();*/
+            cy.autoComplete('[nat="cadastroProcessoDadosCadastroInteressadoDescricao"]','CADASTRO PESSOA TESTE AUTOMAÇAO');
+            
         });
         it("Interessado - Valida Modal Pesquisa", () => {
             
@@ -15,7 +14,7 @@ class autuacaoProcesso{
             //aguarda modal carregar grid
             cy.get('div[nat=""]>div>div>div>div[class="ui-grid-canvas"]>div>div', {timeout: 60000});
 
-            cy.get('input[nat="pesquisaFornecedorRazaoSocial"]').wait(1000).type('JESUSMAR TAVARES DE SOUZA TESTE');
+            cy.get('input[nat="pesquisaFornecedorRazaoSocial"]').wait(1000).type('CADASTRO PESSOA TESTE AUTOMAÇAO');
             cy.get('button[nat="Pesquisar"]').click();
 
             //aguarda grid carregar
@@ -134,7 +133,7 @@ class autuacaoProcesso{
             cy.wait(5000);
         });
         it("Anexo -> Controle de retirada Fisica -> Salvar", () => {
-            cy.autoComplete('input[nat="CadastroRetiradaFisicaAnexoProcessoSolicitanteDescricao"]','JESUSMAR TAVARES DE SOUZA TESTE');
+            cy.autoComplete('input[nat="CadastroRetiradaFisicaAnexoProcessoSolicitanteDescricao"]','CADASTRO PESSOA TESTE AUTOMAÇAO');
             cy.autoComplete('input[nat="CadastroRetiradaFisicaAnexoProcessoIdCadsetDescricao"]','PROCURADORIA');
             cy.get('[nat="CadastroRetiradaFisicaAnexoProcessoDataRetiradaBotaoPopUp"]').click();
             cy.get('.uib-datepicker-current').click();
