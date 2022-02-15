@@ -17,14 +17,14 @@ class setup {
     });
   }
   protocolo() {
-    describe.skip("Fluxo - Protocolo->Autuação", () => {
+    describe("Fluxo - Protocolo->Autuação", () => {
       autuacaoProcessoSpec.cadastroProcessoCapa();
       autuacaoProcessoSpec.anexarDocumento();
       autuacaoProcessoSpec.dadosTCMGoias();
       autuacaoProcessoSpec.enderecoCorrespondencia();
       
     })
-    describe.skip("Fluxo - Protocolo->Remessa", () => {
+    describe("Fluxo - Protocolo->Remessa", () => {
       
       remessaProcessoSpec.validaCadastroEmBranco();
       remessaProcessoSpec.cadastroCapaRemessa();
