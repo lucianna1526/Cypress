@@ -3,6 +3,7 @@ import Utils from "../Utils";
 import autuacaoProcessoSpec from "./autuacao/autuacaoProcesso.spec";
 import remessaProcessoSpec from "./remessa/remessaProcesso.spec";
 import aceiteProcessoSpec from "./aceite/aceiteProcesso.spec";
+import despachoProcessoSpec from "./despacho/despachoProcesso.spec";
 class setup {
   constructor() {
     describe("Executa Suite Modulo Protocolo", () => {
@@ -34,9 +35,16 @@ class setup {
     })
     describe("Fluxo - Protocolo->Aceite", () => {
       aceiteProcessoSpec.procuraRemessa();
-      // aceiteProcessoSpec.anexarDocumento();
-      // aceiteProcessoSpec.dadosTCMGoias();
-      // aceiteProcessoSpec.enderecoCorrespondencia();
+    })
+    describe("Fluxo - Protocolo->Despacho", () => {
+      despachoProcessoSpec.acessaDespacho();
+      despachoProcessoSpec.validaDespachoEmbranco();
+      despachoProcessoSpec.realizaDespacho();
+      despachoProcessoSpec.cancelaDespacho();
+      despachoProcessoSpec.realizaDespacho();
+    })
+    describe.skip("Fluxo - Protocolo->Arquivar processo", () => {
+      
     })
     
   }
