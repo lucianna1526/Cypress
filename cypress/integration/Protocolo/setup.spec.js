@@ -4,6 +4,8 @@ import autuacaoProcessoSpec from "./autuacao/autuacaoProcesso.spec";
 import remessaProcessoSpec from "./remessa/remessaProcesso.spec";
 import aceiteProcessoSpec from "./aceite/aceiteProcesso.spec";
 import despachoProcessoSpec from "./despacho/despachoProcesso.spec";
+import arquivarProcessoSpec from "./arquivar/arquivarProcesso.spec";
+
 class setup {
   constructor() {
     describe("Executa Suite Modulo Protocolo", () => {
@@ -43,8 +45,10 @@ class setup {
       despachoProcessoSpec.cancelaDespacho();
       despachoProcessoSpec.realizaDespacho();
     })
-    describe.skip("Fluxo - Protocolo->Arquivar processo", () => {
-      
+    describe("Fluxo - Protocolo->Arquivar processo", () => {
+      arquivarProcessoSpec.acessarArquivar();
+      arquivarProcessoSpec.arquivarProcesso();
+      arquivarProcessoSpec.desarquivarProcesso();
     })
     
   }

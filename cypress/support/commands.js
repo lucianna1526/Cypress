@@ -380,11 +380,17 @@ Cypress.Commands.add(
   'autoComplete',
   (componente, texto,textoAutoComplete="") => {
     
-    cy.get(`${componente}`,{timeout:10000}).clear().type(texto).wait(1000);
+    cy.get(`${componente}`,{timeout:10000})
+      .clear()
+      .wait(100)
+      .click()
+      .wait(100)
+      .type(texto,{dalay:10})
+      .wait(1000);
     if(textoAutoComplete == ""){
-            cy.get(`[title="${texto}"]`,{timeout:10000}).click();           
+            cy.get(`[title="${texto}"]`,{timeout:10000}).first().click();           
     }else{
-        cy.get(`[title="${textoAutoComplete}"]`,{timeout:10000}).click();
+        cy.get(`[title="${textoAutoComplete}"]`,{timeout:10000}).first().click();
     }
 
   }
