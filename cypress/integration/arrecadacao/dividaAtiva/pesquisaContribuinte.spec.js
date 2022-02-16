@@ -103,7 +103,7 @@ class pesquisaContribuinte {
 
       cy.get('[nat="repactuacaoPesquisar"]').click();
       
-
+      cy.get('div[nat="repactuacaoGridReceitaPesquisa"]>div>div>div>div[class="ui-grid-canvas"]>div>div',{timeout:10000});
       cy.get('div[nat="repactuacaoGridReceitaPesquisa"]>div>div>div>div[class="ui-grid-canvas"]',{timeout:10000}).click();
 
       cy.get('[nat="repactuacaoSimular"]').click();
@@ -140,7 +140,14 @@ class pesquisaContribuinte {
       cy.get('[ng-click="fechar()"]',{timeout:10000}).first().click({force:true});
 
     });
-    it.skip('Pagamento a vista', () => {
+    it('Pagamento a vista', () => {
+      cy.get('button[nat="consultaPessoaPagamentoAVista"]',{timeout:10000}).click();
+      cy.get('[nat="BotaoPopUp"]',{timeout:10000}).eq(2).click();
+      cy.get('.uib-datepicker-current',{timeout:10000}).eq(3).click();
+      cy.autoComplete('input[nat="pagamentoAVistaDescricao"]','CARTA PADRAO');
+      cy.get('[nat="Descricao"]').eq(0).click();
+      //fecha modal
+      cy.get('[ng-click="fechar()"]',{timeout:10000}).first().click({force:true});
     });
     it.skip('Testa certidão Negativa', () => {
     });
