@@ -8,6 +8,7 @@ import notaEmpenhoPacerlasSpec from "./NotaEmpenho/notaEmpenhoPacerlas.spec";
 
 import notaLiquidacaoSpec from "./notaLiquidacao/notaLiquidacao.spec";
 import notaPagamentoSpec from "./notaPagamento/notaPagamento.spec";
+import notaLiquidacaoDocumentoSpec from "./notaLiquidacao/notaLiquidacaoDocumento.spec";
 
 class setup {
   constructor() {
@@ -30,14 +31,14 @@ class setup {
      notaEmpenhoEventoHistoricoSpec.geraEmpenhoEventoHistorico();
      notaEmpenhoPacerlasSpec.geraEmpenhoParcela();
       
-    }) 
+    })*/ 
     describe("Fluxo - Nota de Liquidaçao", () => {
-     notaLiquidacaoSpec.geraLiquidacao(); 
+     //notaLiquidacaoSpec.geraLiquidacao(); 
+     //notaLiquidacaoDocumentoSpec.geraLiquidacaoDocumentos();
       
-    }) */
+    })
     describe("Fluxo - Nota de Pagamento", () => {
-      notaLiquidacaoSpec.geraLiquidacao();
-      notaPagamentoSpec.geraPagamento();
+      //notaPagamentoSpec.geraPagamento();
     })
     
   }
