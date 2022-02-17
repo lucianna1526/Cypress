@@ -378,14 +378,44 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   'autoComplete',
-  (componente, texto,textoAutoComplete="") => {
+  (componente, texto,textoAutoComplete="",eq=0) => {
     
-    cy.get(`${componente}`,{timeout:10000}).clear().type(texto).wait(1000);
+    cy.get(`${componente}`,{timeout:10000})
+      .eq(eq)
+      .clear()
+      .wait(100)
+      .click()
+      .wait(100)
+      .type(texto,{dalay:10})
+      .wait(1000);
     if(textoAutoComplete == ""){
-            cy.get(`[title="${texto}"]`,{timeout:10000}).click();           
+            cy.get(`[title="${texto}"]`,{timeout:10000}).first().click();           
     }else{
-        cy.get(`[title="${textoAutoComplete}"]`,{timeout:10000}).click();
+        cy.get(`[title="${textoAutoComplete}"]`,{timeout:10000}).first().click();
     }
 
   }
 );
+
+Cypress.Commands.add(
+  'aguardarGridCarregar',
+  (componente) => {
+    cy.get(`${componente}>div>div>div>div[class="ui-grid-canvas"]>div>div`, {timeout: 60000});
+  }
+);
+
+Cypress.Commands.add(
+  'gridClicar',
+  (componente, texto,botao) => {
+      cy.aguardarGridCarregar(componente);
+      if(botao == ""){
+        cy.get(`${componente}>div>div>div>div[class="ui-grid-canvas"]>div>div`).contains(texto).click({force: true});
+      }else{
+        cy.get(`${componente}>div>div>div>div[class="ui-grid-canvas"]>div>div`,{timeout:10000})
+        .contains(texto)
+        .parents(".ui-grid-row")
+        .find(`${botao}`)
+        .click({force: true});
+      }
+  }
+)

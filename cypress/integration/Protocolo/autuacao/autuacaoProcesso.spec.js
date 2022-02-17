@@ -63,7 +63,7 @@ class autuacaoProcesso{
             cy.get('textarea[nat="cadastroProcessoDadosCadastroObservacao"]',{timeout:10000}).type('AUTUAÇAO DE PROCESSO FEITO PELA AUTOMAÇAO');
             cy.get('button[nat="cadastroProcessoCrudSalvar"]').click();
             //valida mensagem de sucesso
-            cy.get('.md-toast-text',{timeout:10000}).should('contain', 'Registro salvo com sucesso!');
+            cy.get('.md-toast-text',{timeout:60000}).should('contain', 'Registro salvo com sucesso!');
         });
 
     }
@@ -92,7 +92,7 @@ class autuacaoProcesso{
             });
             cy.get('button[nat="cadastroAnexoProcessoCrudSalvar"]',{timeout:10000}).click();
             //valida mensagem de erro
-            cy.get('.md-toast-text',{timeout:10000}).should('contain', 'Preencha os campos obrigatórios');
+            cy.get('.md-toast-text',{timeout:1000}).should('contain', 'Preencha os campos obrigatórios');
             cy.get('.md-toast-content>button').click();
             cy.wait(5000);
             //fecha modal
@@ -314,7 +314,7 @@ class autuacaoProcesso{
             cy.get('button[nat="cadastroProcessoCrudSalvar"]').click();
             cy.get('button[nat="pdBtnAlertOKSim"]',{timeout:10000}).click();
             
-            cy.get('.md-toast-text',{timeout:10000}).should('contain', 'Registro salvo com sucesso!');
+            cy.get('.md-toast-text',{timeout:60000}).should('contain', 'Registro salvo com sucesso!');
             cy.get('.md-toast-content>button').click();
         });
     }
