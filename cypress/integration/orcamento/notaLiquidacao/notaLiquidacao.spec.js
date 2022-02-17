@@ -13,11 +13,7 @@ class notaLiquidacao
             cy.get('button[nat="Pesquisar"]').click();
             cy.get('div[nat=""]>div>div>div>div[class="ui-grid-canvas"]>div>div', {timeout: 60000});
             cy.get('button[nat="botaoCarregar"]').first().click();
-<<<<<<< HEAD
-        });
-=======
         });// 
->>>>>>> origin/master
         
         it('Nota de Liquidação - Valida Modal Pesquisa e insere numero de Empenho', () => {
             cy.get('button[nat="cadastroNotaLiquidacaoEmpenhoPesquisa"]').click();
