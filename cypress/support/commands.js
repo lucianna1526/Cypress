@@ -378,9 +378,10 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   'autoComplete',
-  (componente, texto,textoAutoComplete="") => {
+  (componente, texto,textoAutoComplete="",eq=0) => {
     
     cy.get(`${componente}`,{timeout:10000})
+      .eq(eq)
       .clear()
       .wait(100)
       .click()
@@ -395,3 +396,26 @@ Cypress.Commands.add(
 
   }
 );
+
+Cypress.Commands.add(
+  'aguardarGridCarregar',
+  (componente) => {
+    cy.get(`${componente}>div>div>div>div[class="ui-grid-canvas"]>div>div`, {timeout: 60000});
+  }
+);
+
+Cypress.Commands.add(
+  'gridClicar',
+  (componente, texto,botao) => {
+      cy.aguardarGridCarregar(componente);
+      if(botao == ""){
+        cy.get(`${componente}>div>div>div>div[class="ui-grid-canvas"]>div>div`).contains(texto).click({force: true});
+      }else{
+        cy.get(`${componente}>div>div>div>div[class="ui-grid-canvas"]>div>div`,{timeout:10000})
+        .contains(texto)
+        .parents(".ui-grid-row")
+        .find(`${botao}`)
+        .click({force: true});
+      }
+  }
+)
