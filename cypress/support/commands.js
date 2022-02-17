@@ -1,4 +1,4 @@
-import menuCompras from "../integration/Utils/menuCompras";
+//import menuCompras from "../integration/Utils/menuCompras";
 /* //Realiza Login no sistema
 Cypress.Commands.add(
   "login",
@@ -76,106 +76,104 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   "moduloMenu",
-  (modulo, menu, nomeMenu = '', voltaSubModulo = 0)=>{
-      /*if (voltaModulo > 0) {
-      cy.get('[title="Ir para menu geral"]').click();
-    }
-    if (voltaSubModulo > 0) {
-      cy.get('[title="Ir para menu geral"]').click();
-    }*/
-    
-    //função para clica no ok de modal chato pra kralho
-    //cy.get('button[nat="pdBtnAlertOK"]').click().wait(1000);
-       menuCompras.acessaMenu(modulo, menu, nomeMenu, voltaSubModulo);  
-    if(`!${menu}`){
-      //if(cy.get('.pd-crud-titulo-span').invoke('text')!=nomeMenu){
-        
-        menuCompras.acessaMenu(modulo, menu, nomeMenu, voltaSubModulo); 
-      cy.get("body").then(($body) => {
-        //pdBtnAlertOKNao
-        if ($body.find('button[nat="pdBtnAlertOKNao"]').length > 0) {
-          cy.get('button[nat="pdBtnAlertOKNao"]').first().click().wait(1000);
-          //cy.wait('@getModulo');
-        }
-        if ($body.find('button[nat="pdBtnAlertOK"]').length > 0) {
-          cy.get('button[nat="pdBtnAlertOK"]').first().click().wait(1000);
-          //cy.wait('@getModulo');
-        }
-        if ($body.find('button[ng-click="fechar()"]').length > 0) {
-          cy.get('button[ng-click="fechar()"]').first().click({ force: true }).wait(1000);
-          //cy.wait('@getModulo');
-        }
-        
-      });
+  (modulo, menu, nomeMenu = '', subModulo = "")=>{
       
-      cy.get(".md-toolbar-tools>a").invoke('text').then((text) => {
-        console.log(text.trim());
-        
-        cy.intercept('GET', '**/sigAutomacao/rest/menu/getMenu?modulo=menu').as('getUrl');
-        
-        /*if(text.trim() != `SIG - ${modulo}` && (text.trim() !="SIG - Sistema Integrado de Gestão")){
-          console.log('volta para o menu principal');
-          cy.get('[title="Ir para menu geral"]').click();
-          cy.wait('@getUrl')
-        }*/
-        
-        
-        
+    cy.get("body").then(($body) => {
+    
+      if ($body.find('button[nat="pdBtnAlertOKNao"]').length > 0) {
+        cy.get('button[nat="pdBtnAlertOKNao"]').first().click().wait(1000);
+        //cy.wait('@getModulo');
+      }
+      if ($body.find('button[nat="pdBtnAlertOK"]').length > 0) {
+        cy.get('button[nat="pdBtnAlertOK"]').first().click().wait(1000);
+        //cy.wait('@getModulo');
+      }
+      if ($body.find('button[ng-click="fechar()"]').length > 0) {
+        cy.get('button[ng-click="fechar()"]').first().click({ force: true }).wait(1000);
+        //cy.wait('@getModulo');
+      }
+      
+    });
+    //verifica o titulo
+    cy.get(".md-toolbar-tools>a").invoke('text').then((text) => {
+      console.log(text.trim());
+      
+      cy.intercept('GET', '**/sigAutomacao/rest/menu/getMenu?modulo=menu').as('getUrl');
+             
+      if(subModulo == ""){
         if(text.trim().toLowerCase() != (`SIG - ${modulo}`).toLowerCase() && (text.trim() !="SIG - Sistema Integrado de Gestão")){
           console.log('volta para o menu principal');
           cy.get('[title="Ir para menu geral"]').click();
           cy.wait('@getUrl')
-        }
-      });
 
-        cy.get("body").then(($body) => {
-          //verifica o nome do modulo
-          //procura menu, se não encontrar clica no modulo
+          if(text.trim().toLowerCase() != (`SIG - ${modulo}`).toLowerCase() && (text.trim() !="SIG - Sistema Integrado de Gestão")){
+            console.log('volta para o menu principal');
+            cy.get('[title="Ir para menu geral"]').click();
+            cy.wait('@getUrl')
 
-          if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
-            cy.intercept('GET', '**/getTipoDeUsuarioNoModulo?codigoModulo=SCH2').as('getModulo');
-            cy.get(`pd-botao-menu[nat="${modulo}"]`,{timeout: 15000}).wait(1000).click();
-            //cy.wait('@getModulo');
+            
           }
-
-        });
-      
-
-      //prepara interncep para o carregamento do menu
-      cy.intercept('GET', '**/rest/**').as('getMenu');
-      //sigAutomacao/app/views/painel-controle-compras/abas/aba-principal.html
-      
-      //clica no menu Sanduiche
-      cy.get('[nat="botaoSideMenu"]',{timeout:10000}).click();
-
-      //digita no input o menu 
-      cy.get('input[nat="buscaMenuVertical"]').type(menu);
-      
-      //cy.get("UL[class='dropdown-menu']",{timeout:10000}).contains('span',menu).click();
-      const exp = new RegExp(`(${menu})`, "g");
-      //cy.get("UL[class='dropdown-menu']").contains(exp).click();
-      
-      cy.get("UL[class='dropdown-menu']>li").each(($el, index, $list) => {
-        if ($el.text().trim() === menu) {
-          cy.wrap($el).click();        
         }
-      });
+      }else{
+        if(text.trim().toLowerCase() != (`SIG - ${subModulo}`).toLowerCase() && (text.trim() !="SIG - Sistema Integrado de Gestão")){
+          console.log('volta para o menu principal');
+          cy.get('[title="Ir para menu geral"]').click();
+          cy.wait('@getUrl')
 
-      //confirma troca de tela se a atual quebrou e não salvou
-      cy.get("body").then(($body) => {
-        //pdBtnAlertOKNao
-        if ($body.find('button[nat="pdBtnAlertOKNao"]').length > 0) {
-          cy.get('button[nat="pdBtnAlertOKNao"]').first().click().wait(1000);
-          //cy.wait('@getModulo');
+          cy.get('[title="Ir para menu geral"]').click();
+          cy.wait('@getUrl')
         }
-      });
-
-
-      /*cy.get("UL[class='dropdown-menu']",{timeout:10000}).contains('span',menu).click();
-      .contains(new RegExp(regex, 'g'));*/
-      //cy.wait(1000);
-      cy.wait('@getMenu');
       }
+      
+    });
+
+      cy.get("body").then(($body) => {
+        //verifica o nome do modulo
+        //procura menu, se não encontrar clica no modulo
+
+        if ($body.find('button[nat="botaoSideMenu"]').length == 0) {
+          cy.intercept('GET', '**/getTipoDeUsuarioNoModulo?codigoModulo=SCH2').as('getModulo');
+          cy.get(`pd-botao-menu[nat="${modulo}"]`,{timeout: 15000}).wait(1000).click();
+          //cy.wait('@getModulo');
+          if(subModulo != ""){
+            cy.get(`pd-botao-menu[nat="${subModulo}"]`,{timeout: 15000}).click();
+          }
+        }
+
+      });
+    
+
+    //prepara interncep para o carregamento do menu
+    cy.intercept('GET', '**/rest/**').as('getMenu');
+    //sigAutomacao/app/views/painel-controle-compras/abas/aba-principal.html
+    
+    //clica no menu Sanduiche
+    cy.get('[nat="botaoSideMenu"]',{timeout:10000}).click();
+
+    //digita no input o menu 
+    cy.get('input[nat="buscaMenuVertical"]').type(menu);
+    
+    //procura o menu
+    cy.get("UL[class='dropdown-menu']>li").each(($el, index, $list) => {
+      if ($el.text().trim() === menu) {
+        cy.wrap($el).click();        
+      }
+    });
+
+    //confirma troca de tela se a atual quebrou e não salvou
+    cy.get("body").then(($body) => {
+      //pdBtnAlertOKNao
+      if ($body.find('button[nat="pdBtnAlertOKNao"]').length > 0) {
+        cy.get('button[nat="pdBtnAlertOKNao"]').first().click().wait(1000);
+        //cy.wait('@getModulo');
+      }
+    });
+
+
+    /*cy.get("UL[class='dropdown-menu']",{timeout:10000}).contains('span',menu).click();
+    .contains(new RegExp(regex, 'g'));*/
+    //cy.wait(1000);
+    cy.wait('@getMenu');
   });
 
 //VALIDA LOAD PRODUTOS TELA REQUISIÇÃO
