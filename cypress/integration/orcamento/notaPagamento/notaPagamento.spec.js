@@ -57,6 +57,12 @@ class notaPagamento
             cy.get('.md-toast-text',{timeout:1000}).should('contain', 'Registro salvo com sucesso!');
             cy.get('.md-toast-content>button').click();
 
+            //Clica na grid da nota de pagamento para validar a inserção da retenção
+            cy.gridClicar('div[nat="cadastroNotaPagamentoGrid"]', "1,00", "");
+            
+            //clica na grid de retenção e valida se foi inserida
+            cy.gridClicar('div[nat="cadastroNotaPagamentoRetencaoGrid"]', "INSS TERCEIROS", "");
+
         }); 
         
 }       

@@ -1,4 +1,4 @@
-import {formatedMonth2PtBR} from '../../Utils/helpers';
+import {formatedDate2PtBR} from '../../Utils/helpers';
 class notaLiquidacao
  {
     geraLiquidacao() {
@@ -26,7 +26,11 @@ class notaLiquidacao
         }); 
 
         it('Nota de Liquidação - Informa itens da parcela de liquidação', () => {
-            cy.get('input[nat="cadastroNotaLiquidacaoItemMesReferencia"]').click().type(`${formatedMonth2PtBR()}`).wait(2000);
+            cy.get('input[nat="cadastroNotaLiquidacaoItemDataLiquidacao"]').dblclick().type(formatedDate2PtBR()).wait(2000);
+
+            cy.get('input[nat="cadastroNotaLiquidacaoItemDataVencimento"]').dblclick().type(formatedDate2PtBR()).wait(2000);
+            
+            cy.get('input[nat="cadastroNotaLiquidacaoItemMesReferencia"]').click().type(formatedDate2PtBR()).wait(2000);
 
             cy.get('button[nat="cadastroNotaLiquidacaoItemAnoReferencia BotaoProximo"]', {timeout:2000}).click();            
 
