@@ -25,10 +25,13 @@ class notaLiquidacao
             
         }); 
 
-        it('Nota de Liquidação - Informa itens da parcela de liquidação', () => {
+        it('Nota de Liquidação - Informa valor da liquidação maior que o saldo a ser liquidado', () => {
             cy.get('input[nat="cadastroNotaLiquidacaoItemDataLiquidacao"]').dblclick().type(formatedDate2PtBR()).wait(2000);
 
             cy.get('input[nat="cadastroNotaLiquidacaoItemDataVencimento"]').dblclick().type(formatedDate2PtBR()).wait(2000);
+
+            //Informa um valor maior do que o saldo a ser liquidado
+            cy.get('input[nat="cadastroNotaLiquidacaoItemValorBruto"]').dblclick().type('10,00').wait(2000);
             
             cy.get('input[nat="cadastroNotaLiquidacaoItemMesReferencia"]').click().type(formatedDate2PtBR()).wait(2000);
 
@@ -38,8 +41,28 @@ class notaLiquidacao
             cy.get('button[nat="SalvarFechar"]', {timeout:2000}).click();
 
              //valida se a nota de Liquidação foi salva com sucesso
-             cy.get('.md-toast-text',{timeout:1000}).should('contain', 'Registro salvo com sucesso!');
-             cy.get('.md-toast-content>button').click();
+             cy.get('.modal-body',{timeout:1000}).should('be.visible').contains(/maior que o saldo da nota de empenho/);
+             cy.get('.modal-footer>button').click();
+        }); 
+
+        it('Nota de Liquidação - Informa valor da liquidação dentro do saldo a ser liquidado',() => {
+            cy.get('input[nat="cadastroNotaLiquidacaoItemDataLiquidacao"]').dblclick().type(formatedDate2PtBR()).wait(2000);
+
+            cy.get('input[nat="cadastroNotaLiquidacaoItemDataVencimento"]').dblclick().type(formatedDate2PtBR()).wait(2000);
+
+            //Informa um valor maior do que o saldo a ser liquidado
+            cy.get('input[nat="cadastroNotaLiquidacaoItemValorBruto"]').dblclick().type('8,00').wait(2000);
+            
+            cy.get('input[nat="cadastroNotaLiquidacaoItemMesReferencia"]').click().type(formatedDate2PtBR()).wait(2000);
+
+            cy.get('button[nat="cadastroNotaLiquidacaoItemAnoReferencia BotaoProximo"]', {timeout:2000}).click();            
+
+            //Ao abrir o modal, preenche os campos e adiciona parcela da nota de liquidação
+            cy.get('button[nat="SalvarFechar"]', {timeout:2000}).click();
+
+            //valida se a nota de Liquidação foi salva com sucesso            
+            cy.get('.md-toast-text',{timeout:1000}).should('contain', 'Registro salvo com sucesso!');
+            cy.get('.md-toast-content>button').click();
         }); 
         
 }       

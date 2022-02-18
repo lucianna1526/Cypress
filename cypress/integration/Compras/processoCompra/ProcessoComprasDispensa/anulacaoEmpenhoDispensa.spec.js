@@ -209,7 +209,7 @@ class anulaEmpenhoDispensa {
       //seleciona a ficha
       cy.get('input[nat="fichaInfoFicha"]').type('20211498').type("{enter}");
       //aguarda ficha carregar
-      cy.get('[nat="consultaReservaDotacaoSimplificadaGridabrirT  elaDeCadastro"]',{ timeout: 10000 });
+      cy.get('[nat="consultaReservaDotacaoSimplificadaGridabrirTelaDeCadastro"]',{ timeout: 10000 });
       //valida saldo da ficha
       cy.get('[nat="fichaInfoSaldoAtual"]>div>div>span>span').should("have.text", "R$ 35.000,00").wait(5000);
     }); 
