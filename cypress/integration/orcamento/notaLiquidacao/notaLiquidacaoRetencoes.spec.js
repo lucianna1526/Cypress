@@ -25,7 +25,7 @@ class notaLiquidacaoRetencao
 
         it('Insere Retenções - Cadastro de Retenção da Liquidação', () => {
             //Seleciona a linha da grid de liquidação
-            cy.gridClicar('div[nat="cadastroNotaLiquidacaoLiquidacoesGrid"]', "10,00", "");
+            cy.gridClicar('div[nat="cadastroNotaLiquidacaoLiquidacoesGrid"]', "8,00", "");
             
             //Seleciona a grid de documentos
             cy.gridClicar('div[nat="cadastroNotaLiquidacaoDocumentosGrid"]', "123", "");

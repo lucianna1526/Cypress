@@ -1,4 +1,5 @@
 import menuCompras from "../integration/Utils/menuCompras";
+import '@testing-library/cypress/add-commands';
 /* //Realiza Login no sistema
 Cypress.Commands.add(
   "login",

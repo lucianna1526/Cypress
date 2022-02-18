@@ -1,6 +1,7 @@
 {
   "devDependencies": {
-    "cypress": "^9.1.1",
+    "@testing-library/cypress": "^8.0.2",
+    "cypress": "^9.5.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-plugin-tab": "^1.0.5"
   },
@@ -11,7 +12,9 @@
     "cy:open": "cypress open",
     "cy:arrecadacao": "cypress run --spec ./cypress/integration/Arrecadacao/setup.spec.js",
     "cy:compras": "cypress run --spec     ./cypress/integration/Compras/setup.spec.js",
-    "cy:protocolo": "cypress run --spec   ./cypress/integration/Protocolo/setup.spec.js"
+    "cy:protocolo": "cypress run --spec   ./cypress/integration/Protocolo/setup.spec.js",
+    "cy:orcamento": "cypress run --spec   ./cypress/integration/orcamento/setup.spec.js",
+    "cy:all": "cypress run --spec ./cypress/integration/Arrecadacao/setup.spec.js --spec ./cypress/integration/Compras/setup.spec.js --spec ./cypress/integration/Protocolo/setup.spec.js --spec ./cypress/integration/orcamento/setup.spec.js"
   },
   "dependencies": {
     "dayjs": "^1.10.7",

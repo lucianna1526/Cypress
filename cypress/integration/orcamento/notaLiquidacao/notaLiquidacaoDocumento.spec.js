@@ -23,8 +23,8 @@ class notaLiquidacaoDocumentos
             cy.get('button[nat="botaoCarregar"]').first().click();            
         });
 
-        it('Insere Documento - Cadastro de Nota Fiscal', () => {
-            cy.gridClicar('div[nat="cadastroNotaLiquidacaoLiquidacoesGrid"]', "10,00", "");
+        it('Insere Documento - Cadastro de Nota Fiscal com valor acima do saldo', () => {
+            cy.gridClicar('div[nat="cadastroNotaLiquidacaoLiquidacoesGrid"]', "8,00", "");
             cy.get('button[nat="cadastroNotaLiquidacaoDocumentosGridabrirTelaDeCadastro"]').click();
 
             //Informa tipo de documento
@@ -58,10 +58,45 @@ class notaLiquidacaoDocumentos
             cy.get('button[nat="cadastroNotaFiscalLiquidacaoCrudSalvarFechar"]').click();
 
              //valida se a nota de Liquidação foi salva com sucesso
-             cy.get('.md-toast-text',{timeout:1000}).should('contain', 'Registro salvo com sucesso!');
-             cy.get('.md-toast-content>button').click();
+             cy.get('.modal-body',{timeout:1000}).should('contain', 'Valor Associado maior que o valor da Nota de Liquidação.');
+             cy.get('.modal-footer>button').click();           
 
-            
+        })
+
+        it('Insere Documento - Cadastro de Nota Fiscal com valor dentro do saldo', () => {
+            //Informa tipo de documento
+            cy.get('[nat="cadastroNotaFiscalLiquidacaoTipoDocumentoSelect"]')
+            .click()
+            .type('5-Nota Fiscal')
+            .type("{enter}");
+
+            //Numero do documento            
+            cy.get('input[nat="cadastroNotaFiscalLiquidacaoNrDocumento"]')
+            .type('{SelectAll}')
+            .type('123');
+
+            //Numero de serie            
+            cy.get('input[nat="cadastroNotaFiscalLiquidacaoNrSerie"]')
+            .type('{SelectAll}')
+            .type('123');
+
+             //Data Emissão
+             cy.get('input[nat="cadastroNotaFiscalLiquidacaoDataEmissao"]')
+             .dblclick()
+            .type(formatedDate2PtBR());
+
+            //Valor da nota fiscal            
+            cy.get('input[nat="cadastroNotaFiscalLiquidacaoValorNotaFiscal"]')
+            .dblclick()
+            .type('8,00')
+            .tab();
+
+            //Clica em ADICIONAR E SAIR
+            cy.get('button[nat="cadastroNotaFiscalLiquidacaoCrudSalvarFechar"]').click();
+
+             //valida se a nota de Liquidação foi salva com sucesso
+             cy.get('.md-toast-text',{timeout:1000}).should('contain', 'Registro salvo com sucesso!');
+             cy.get('.md-toast-content>button').click();           
 
         })
         

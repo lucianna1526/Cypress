@@ -12,6 +12,10 @@ import notaLiquidacaoDocumentoSpec from "./notaLiquidacao/notaLiquidacaoDocument
 import notaPagamentoSpec from "./notaPagamento/notaPagamento.spec";
 import notaLiquidacaoRetencoesSpec from "./notaLiquidacao/notaLiquidacaoRetencoes.spec";
 
+import notaEmpenhoAnulacaoSpec from "./NotaEmpenho/notaEmpenhoAnulacao.spec";
+import notaLiquidacaoAnulacaoSpec from "./notaLiquidacao/notaLiquidacaoAnulacao.spec";
+import notaPagamentoAnulacaoSpec from "./notaPagamento/notaPagamentoAnulacao.spec";
+
 class setup {
   constructor() {
     describe("Executa Suite Modulo Orçamento", () => {
@@ -26,24 +30,56 @@ class setup {
     });
   }
    orcamento() {
-     describe("Fluxo - Nota de Empenho", () => {
-     notaEmpenhoSpec.geraEmpenho();
-     notaEmpenhoFornecedorSpec.geraEmpenhoFornecedor();
-     notaEmpenhoLicitacaoSpec.geraEmpenhoLicitacao();
-     notaEmpenhoEventoHistoricoSpec.geraEmpenhoEventoHistorico();
-     notaEmpenhoPacerlasSpec.geraEmpenhoParcela();
+     describe.skip("Fluxo - Nota de Empenho", () => {
+      notaEmpenhoSpec.geraEmpenho();
+      notaEmpenhoFornecedorSpec.geraEmpenhoFornecedor();
+      notaEmpenhoLicitacaoSpec.geraEmpenhoLicitacao();
+      notaEmpenhoEventoHistoricoSpec.geraEmpenhoEventoHistorico();
+      notaEmpenhoPacerlasSpec.geraEmpenhoParcela();
       
     }) 
-    describe("Fluxo - Nota de Liquidaçao", () => {
+    describe.skip("Fluxo - Nota de Liquidaçao", () => {
      notaLiquidacaoSpec.geraLiquidacao(); 
      notaLiquidacaoDocumentoSpec.geraLiquidacaoDocumentos();
      notaLiquidacaoRetencoesSpec.geraLiquidacaoRetencao();
       
     })
-    describe("Fluxo - Nota de Pagamento", () => {
+    describe.skip("Fluxo - Nota de Pagamento", () => {
       notaPagamentoSpec.geraPagamento();
 
-    }) 
+    })
+    
+    describe.skip("Fluxo - Anulação de Empenho", () => {
+      notaEmpenhoAnulacaoSpec.anulaEmpenho();
+    })
+
+    describe.skip("Fluxo - Anulação de Liquidação", () => {
+      notaLiquidacaoAnulacaoSpec.anulaLiquidacao();
+    })
+    
+    describe.skip("Fluxo - Anulação de Pagamento", () => {
+      notaPagamentoAnulacaoSpec.anulaPagamento();
+    })
+
+    describe("Fluxo de despesa sem reserva", () => {
+      notaEmpenhoSpec.geraEmpenho();
+      notaEmpenhoFornecedorSpec.geraEmpenhoFornecedor();
+      notaEmpenhoLicitacaoSpec.geraEmpenhoLicitacao();
+      notaEmpenhoEventoHistoricoSpec.geraEmpenhoEventoHistorico();
+      notaEmpenhoPacerlasSpec.geraEmpenhoParcela();
+      
+      notaEmpenhoAnulacaoSpec.anulaEmpenho();	
+
+      notaLiquidacaoSpec.geraLiquidacao(); 
+      notaLiquidacaoDocumentoSpec.geraLiquidacaoDocumentos();
+      notaLiquidacaoRetencoesSpec.geraLiquidacaoRetencao();
+
+      notaLiquidacaoAnulacaoSpec.anulaLiquidacao();
+
+      notaPagamentoSpec.geraPagamento();
+
+      notaPagamentoAnulacaoSpec.anulaPagamento();
+    });
     
   }
     
