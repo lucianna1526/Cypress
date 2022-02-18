@@ -74,10 +74,27 @@ Cypress.Commands.add(
   }
 );
 
+/**
+ * @param {string} Modulo
+ * @param {string} Menu
+ * @param {json} subModulo
+ * @param {json} nomeMenu
+ * cy.moduloMenu('GESTÃO PESSOAL','Pessoa',{'subModulo':'folhaPagamentoButton'});
+ */
 Cypress.Commands.add(
   "moduloMenu",
-  (modulo, menu, nomeMenu = '', subModulo = "")=>{
+  (modulo, menu, json="")=>{
       
+      var nomeMenu=json["nomeMenu"];
+      var subModulo=json["subModulo"];
+      if(nomeMenu==undefined){
+          nomeMenu="";
+      }
+      if(subModulo==undefined){
+          subModulo="";
+      }
+
+
     cy.get("body").then(($body) => {
     
       if ($body.find('button[nat="pdBtnAlertOKNao"]').length > 0) {
