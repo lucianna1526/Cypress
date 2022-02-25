@@ -59,6 +59,7 @@ class gestaoPrestador {
             //Aguarda modal de conferencia da nota carregar
             cy.get('.modal-dialog.modal-lg pd-tela-padrao',{timeout:10000}).should('be.visible');//Aguarda modal de conferencia da nota carregar
             
+            //Valida Modal de Conferencia da nota
             cy.get('.pd-tela-padrao-titulo-popup',{timeout:10000})
             .contains('Conferencia de Nota Fiscal Eletrônica');
 
