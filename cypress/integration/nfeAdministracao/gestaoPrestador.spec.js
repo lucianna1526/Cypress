@@ -55,8 +55,17 @@ class gestaoPrestador {
             //valida se a nota foi replicada com sucesso
             cy.get('.md-toast-content',{timeout:10000}).contains('Nota replicada com sucesso!', {timeout:10000});
             
+            
+            //Aguarda modal de conferencia da nota carregar
+            cy.get('.modal-dialog.modal-lg pd-tela-padrao',{timeout:10000}).should('be.visible');//Aguarda modal de conferencia da nota carregar
+            
+            cy.get('.pd-tela-padrao-titulo-popup',{timeout:10000})
+            .contains('Conferencia de Nota Fiscal Eletrônica');
+
             //Clica no botao GERAR
             cy.get('.panel-body pd-tela-padrao-footer [type=button][aria-label=Salvar]').click();
+
+            
 
              //valida se a nota foi gerada com sucesso
              cy.get('.modal-body',{timeout:10000}).should('be.visible').contains(/Nota fiscal gerada com sucesso!/, {timeout:10000});
