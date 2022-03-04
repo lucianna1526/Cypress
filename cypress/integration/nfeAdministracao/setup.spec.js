@@ -4,6 +4,8 @@ import gestaoPrestadorSpec from "./gestaoPrestador.spec";
 
 import notaFiscalAvulsaSpc from "./notaFiscalAvulsa.spc";
 
+import notaFiscalEletronicaSpec from "./notaFiscalEletronica.spec";
+
 class setup {
   constructor() {
     describe("Executa Suite Modulo Nfe Administração", () => {
@@ -18,7 +20,7 @@ class setup {
     });
   }
   nfeadministracao() {
-     describe.skip("Fluxo - Gestão do Prestador", () => {
+     describe("Fluxo - Gestão do Prestador", () => {
       
       gestaoPrestadorSpec.replicarNfe();
       
@@ -26,6 +28,10 @@ class setup {
 
     describe('Nota Fiscal Eletronica Avulsa', () => {
       notaFiscalAvulsaSpc.geraNotaFiscalAvulsa();
+    });
+
+    describe('Nota Fiscal Eletronica', () => {
+      notaFiscalEletronicaSpec.geraNotaFiscalEletronica();
     });
   }
     
