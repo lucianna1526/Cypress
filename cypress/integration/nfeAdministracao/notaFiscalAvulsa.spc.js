@@ -10,7 +10,7 @@ class notaFiscalAvulsa {
         });
 
         it('Insere dados da nota fiscal avulsa', () => {
-            cy.spanAutoComplete('Prestador','JEANDES WESLEY MARTINS 95042261168')
+            cy.spanAutoComplete('Prestador','JEANDES WESLEY MARTINS')
             
             cy.digitaSpan('CPF / CNPJ', '01.192.855/0001-24').tab();
             

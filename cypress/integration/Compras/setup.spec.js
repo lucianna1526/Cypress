@@ -169,8 +169,8 @@ class setup {
   }
 
   processoComprasDispensaSemReserva() {
-    describe("Parte 1", () => { 
-      /* ativaDesativaReservaDotacaoSemReservaSpec.desativaReservaSemReserva();
+    describe.skip("Parte 1", () => { 
+      ativaDesativaReservaDotacaoSemReservaSpec.desativaReservaSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoReservaDotacaoInicialSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoExecucaoOrcamentariaInicialSemReserva(); 
@@ -181,7 +181,7 @@ class setup {
       cancelaLiberacaoRequisicaoComprasSemReservaSpec.cancelaLiberacaoRequisicaoSemReserva();   
   
       liberaRequisicaoComprasSemReservaSpec.liberaRequisicaoSemReserva();
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();      */
+      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();     
       
       });
   
@@ -196,9 +196,9 @@ class setup {
       processoComprasDispensaEmsSemReservaSpec.emsDispensaSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasFinalSemReserva(); 
       });
-  /*    
+      
       //PARTE 3
-      describe("Parte 3", () => {
+      describe.skip("Parte 3", () => {
       anulacaoEmpenhoDispensaSemReservaSpec.anulaEmpenhoEMSSemReserva();
       anulacaoEmpenhoDispensaSemReservaSpec.anulacaoEmpenhoCancelaSaldoSemReserva() 
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva(); 
@@ -224,7 +224,7 @@ class setup {
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoReservaDotacaoInicialSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoExecucaoOrcamentariaInicialSemReserva(); 
-      });*/
+      });
   }
 
   processoComprasDispensaCubatao() {
