@@ -4,10 +4,17 @@ import notaEmpenhoSpec from "./NotaEmpenho/notaEmpenho.spec";
 import notaEmpenhoFornecedorSpec from "./NotaEmpenho/notaEmpenhoFornecedor.spec";
 import notaEmpenhoLicitacaoSpec from "./NotaEmpenho/notaEmpenhoLicitacao.spec";
 import notaEmpenhoEventoHistoricoSpec from "./NotaEmpenho/notaEmpenhoEventoHistorico.spec";
-import notaEmpenhoPacerlasSpec from "./NotaEmpenho/notaEmpenhoPacerlas.spec";
+import notaEmpenhoParcelasSpec from './NotaEmpenho/notaEmpenhoParcelas.spec'
 
 import notaLiquidacaoSpec from "./notaLiquidacao/notaLiquidacao.spec";
+import notaLiquidacaoDocumentoSpec from "./notaLiquidacao/notaLiquidacaoDocumento.spec";
+
 import notaPagamentoSpec from "./notaPagamento/notaPagamento.spec";
+import notaLiquidacaoRetencoesSpec from "./notaLiquidacao/notaLiquidacaoRetencoes.spec";
+
+import notaEmpenhoAnulacaoSpec from "./NotaEmpenho/notaEmpenhoAnulacao.spec";
+import notaLiquidacaoAnulacaoSpec from "./notaLiquidacao/notaLiquidacaoAnulacao.spec";
+import notaPagamentoAnulacaoSpec from "./notaPagamento/notaPagamentoAnulacao.spec";
 
 class setup {
   constructor() {
@@ -23,22 +30,56 @@ class setup {
     });
   }
    orcamento() {
-   /*  describe.skip("Fluxo - Nota de Empenho", () => {
-     notaEmpenhoSpec.geraEmpenho();
-     notaEmpenhoFornecedorSpec.geraEmpenhoFornecedor();
-     notaEmpenhoLicitacaoSpec.geraEmpenhoLicitacao();
-     notaEmpenhoEventoHistoricoSpec.geraEmpenhoEventoHistorico();
-     notaEmpenhoPacerlasSpec.geraEmpenhoParcela();
+     describe.skip("Fluxo - Nota de Empenho", () => {
+      notaEmpenhoSpec.geraEmpenho();
+      notaEmpenhoFornecedorSpec.geraEmpenhoFornecedor();
+      notaEmpenhoLicitacaoSpec.geraEmpenhoLicitacao();
+      notaEmpenhoEventoHistoricoSpec.geraEmpenhoEventoHistorico();
+      notaEmpenhoParcelasSpec.geraEmpenhoParcela();
       
     }) 
-    describe("Fluxo - Nota de Liquidaçao", () => {
+    describe.skip("Fluxo - Nota de Liquidaçao", () => {
      notaLiquidacaoSpec.geraLiquidacao(); 
+     notaLiquidacaoDocumentoSpec.geraLiquidacaoDocumentos();
+     notaLiquidacaoRetencoesSpec.geraLiquidacaoRetencao();
       
-    }) */
-    describe("Fluxo - Nota de Pagamento", () => {
-      notaLiquidacaoSpec.geraLiquidacao();
-      notaPagamentoSpec.geraPagamento();
     })
+    describe.skip("Fluxo - Nota de Pagamento", () => {
+      notaPagamentoSpec.geraPagamento();
+
+    })
+    
+    describe.skip("Fluxo - Anulação de Empenho", () => {
+      notaEmpenhoAnulacaoSpec.anulaEmpenho();
+    })
+
+    describe.skip("Fluxo - Anulação de Liquidação", () => {
+      notaLiquidacaoAnulacaoSpec.anulaLiquidacao();
+    })
+    
+    describe.skip("Fluxo - Anulação de Pagamento", () => {
+      notaPagamentoAnulacaoSpec.anulaPagamento();
+    })
+
+    describe("Fluxo de despesa sem reserva", () => {
+      notaEmpenhoSpec.geraEmpenho();
+      notaEmpenhoFornecedorSpec.geraEmpenhoFornecedor();
+      notaEmpenhoLicitacaoSpec.geraEmpenhoLicitacao();
+      notaEmpenhoEventoHistoricoSpec.geraEmpenhoEventoHistorico();
+      notaEmpenhoParcelasSpec.geraEmpenhoParcela();
+      
+      notaEmpenhoAnulacaoSpec.anulaEmpenho();	
+
+      notaLiquidacaoSpec.geraLiquidacao(); 
+      notaLiquidacaoDocumentoSpec.geraLiquidacaoDocumentos();
+      notaLiquidacaoRetencoesSpec.geraLiquidacaoRetencao();
+
+      notaLiquidacaoAnulacaoSpec.anulaLiquidacao();
+
+      notaPagamentoSpec.geraPagamento();
+
+      notaPagamentoAnulacaoSpec.anulaPagamento();
+    });
     
   }
     

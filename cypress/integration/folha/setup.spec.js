@@ -32,3 +32,4 @@ class setup {
 }
 
 export default new setup();
+

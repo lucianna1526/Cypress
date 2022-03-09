@@ -1,5 +1,9 @@
 //import menuCompras from "../integration/Utils/menuCompras";
-/* //Realiza Login no sistema
+=======
+/*import menuCompras from "../integration/Utils/menuCompras";
+import '@testing-library/cypress/add-commands';
+
+//Realiza Login no sistema
 Cypress.Commands.add(
   "login",
   (user = Cypress.env("USUARIO"), password = Cypress.env("PASSWORD")) => {
@@ -434,3 +438,62 @@ Cypress.Commands.add(
       }
   }
 )
+Cypress.Commands.add(
+  'digitaSpan',
+  (span,texto,eq=0,campo='input') => {
+    //cy.contains(".form-group",`${span}`,{timeout:10000})
+    cy.get(`[label="${span}"`,{timeout:10000})
+              .find(`${campo}`)
+              .eq(eq)
+              .type(`${texto}`)
+
+    
+  }
+);
+Cypress.Commands.add(
+  'clicaSpan',
+  (span,eq=0,campo='button') => {
+    //cy.contains(".form-group",`${span}`,{timeout:10000})
+    cy.get(`[label="${span}"`,{timeout:10000})
+              //.parents(".form-group")
+              .find(`${campo}`)
+              .eq(eq)
+              .click({force: true});    
+  }
+);
+
+Cypress.Commands.add(
+  'validaSpan',
+  (span,texto,eq=0,campo='.pd-label-input-leitura') => {
+    //cy.contains(".form-group",`${span}`,{timeout:10000})
+    cy.get(`[label="${span}"`,{timeout:10000})
+              //.parents(".form-group")
+              .find(`${campo}`)
+              .eq(eq)
+              .should('have.text',`${texto}`);
+  }
+);
+
+Cypress.Commands.add(
+  'spanAutoComplete',
+  (span,texto,textoAutoComplete="",eq=1,campo="input") => {
+    
+    //cy.contains(".form-group",`${span}`,{timeout:10000})
+    cy.get(`[label="${span}"`,{timeout:10000})
+              //.parents(".form-group")
+              .find(`${campo}`)
+      .eq(eq)
+      .clear()
+      .wait(100)
+      .click()
+      .wait(100)
+      .type(texto,{dalay:10})
+      .wait(1000);
+    if(textoAutoComplete == ""){
+            cy.get(`[title="${texto}"]`,{timeout:10000}).first().click();           
+    }else{
+        cy.get(`[title="${textoAutoComplete}"]`,{timeout:10000}).first().click();
+    }
+
+  }
+);
