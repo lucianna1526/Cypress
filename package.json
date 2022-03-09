@@ -11,7 +11,8 @@
     "cy:open": "cypress open",
     "cy:arrecadacao": "cypress run --spec ./cypress/integration/Arrecadacao/setup.spec.js",
     "cy:compras": "cypress run --spec     ./cypress/integration/Compras/setup.spec.js",
-    "cy:protocolo": "cypress run --spec   ./cypress/integration/Protocolo/setup.spec.js"
+    "cy:protocolo": "cypress run --spec   ./cypress/integration/Protocolo/setup.spec.js",
+    "cy:folha": "cypress run --spec   ./cypress/integration/folha/setup.spec.js"
   },
   "dependencies": {
     "dayjs": "^1.10.7",

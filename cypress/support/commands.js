@@ -81,7 +81,7 @@ Cypress.Commands.add(
  * @param {json} nomeMenu
  * cy.moduloMenu('GESTÃO PESSOAL','Pessoa',{'subModulo':'folhaPagamentoButton'});
  */
-Cypress.Commands.add(
+ Cypress.Commands.add(
   "moduloMenu",
   (modulo, menu, json="")=>{
       
