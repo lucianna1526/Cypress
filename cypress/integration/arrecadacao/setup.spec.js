@@ -19,7 +19,7 @@ class setup {
     });
   }
   ccp() {
-    describe.skip("CCP - Contribuinte", () => {
+    describe("CCP - Contribuinte", () => {
       pesquisaContribuinteSpec.acessaCCI();
       pesquisaContribuinteSpec.carregaContribuinte(
         "KEISCIANE MARTINAS FERREIRA"
@@ -30,12 +30,10 @@ class setup {
       pesquisaContribuinteSpec.repactucaoesAnteriores();
       pesquisaContribuinteSpec.homologaSimulacao();
       pesquisaContribuinteSpec.pagamentoAvista();
-      pesquisaContribuinteSpec.carregaContribuinte(
-        "DROGARIA EVARISTO MENDONÇA LTDA"
-      );
+      pesquisaContribuinteSpec.carregaContribuinte("GILMAR ALVES DA SILVA");
       pesquisaContribuinteSpec.testaCertidaoNegativa();
     });
-    describe.skip("Extorno de repacuação", () => {
+    describe("Extorno de repacuação", () => {
       extornoRepactucacaoSpec.acessaExtornoRepactuacao();
       extornoRepactucacaoSpec.validaExtornoEmBranco();
       extornoRepactucacaoSpec.extornaRepactuacao();

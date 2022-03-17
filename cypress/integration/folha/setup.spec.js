@@ -19,7 +19,7 @@ class setup {
   }
   folha() {
     describe("Fluxo - Folha de Pagamento / Cadastro de Pessoa", () => {
-      cadastroPessoaFolhaExclusaoSpec.cadastroPessoaExclusao();
+      //cadastroPessoaFolhaExclusaoSpec.cadastroPessoaExclusao();
       cadastroPessoaFolhaSpec.cadastroPessoaDadosPrincipais();
       cadastroPessoaFolhaDocumentacaoSpec.documentacao();
       cadastroPessoaFolhaExclusaoSpec.cadastroPessoaExclusao();
@@ -32,4 +32,3 @@ class setup {
 }
 
 export default new setup();
-
