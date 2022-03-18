@@ -4,37 +4,6 @@ class notaEmpenhoParcelas {
   geraEmpenhoParcela() {
     //Recebe Mês de referencia da parcela
     const mesAtual = formatedMonth2PtBR();
-    const janeiro = [
-      {
-        mesAtual,
-        valor: "10,00",
-      },
-    ];
-    const fevereiro = [
-      {
-        mesAtual,
-        valor: "10,00",
-      },
-    ];
-    const marco = [
-      {
-        mesAtual,
-        valor: "10,00",
-      },
-    ];
-    console.log(marco.mesAtual);
-    const formatedMonth01 = "01";
-    const formatedMonth02 = "02";
-    const formatedMonth03 = "03";
-    const formatedMonth04 = "04";
-    const formatedMonth05 = "05";
-    const formatedMonth06 = "06";
-    const formatedMonth07 = "07";
-    const formatedMonth08 = "08";
-    const formatedMonth09 = "09";
-    const formatedMonth10 = "10";
-    const formatedMonth11 = "11";
-    const formatedMonth12 = "12";
 
     it("ORÇAMENTO: NE - Nota de empenho/Parcelas", () => {
       cy.get('li[nat="Parcelas"]').click();
