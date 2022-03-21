@@ -38,7 +38,7 @@ class notaEmpenhoParcelas {
         "contain",
         "Registro salvo com sucesso!"
       );
-      cy.get(".md-toast-content>button").click();
+      cy.get(".md-toast-content>.md-action").click();
     });
   }
 }

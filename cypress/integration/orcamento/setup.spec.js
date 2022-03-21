@@ -17,6 +17,13 @@ import notaLiquidacaoAnulacaoSpec from "./notaLiquidacao/notaLiquidacaoAnulacao.
 import notaPagamentoAnulacaoSpec from "./notaPagamento/notaPagamentoAnulacao.spec";
 
 import anulacaoPagamentoExclusaoSpec from "./notaPagamento/anulacaoPagamentoExclusao.spec";
+
+import executaSqlDeletaRetencaoPagamentoSpec from "../dataReport/executaSqlDeletaRetencaoPagamento.spec";
+
+import notaPagamentoExclusaoSpec from "./notaPagamento/notaPagamentoExclusao.spec";
+
+import anulacaoNotaLiquidacaoExclusaoSpec from "./notaLiquidacao/anulacaoNotaLiquidacaoExclusao.spec";
+
 class setup {
   constructor() {
     describe("Executa Suite Modulo Orçamento", () => {
@@ -58,8 +65,8 @@ class setup {
       notaPagamentoAnulacaoSpec.anulaPagamento();
     });
 
-    describe.skip("Fluxo de despesa sem reserva", () => {
-      notaEmpenhoSpec.geraEmpenho();
+    describe("Fluxo de despesa sem reserva", () => {
+      /*notaEmpenhoSpec.geraEmpenho();
       notaEmpenhoFornecedorSpec.geraEmpenhoFornecedor();
       notaEmpenhoLicitacaoSpec.geraEmpenhoLicitacao();
       notaEmpenhoEventoHistoricoSpec.geraEmpenhoEventoHistorico();
@@ -74,12 +81,14 @@ class setup {
       notaLiquidacaoAnulacaoSpec.anulaLiquidacao();
 
       notaPagamentoSpec.geraPagamento();
-
-      notaPagamentoAnulacaoSpec.anulaPagamento();
+      notaPagamentoAnulacaoSpec.anulaPagamento();*/
     });
 
     describe("Fluxo de exclusao da despesa sem reserva", () => {
+      executaSqlDeletaRetencaoPagamentoSpec.deletaRetencaoPagamento();
       anulacaoPagamentoExclusaoSpec.excluiAnulacaoPagamento();
+      notaPagamentoExclusaoSpec.excluiPagamento();
+      anulacaoNotaLiquidacaoExclusaoSpec.excluiAnulacaoNotaLiquidacao();
     });
   }
 }

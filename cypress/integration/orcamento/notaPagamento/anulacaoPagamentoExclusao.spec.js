@@ -34,6 +34,52 @@ class anulacaoPagamentoExclusao {
       cy.wait(2000);
       cy.get('button[nat="botaoCarregar"]').first().click();
     });
+    it("Nota de Pagamento / Anulação de pagamento - Seleciona na GRID a retencao da anulacao de pagamento e exclui", () => {
+      //Seleciona a linha da grid de pagmento o valor R$ 5,00
+      cy.gridClicar('div[nat="anulacaoPagamentoGrid"]', "5,00", "");
+      //Seleciona a linha da grid de retencao do pagmento o valor R$ 5,00
+      cy.gridClicar(
+        'div[nat="anulacaoPagamentoRentecaoGrid"]',
+        "15 - INSS TERCEIROS",
+        ""
+      );
+      //Clica no botão de excluir
+      cy.get(
+        "md-content#pdDivBody>div>ui-view>div>pd-index-modulo>div>div>div>pd-tela-padrao>div>form>div>div>pd-tela-padrao-body>div:nth-of-type(4)>pd-grid>div>div>div>div:nth-of-type(2)>div:nth-of-type(2)>div>div>div>div:nth-of-type(11)>div>button"
+      ).click();
+      //valida alert "Tem certeza que deseja excluir o registro?"
+      cy.get(".modal-body", { timeout: 5000 }).should(
+        "contain",
+        "Tem certeza que deseja excluir o registro?"
+      );
+      cy.get(".modal-footer > .btn-default").click();
+      //Valida alert "Registro excluído com sucesso!"
+      cy.get(".md-toast-text", { timeout: 1000 }).should(
+        "contain",
+        "Registro salvo com sucesso!"
+      );
+      cy.get(".md-toast-content>.md-action").click();
+    });
+    it("Nota de Pagamento / Anulação de pagamento - Seleciona na GRID a anulacao de pagamento e exclui", () => {
+      //Seleciona a linha da grid de pagmento o valor R$ 5,00
+      cy.gridClicar('div[nat="anulacaoPagamentoGrid"]', "3,00", "").click();
+      //Clica no botão de excluir
+      cy.get(
+        "md-content#pdDivBody>div>ui-view>div>pd-index-modulo>div>div>div>pd-tela-padrao>div>form>div>div>pd-tela-padrao-body>div:nth-of-type(4)>pd-grid>div>div>div>div:nth-of-type(2)>div:nth-of-type(2)>div>div>div>div:nth-of-type(11)>div>button"
+      ).click();
+      //valida alert "Tem certeza que deseja excluir o registro?"
+      cy.get(".modal-body", { timeout: 5000 }).should(
+        "contain",
+        "Tem certeza que deseja excluir o registro?"
+      );
+      cy.get(".modal-footer > .btn-default").click();
+      //Valida alert "Registro excluído com sucesso!"
+      cy.get(".md-toast-text", { timeout: 1000 }).should(
+        "contain",
+        "Registro excluído com sucesso!"
+      );
+      cy.get(".md-toast-content>.md-action").click();
+    });
   }
 }
 export default new anulacaoPagamentoExclusao();
