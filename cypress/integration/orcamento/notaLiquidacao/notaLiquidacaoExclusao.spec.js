@@ -1,14 +1,13 @@
-class anulacaoNotaLiquidacaoExclusao {
-  excluiAnulacaoNotaLiquidacao() {
-    it("ORÇAMENTO: ANL - Anulação de liquidação", () => {
-      cy.moduloMenu("ORÇAMENTO", "ANL - Anulação de liquidação");
+class notaLiquidacaoExclusao {
+  excluiNotaLiquidacao() {
+    it("ORÇAMENTO: NL - Nota de liquidação", () => {
+      cy.moduloMenu("ORÇAMENTO", "NL - Nota de liquidação");
     });
 
-    it("Nota de Liquidação / Anulação de liquidação - Seleciona anulacao para exclusao", () => {
-      //Pesquisa Ficha
-      cy.get('button[nat="anulacaoLiquidacaoFichaPesquisa"]')
+    it("Nota de Liquidação - Exclusao", () => {
+      cy.get('button[nat="cadastroNotaLiquidacaoFichaPesquisa"]')
         .click()
-        .wait(4000);
+        .wait(2000);
       cy.get('div[nat=""]>div>div>div>div[class="ui-grid-canvas"]>div>div', {
         timeout: 100000,
       });
@@ -20,34 +19,37 @@ class anulacaoNotaLiquidacaoExclusao {
         timeout: 60000,
       });
       cy.get('button[nat="botaoCarregar"]').first().click();
-
-      //Pesquisa Pre Empenho
-      cy.get('button[nat="anulacaoLiquidacaoEmpenhoPesquisa"]').click();
-      cy.wait(2000);
-      cy.get('button[nat="botaoCarregar"]').first().click();
-
-      //Pesquisa liquidação
-      cy.get('button[nat="anulacaoLiquidacaoLiquidacaoPesquisa"]').click();
+      cy.get('button[nat="cadastroNotaLiquidacaoEmpenhoPesquisa"]').click();
       cy.wait(2000);
       cy.get('button[nat="botaoCarregar"]').first().click();
     });
 
     it("Seleciona grid nota de liquidacao", () => {
-      //Seleciona a linha da grid da anulacao da liquidacao com valor R$ 1,00
-      cy.gridClicar('div[nat="anulacaoLiquidacaoGrid"]', "1,00", "");
-    });
-
-    it("Seleciona na grid a nota de liquidacao e exclui o documento fiscal", () => {
-      //Seleciona a linha da grid da anulacao da liquidacao com valor R$ 1,00
+      //Seleciona a linha da grid da liquidacao com valor R$ 8,00
       cy.gridClicar(
-        'div[nat="anulacaoLiquidacaoDocumentosFiscaisGrid"]',
+        'div[nat="cadastroNotaLiquidacaoLiquidacoesGrid"]',
         "8,00",
         ""
       );
+    });
+
+    it("Seleciona na grid a nota de liquidacao e exclui a retencao", () => {
+      //Seleciona a linha da grid da retencao da liquidacao com valor R$ 1,00
+      cy.get('div[nat="cadastroNotaLiquidacaoRetencoes"]').as("grid");
+
+      cy.get("@grid", { ensureScrollable: false })
+        .contains("1,00") //varre procurando o elemento que contem o o valor da nota fiscal a ser replicada
+        .first()
+        .click()
+        .parents(".ui-grid-viewport")
+        .scrollTo("right", {
+          easing: "linear",
+          duration: 2000,
+        });
 
       //Clica no botão de excluir
       cy.get(
-        '[nat="anulacaoLiquidacaoDocumentosFiscaisGrid"] .ui-grid-cell-contents > .btn[nat="botaoExcluir"]',
+        '[nat="cadastroNotaLiquidacaoRetencoes"] .ui-grid-cell-contents [nat="botaoExcluir"]',
         { timeout: 4000 }
       ).click();
 
@@ -63,13 +65,13 @@ class anulacaoNotaLiquidacaoExclusao {
         "Registro excluído com sucesso!"
       );
     });
-    it("Seleciona na grid a nota de liquidacao e exclui a retencao", () => {
+    it("Seleciona na grid a nota de liquidacao e exclui o documento fiscal", () => {
       //Seleciona a linha da grid da anulacao da liquidacao com valor R$ 1,00
       //cy.gridClicar('div[nat="anulacaoLiquidacaoRetencaoGrid""]', "1,00", "");
 
       //Clica no botão de excluir
       cy.get(
-        '[nat="anulacaoLiquidacaoRetencaoGrid"] .ui-grid-cell-contents > .btn[nat="botaoExcluir"]',
+        '[nat="cadastroNotaLiquidacaoDocumentosGrid"] .ui-grid-cell-contents [nat="botaoExcluir"]',
         { timeout: 4000 }
       ).click();
 
@@ -92,7 +94,7 @@ class anulacaoNotaLiquidacaoExclusao {
 
       //Clica no botão de excluir
       cy.get(
-        '[nat="anulacaoLiquidacaoGrid"] .ui-grid-cell-contents > .btn[nat="botaoExcluir"]',
+        '[nat="cadastroNotaLiquidacaoLiquidacoesGrid"] .ui-grid-cell-contents [nat="botaoExcluir"]',
         { timeout: 4000 }
       ).click();
 
@@ -111,4 +113,4 @@ class anulacaoNotaLiquidacaoExclusao {
   }
 }
 
-export default new anulacaoNotaLiquidacaoExclusao();
+export default new notaLiquidacaoExclusao();

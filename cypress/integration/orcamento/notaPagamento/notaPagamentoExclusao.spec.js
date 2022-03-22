@@ -35,6 +35,7 @@ class notaPagamentoExclusao {
     it("Nota de Pagamento - Seleciona a retencao do pagamento na grid e exclui", () => {
       //Seleciona a linha da grid de pagmento o valor R$ 6,00
       cy.gridClicar('div[nat="cadastroNotaPagamentoGrid"]', "6,00", "");
+      cy.wait(3000);
 
       //Seleciona a linha da grid de retencao do pagmento o texto 15 - INSS TERCEIROS
       cy.gridClicar(
@@ -42,9 +43,10 @@ class notaPagamentoExclusao {
         "INSS TERCEIROS",
         ""
       );
+      cy.wait(3000);
       //Clica no botão de excluir
       cy.get(
-        '[nat="pd-grid>div>div>div>div:nth-of-type(2)>div:nth-of-type(2)>div>div>div>div:nth-of-type(5)>div>button',
+        '[nat="cadastroNotaPagamentoRetencaoGrid"] .ui-grid-cell-contents > .btn[nat="botaoExcluir"]',
         {
           timeout: 4000,
         }
@@ -82,9 +84,12 @@ class notaPagamentoExclusao {
         });
 
       //Clica no botão de excluir
-      cy.get('.ui-grid-cell-contents > .btn[nat="botaoExcluir"]', {
-        timeout: 4000,
-      }).click();
+      cy.get(
+        '[nat="cadastroNotaPagamentoGrid"] .ui-grid-cell-contents > .btn[nat="botaoExcluir"]',
+        {
+          timeout: 4000,
+        }
+      ).click();
       //valida alert "Tem certeza que deseja excluir o registro?"
       cy.get(".modal-body", { timeout: 5000 }).should(
         "contain",
@@ -92,11 +97,11 @@ class notaPagamentoExclusao {
       );
       cy.get(".modal-footer > .btn-default").click();
       //Valida alert "Registro excluído com sucesso!"
-      cy.get(".md-toast-text", { timeout: 1000 }).should(
+      cy.get(".md-toast-text", { timeout: 5000 }).should(
         "contain",
         "Registro excluído com sucesso!"
       );
-      cy.get(".md-toast-content>.md-action").click();
+      //cy.get(".md-toast-content>.md-action").click();
     });
   }
 }
