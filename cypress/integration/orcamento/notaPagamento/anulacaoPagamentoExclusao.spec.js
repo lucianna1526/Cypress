@@ -35,8 +35,9 @@ class anulacaoPagamentoExclusao {
       cy.get('button[nat="botaoCarregar"]').first().click();
     });
     it("Nota de Pagamento / Anulação de pagamento - Seleciona na GRID a retencao da anulacao de pagamento e exclui", () => {
+      //Descomentar esse trecho para quando precisar excluir a retencao
       //Seleciona a linha da grid de pagmento o valor R$ 5,00
-      cy.gridClicar('div[nat="anulacaoPagamentoGrid"]', "5,00", "");
+      /*cy.gridClicar('div[nat="anulacaoPagamentoGrid"]', "5,00", "");
       //Seleciona a linha da grid de retencao do pagmento o valor R$ 5,00
       cy.gridClicar(
         'div[nat="anulacaoPagamentoRentecaoGrid"]',
@@ -58,11 +59,11 @@ class anulacaoPagamentoExclusao {
         "contain",
         "Registro salvo com sucesso!"
       );
-      cy.get(".md-toast-content>.md-action").click();
+      cy.get(".md-toast-content>.md-action").click();*/
     });
     it("Nota de Pagamento / Anulação de pagamento - Seleciona na GRID a anulacao de pagamento e exclui", () => {
       //Seleciona a linha da grid de pagmento o valor R$ 5,00
-      cy.gridClicar('div[nat="anulacaoPagamentoGrid"]', "3,00", "").click();
+      cy.gridClicar('div[nat="anulacaoPagamentoGrid"]', "5,00", "").click();
       //Clica no botão de excluir
       cy.get(
         "md-content#pdDivBody>div>ui-view>div>pd-index-modulo>div>div>div>pd-tela-padrao>div>form>div>div>pd-tela-padrao-body>div:nth-of-type(4)>pd-grid>div>div>div>div:nth-of-type(2)>div:nth-of-type(2)>div>div>div>div:nth-of-type(11)>div>button"
@@ -73,12 +74,12 @@ class anulacaoPagamentoExclusao {
         "Tem certeza que deseja excluir o registro?"
       );
       cy.get(".modal-footer > .btn-default").click();
+      cy.wait(4000);
       //Valida alert "Registro excluído com sucesso!"
-      cy.get(".md-toast-text", { timeout: 1000 }).should(
+      cy.get(".md-toast-text", { timeout: 6000 }).should(
         "contain",
         "Registro excluído com sucesso!"
       );
-      cy.get(".md-toast-content>.md-action").click();
     });
   }
 }
