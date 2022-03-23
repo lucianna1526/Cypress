@@ -16,43 +16,38 @@ class setup {
         //cy.wait(5000);
       });
       this.protocolo();
-      
     });
   }
   protocolo() {
     describe("Fluxo - Protocolo->Autuação", () => {
       autuacaoProcessoSpec.cadastroProcessoCapa();
-      autuacaoProcessoSpec.anexarDocumento();
-      autuacaoProcessoSpec.dadosTCMGoias();
-      autuacaoProcessoSpec.enderecoCorrespondencia();
-      
-    })
+      //autuacaoProcessoSpec.anexarDocumento();
+      // autuacaoProcessoSpec.dadosTCMGoias();
+      //autuacaoProcessoSpec.enderecoCorrespondencia();
+    });
     describe("Fluxo - Protocolo->Remessa", () => {
-      
       remessaProcessoSpec.validaCadastroEmBranco();
       remessaProcessoSpec.cadastroCapaRemessa();
       remessaProcessoSpec.editaCapaRemessa();
       remessaProcessoSpec.excluiCapaRemessa();
       remessaProcessoSpec.cadastroCapaRemessa();
-    })
+    });
     describe("Fluxo - Protocolo->Aceite", () => {
       aceiteProcessoSpec.procuraRemessa();
-    })
+    });
     describe("Fluxo - Protocolo->Despacho", () => {
       despachoProcessoSpec.acessaDespacho();
       despachoProcessoSpec.validaDespachoEmbranco();
       despachoProcessoSpec.realizaDespacho();
       despachoProcessoSpec.cancelaDespacho();
       despachoProcessoSpec.realizaDespacho();
-    })
+    });
     describe("Fluxo - Protocolo->Arquivar processo", () => {
       arquivarProcessoSpec.acessarArquivar();
       arquivarProcessoSpec.arquivarProcesso();
       arquivarProcessoSpec.desarquivarProcesso();
-    })
-    
+    });
   }
-    
 }
 
 export default new setup();

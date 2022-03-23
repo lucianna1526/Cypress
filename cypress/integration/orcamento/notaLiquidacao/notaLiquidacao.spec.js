@@ -1,4 +1,6 @@
 import { formatedDate2PtBR } from "../../Utils/helpers";
+import { formatedMonth2PtBR } from "../../Utils/helpers";
+
 class notaLiquidacao {
   geraLiquidacao() {
     it("ORÇAMENTO: NL - Nota de liquidação", () => {
@@ -54,10 +56,10 @@ class notaLiquidacao {
         .click()
         .type(formatedMonth2PtBR())
         .wait(2000);
-
       cy.get(
         'button[nat="cadastroNotaLiquidacaoItemAnoReferencia BotaoProximo"]',
-        { timeout: 2000 }
+        { force: true },
+        { timeout: 5000 }
       ).click();
 
       //Ao abrir o modal, preenche os campos e adiciona parcela da nota de liquidação
@@ -86,16 +88,6 @@ class notaLiquidacao {
         .dblclick()
         .type("8,00")
         .wait(2000);
-
-      cy.get('input[nat="cadastroNotaLiquidacaoItemMesReferencia"]')
-        .click()
-        .type(formatedDate2PtBR())
-        .wait(2000);
-
-      cy.get(
-        'button[nat="cadastroNotaLiquidacaoItemAnoReferencia BotaoProximo"]',
-        { timeout: 2000 }
-      ).click();
 
       //Ao abrir o modal, preenche os campos e adiciona parcela da nota de liquidação
       cy.get('button[nat="SalvarFechar"]', { timeout: 2000 }).click();

@@ -178,7 +178,7 @@ class setup {
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
     });
 
-    describe.skip("Parte 2", () => {
+    describe("Parte 2", () => {
       processoComprasDispensaCapaSemReservaSpec.processoComprasSemReserva();
       processoComprasDispensaFaseCredenciamentoSemReservaSpec.credenciamentoSemReserva();
       processoComprasDispensaFaseJulgamentoSemReservaSpec.julgamentoSemReserva();

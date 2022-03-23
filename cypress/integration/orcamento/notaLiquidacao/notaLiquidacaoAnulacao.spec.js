@@ -68,7 +68,7 @@ class notaLiquidacaoAnulacao {
       ).click();
 
       //valida se a anulação de liquidação foi salva com sucesso
-      cy.get(".modal-body", { timeout: 2000 })
+      cy.get(".modal-body", { timeout: 5000 })
         .should("be.visible")
         .contains(/Valor da liquidação/i);
       cy.get(".modal-footer>button").click();
@@ -95,7 +95,7 @@ class notaLiquidacaoAnulacao {
 
       //Informa o historico da anulação
       cy.get('textarea[nat="cadastroAnulacaoLiquidacaoHistorico"]')
-        .dblclick()
+        .clear()
         .type("ANULAÇAO DE LIQUIDAÇAO REALIZADO PELA AUTOMAÇAO", { Delay: 10 })
         .wait(1000);
 
@@ -105,7 +105,7 @@ class notaLiquidacaoAnulacao {
       ).click();
 
       //valida se a anulação de liquidação foi salva com sucesso
-      cy.get(".md-toast-text", { timeout: 1000 }).should(
+      cy.get(".md-toast-text", { timeout: 5000 }).should(
         "contain",
         "Registro salvo com sucesso!"
       );

@@ -91,13 +91,13 @@ class setup {
     });
 
     describe("Fluxo de exclusao da despesa sem reserva", () => {
-      //executaSqlDeletaRetencaoPagamentoSpec.deletaRetencaoPagamento();
-      //anulacaoPagamentoExclusaoSpec.excluiAnulacaoPagamento();
-      //notaPagamentoExclusaoSpec.excluiPagamento();
-      //anulacaoNotaLiquidacaoExclusaoSpec.excluiAnulacaoNotaLiquidacao();
-      //notaLiquidacaoExclusaoSpec.excluiNotaLiquidacao();
-      //notaEmpenhoAnulacaoExclusaoSpec.excluiAnulacaoEmpenho();
-      //notaEmpenhoExclusaoSpec.excluiNotaEmpenho();
+      executaSqlDeletaRetencaoPagamentoSpec.deletaRetencaoPagamento();
+      anulacaoPagamentoExclusaoSpec.excluiAnulacaoPagamento();
+      notaPagamentoExclusaoSpec.excluiPagamento();
+      anulacaoNotaLiquidacaoExclusaoSpec.excluiAnulacaoNotaLiquidacao();
+      notaLiquidacaoExclusaoSpec.excluiNotaLiquidacao();
+      notaEmpenhoAnulacaoExclusaoSpec.excluiAnulacaoEmpenho();
+      notaEmpenhoExclusaoSpec.excluiNotaEmpenho();
     });
   }
 }
