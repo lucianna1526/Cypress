@@ -34,11 +34,11 @@ class notaEmpenhoParcelas {
     it("Nota de Empenho Salva Empenho", () => {
       cy.get('[nat="cadastroNotaEmpenhoCrudSalvar"]').click();
       //valida se a nota de empenho foi salva com sucesso
-      cy.get(".md-toast-text", { timeout: 1000 }).should(
+      cy.get(".md-toast-text", { timeout: 5000 }).should(
         "contain",
         "Registro salvo com sucesso!"
       );
-      cy.get(".md-toast-content>.md-action").click();
+      cy.get(".md-toast-content>.md-action", { timeout: 5000 }).click();
     });
   }
 }

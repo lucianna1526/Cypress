@@ -70,7 +70,7 @@ class anulacaoNotaLiquidacaoExclusao {
       //Clica no botão de excluir
       cy.get(
         '[nat="anulacaoLiquidacaoRetencaoGrid"] .ui-grid-cell-contents > .btn[nat="botaoExcluir"]',
-        { timeout: 4000 }
+        { timeout: 5000 }
       ).click();
 
       //valida alert "Tem certeza que deseja excluir o registro?"
@@ -93,7 +93,7 @@ class anulacaoNotaLiquidacaoExclusao {
       //Clica no botão de excluir
       cy.get(
         '[nat="anulacaoLiquidacaoGrid"] .ui-grid-cell-contents > .btn[nat="botaoExcluir"]',
-        { timeout: 4000 }
+        { timeout: 5000 }
       ).click();
 
       //valida alert "Tem certeza que deseja excluir o registro?"

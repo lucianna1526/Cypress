@@ -63,14 +63,14 @@ class cadastroPessoaFolhaExclusao {
           cy.get('[nat="botaoExcluir"]').click();
 
           //valida mensagem 'Tem certeza que deseja excluir o registro?'
-          cy.get(".modal-body", { timeout: 1000 }).should(
+          cy.get(".modal-body", { timeout: 5000 }).should(
             "contain",
             "Tem certeza que deseja excluir o registro?"
           );
-          cy.get(".modal-footer > .btn-default").click();
+          cy.get(".modal-footer > .btn-default", { timeout: 5000 }).click();
 
           //valida mensagem 'Registro excluido com sucesso!'
-          cy.get(".md-toast-text", { timeout: 1000 }).should(
+          cy.get(".md-toast-text", { timeout: 5000 }).should(
             "have.text",
             "      Registro excluído com sucesso!    "
           );
@@ -82,14 +82,14 @@ class cadastroPessoaFolhaExclusao {
           }).click();
 
           //valida mensagem 'Tem certeza que deseja excluir o registro?'
-          cy.get(".modal-body", { timeout: 1000 }).should(
+          cy.get(".modal-body", { timeout: 5000 }).should(
             "contain",
             "Tem certeza que deseja excluir o registro?"
           );
           cy.get(".modal-footer > .btn-default").click();
 
           //valida mensagem 'Registro excluido com sucesso!'
-          cy.get(".md-toast-text", { timeout: 1000 }).should(
+          cy.get(".md-toast-text", { timeout: 5000 }).should(
             "have.text",
             "      Registro excluído com sucesso!    "
           );
