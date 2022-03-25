@@ -39,7 +39,8 @@ class requisicaoInsereDadosCubatao {
       //Ficha
       cy.get('input[nat="cadastroRequisicaoComprasDadosPrincipaisFicha"]')
         .click()
-        .type("20211498")
+        //.type("20211498")
+        .type("20223221")
         .type("{enter}")
         .tab();
       //Origem do recurso
@@ -116,7 +117,7 @@ class requisicaoInsereDadosCubatao {
         .text()
         .then((value) => {
           cy.log("Text value is :", value);
-          expect(value).to.include("Saldo da ficha 20211498 insuficiente");
+          expect(value).to.include("Saldo da ficha 20223221 insuficiente");
         });
 
       //clica em OK para fechar o alerta de saldo insuficiente

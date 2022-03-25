@@ -30,6 +30,8 @@ import notaEmpenhoAnulacaoExclusaoSpec from "./NotaEmpenho/notaEmpenhoAnulacaoEx
 
 import notaEmpenhoExclusaoSpec from "./NotaEmpenho/notaEmpenhoExclusao.spec";
 
+import creditoAdicionalSpec from "./creditoAdicional.spec";
+
 class setup {
   constructor() {
     describe("Executa Suite Modulo Orçamento", () => {
@@ -71,7 +73,7 @@ class setup {
       notaPagamentoAnulacaoSpec.anulaPagamento();
     });
 
-    describe("Fluxo de despesa sem reserva", () => {
+    describe.skip("Fluxo de despesa sem reserva", () => {
       notaEmpenhoSpec.geraEmpenho();
       notaEmpenhoFornecedorSpec.geraEmpenhoFornecedor();
       notaEmpenhoLicitacaoSpec.geraEmpenhoLicitacao();
@@ -90,7 +92,7 @@ class setup {
       notaPagamentoAnulacaoSpec.anulaPagamento();
     });
 
-    describe("Fluxo de exclusao da despesa sem reserva", () => {
+    describe.skip("Fluxo de exclusao da despesa sem reserva", () => {
       executaSqlDeletaRetencaoPagamentoSpec.deletaRetencaoPagamento();
       anulacaoPagamentoExclusaoSpec.excluiAnulacaoPagamento();
       notaPagamentoExclusaoSpec.excluiPagamento();
@@ -98,6 +100,10 @@ class setup {
       notaLiquidacaoExclusaoSpec.excluiNotaLiquidacao();
       notaEmpenhoAnulacaoExclusaoSpec.excluiAnulacaoEmpenho();
       notaEmpenhoExclusaoSpec.excluiNotaEmpenho();
+    });
+
+    describe("Fluxo Crédito Adicional", () => {
+      creditoAdicionalSpec.creditoAdicionalSuplementacao();
     });
   }
 }

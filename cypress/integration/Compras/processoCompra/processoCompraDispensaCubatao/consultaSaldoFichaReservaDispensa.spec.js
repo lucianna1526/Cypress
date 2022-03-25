@@ -9,14 +9,17 @@ class consultaSaldoFichaReserva {
   //Função para consultar o saldo Inicial da ficha modulo compras tela - Saldo de ficha
   consultaSaldoFichasInicial() {
     it("COMPRAS E LICITAÇÕES: Saldo de fichas", () => {
-      cy.moduloMenu("COMPRAS E LICITAÇÕES","Saldo de fichas");
-    })
+      cy.moduloMenu("COMPRAS E LICITAÇÕES", "Saldo de fichas");
+    });
     it("Valida Saldo Inicial na Tela: Saldo de Fichas", () => {
       //Pesquisa Ficha
-      cy.get('button[nat="consultaSaldoFichaFichaPesquisa"]', { timeout: 10000 })
-        .click();
+      cy.get('button[nat="consultaSaldoFichaFichaPesquisa"]', {
+        timeout: 10000,
+      }).click();
       //Informa numero da ficha no campo de pesquisa
-      cy.get('input[nat="fichaOrcamentariaFicha"]',{timeout:10000}).wait(500).type("20211498");
+      cy.get('input[nat="fichaOrcamentariaFicha"]', { timeout: 10000 })
+        .wait(500)
+        .type("20223221");
       //clica no botão pesquisar
       cy.get('button[nat="Pesquisar"]').click().wait(2000);
       //Carrega a ficha na grid
@@ -29,7 +32,7 @@ class consultaSaldoFichaReserva {
       cy.get('div[nat="consultaSaldoFichaGrid"]').as("grid"); //caputra a grid
 
       cy.get("@grid") //varre procurando o elemento que contem o numero da ficha
-        .contains("20211498")
+        .contains("20223221")
         .parents(".ui-grid-row")
         .find(".ui-grid-cell-contents")
         .as("coluna");
@@ -45,13 +48,14 @@ class consultaSaldoFichaReserva {
   //Função para consultar o saldo Inicial da Reserva de Dotação modulo Orçamento tela - Reserva de dotação
   consultaSaldoReservaDotacaoInicial() {
     it("ORÇAMENTO: Reserva de dotação", () => {
-      cy.moduloMenu("ORÇAMENTO","Reserva de dotação");
-    })
+      cy.moduloMenu("ORÇAMENTO", "Reserva de dotação");
+    });
     it("Valida Saldo Inicial na Tela: Reserva de dotação", () => {
-      
       //Ficha
       cy.get('input[nat="fichaInfoFicha"]', { timeout: 10000 })
-      .type("20211498").tab().wait(500);
+        .type("20223221")
+        .tab()
+        .wait(500);
 
       //validação do saldo inicial da ficha
       cy.get('[nat="fichaInfoSaldoAtual"]')
@@ -67,26 +71,26 @@ class consultaSaldoFichaReserva {
   //Função para consultar o saldo Inicial da Execução orçamentária modulo Orçamento tela - Consulta Execução orçamentária
   consultaSaldoExecucaoOrcamentariaInicial() {
     it("Valida Saldo Inicial na Tela: Execução orçamentária", () => {
-      cy.moduloMenu("ORÇAMENTO", "Execução orçamentária");
+      cy.moduloMenu("ORÇAMENTO", "Consulta de execução orçamentária");
     });
     it("Valida Saldo Inicial na Tela: Consulta execução orçamentária", () => {
-      
-
       //Ano
-      cy.get('input[nat="ConsultaExecucaoOrcamentariaAno input"]', { timeout: 10000 })
-        .type("2021")
+      cy.get('input[nat="ConsultaExecucaoOrcamentariaAno input"]', {
+        timeout: 10000,
+      })
+        .type("2022")
         .tab()
         .wait(2000);
 
       //Mes
       cy.get('input[nat="ConsultaExecucaoOrcamentariaMes"]')
-        .type("12")
+        .type("3")
         .tab()
         .wait(2000);
 
       //Ficha
       cy.get('input[nat="ConsultaExecucaoOrcamentariaFicha"]')
-        .type("20211498")
+        .type("20223221")
         .tab()
         .wait(100);
 
@@ -98,7 +102,7 @@ class consultaSaldoFichaReserva {
       //Validação do saldo inicial da ficha na tela de consulta execução orçamentária
       cy.get('div[nat="ConsultaExecucaoOrcamentariaGrid"]').as("grid"); //caputra a grid
       cy.get("@grid")
-        .contains("20211498") //varre procurando o elemento que contem o numero da ficha
+        .contains("20223221") //varre procurando o elemento que contem o numero da ficha
         .parents(".ui-grid-viewport")
         .scrollTo("right", {
           easing: "linear",
@@ -125,12 +129,12 @@ class consultaSaldoFichaReserva {
   //Função para consultar o saldo Final da ficha modulo compras tela - Saldo de ficha
   consultaSaldoFichasFinal() {
     it("COMPRAS E LICITAÇÕES: Saldo de fichas", () => {
-      cy.moduloMenu("COMPRAS E LICITAÇÕES","Saldo de fichas");
-    })
+      cy.moduloMenu("COMPRAS E LICITAÇÕES", "Saldo de fichas");
+    });
     it("Valida Saldo Final na Tela: Saldo de Fichas", () => {
       //Ficha
       cy.get('input[nat="consultaSaldoFichaFicha"]', { timeout: 10000 })
-        .type("20211498")
+        .type("20223221")
         .type("{enter}")
         .wait(2000);
 
@@ -141,7 +145,7 @@ class consultaSaldoFichaReserva {
       cy.get('div[nat="consultaSaldoFichaGrid"]').as("grid"); //caputra a grid
 
       cy.get("@grid") //varre procurando o elemento que contem o numero da ficha
-        .contains("20211498")
+        .contains("20223221")
         .parents(".ui-grid-row")
         .find(".ui-grid-cell-contents")
         .as("coluna");
@@ -157,13 +161,14 @@ class consultaSaldoFichaReserva {
   //Função para consultar o saldo Final da Reserva de Dotação modulo Orçamento tela - Reserva de dotação
   consultaSaldoReservaDotacaoFinal() {
     it("ORÇAMENTO: Reserva de dotação", () => {
-      cy.moduloMenu("ORÇAMENTO","Reserva de dotação");
-    })
+      cy.moduloMenu("ORÇAMENTO", "Reserva de dotação");
+    });
     it("Valida Saldo Final na Tela: Reserva de dotação", () => {
-      
       //Ficha
       cy.get('input[nat="fichaInfoFicha"]', { timeout: 10000 })
-      .type("20211498").tab().wait(500);
+        .type("20223221")
+        .tab()
+        .wait(500);
 
       //validação do saldo inicial da ficha
       cy.get('[nat="fichaInfoSaldoAtual"]')
@@ -179,10 +184,9 @@ class consultaSaldoFichaReserva {
   //Função para consultar o saldo Final da Execução orçamentária modulo Orçamento tela - Consulta Execução orçamentária
   consultaSaldoExecucaoOrcamentariaFinal() {
     it("ORÇAMENTO: Consulta de execução orçamentária", () => {
-      cy.moduloMenu("ORÇAMENTO","Consulta de execução orçamentária");
-    })
+      cy.moduloMenu("ORÇAMENTO", "Consulta de execução orçamentária");
+    });
     it("Valida Saldo Final na Tela: Consulta execução orçamentária", () => {
-      
       //Ano
       cy.get('input[nat="ConsultaExecucaoOrcamentariaAno input"]')
         .type("2022")
@@ -191,13 +195,13 @@ class consultaSaldoFichaReserva {
 
       //Mes
       cy.get('input[nat="ConsultaExecucaoOrcamentariaMes"]')
-        .type("2")
+        .type("3")
         .tab()
         .wait(2000);
 
       //Ficha
       cy.get('input[nat="ConsultaExecucaoOrcamentariaFicha"]')
-        .type("20211498")
+        .type("20223221")
         .tab()
         .wait(1000);
 
@@ -209,7 +213,7 @@ class consultaSaldoFichaReserva {
       //Validação do saldo inicial da ficha na tela de consulta execução orçamentária
       cy.get('div[nat="ConsultaExecucaoOrcamentariaGrid"]').as("grid"); //caputra a grid
       cy.get("@grid")
-        .contains("20211498") //varre procurando o elemento que contem o numero da ficha
+        .contains("20223221") //varre procurando o elemento que contem o numero da ficha
         .parents(".ui-grid-viewport")
         .scrollTo("right", {
           easing: "linear",
