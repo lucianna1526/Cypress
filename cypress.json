@@ -1,6 +1,6 @@
 {
   "projectId": "7qzq3j",
-  "baseUrl": "http://sigautomacao.prodataweb.inf.br/sigAutomacao",
+  "baseUrl": "http://192.168.0.62:8080/sigAutomacao",
   "trashAssetsBeforeRuns": false,
   "viewportHeight": 768,
   "viewportWidth": 1280,
