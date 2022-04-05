@@ -74,8 +74,8 @@ class setup {
       });
       //this.requisicaoCompras();
       //this.processoComprasDispensa();
-      //this.processoComprasDispensaSemReserva();
-      this.processoComprasDispensaCubatao();
+      this.processoComprasDispensaSemReserva();
+      //this.processoComprasDispensaCubatao();
       //this.solicitacaoCompras();
     });
   }
@@ -163,19 +163,18 @@ class setup {
   }
 
   processoComprasDispensaSemReserva() {
-    describe.skip("Parte 1", () => {
-      ativaDesativaReservaDotacaoSemReservaSpec.desativaReservaSemReserva();
+    describe("Parte 1", () => {
+      /*ativaDesativaReservaDotacaoSemReservaSpec.desativaReservaSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoReservaDotacaoInicialSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoExecucaoOrcamentariaInicialSemReserva();
-
+*/
       processoComprasDispensaRequisicaoSemReservaSpec.requisicaoSemReserva();
-
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
+      /* consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
       cancelaLiberacaoRequisicaoComprasSemReservaSpec.cancelaLiberacaoRequisicaoSemReserva();
 
       liberaRequisicaoComprasSemReservaSpec.liberaRequisicaoSemReserva();
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
+      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();*/
     });
 
     describe("Parte 2", () => {
@@ -190,7 +189,7 @@ class setup {
     });
 
     //PARTE 3
-    describe("Parte 3", () => {
+    describe.skip("Parte 3", () => {
       anulacaoEmpenhoDispensaSemReservaSpec.anulaEmpenhoEMSSemReserva();
       anulacaoEmpenhoDispensaSemReservaSpec.anulacaoEmpenhoCancelaSaldoSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();

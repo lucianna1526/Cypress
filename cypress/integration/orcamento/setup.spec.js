@@ -30,7 +30,8 @@ import notaEmpenhoAnulacaoExclusaoSpec from "./NotaEmpenho/notaEmpenhoAnulacaoEx
 
 import notaEmpenhoExclusaoSpec from "./NotaEmpenho/notaEmpenhoExclusao.spec";
 
-import creditoAdicionalSpec from "./creditoAdicional.spec";
+import creditoAdicionalSuplementacaoSpec from "./creditoAdicional/creditoAdicionalSuplementacao.spec";
+import creditoAdicionalReducaoSpec from "./creditoAdicional/creditoAdicionalReducao.spec";
 
 class setup {
   constructor() {
@@ -103,7 +104,8 @@ class setup {
     });
 
     describe("Fluxo Crédito Adicional", () => {
-      creditoAdicionalSpec.creditoAdicionalSuplementacao();
+      //creditoAdicionalSuplementacaoSpec.creditoAdicionalSuplementacao();
+      creditoAdicionalReducaoSpec.creditoAdicionalReducao();
     });
   }
 }

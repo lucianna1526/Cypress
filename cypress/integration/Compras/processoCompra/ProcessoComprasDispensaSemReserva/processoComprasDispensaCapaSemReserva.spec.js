@@ -1,18 +1,19 @@
-
 class processoComprasDispensaSemReserva {
   processoComprasSemReserva() {
     it("Preenche Processo de Compras - Aba Principal", () => {
       //Acessa modulo compras e aguarda 5 segundos
-      cy.moduloMenu('COMPRAS E LICITAÇÕES','Processo de compras')
-      
+      cy.moduloMenu("COMPRAS E LICITAÇÕES", "Processo de compras");
 
       //Modalidade
-      cy.get('input[nat="processodeComprasPrincipalModalidade"]').type("1");
+      cy.get('input[nat="processodeComprasPrincipalModalidade"]')
+        .type("1")
+        .wait(500);
 
       //Organograma
-      cy.get('input[nat="processodeComprasPrincipalOrganograma"]')
-        .click()
-        .type("19.1901.0034.2139");
+      cy.autoComplete(
+        'input[nat="processodeComprasPrincipalOrganogramaDescricao"]',
+        "MANUTENÇÃO DO FMMA "
+      );
 
       //Tipo julgamento
       cy.get('input[nat="processodeComprasPrincipalTipoJulgamento"]')
@@ -56,10 +57,14 @@ class processoComprasDispensaSemReserva {
       );
 
       //Solicitante
-      cy.get('input[nat="processodeComprasPrincipalSolicitante"]').type("SOLICITANTE TESTE AUTOMATIZADO");
+      cy.get('input[nat="processodeComprasPrincipalSolicitante"]').type(
+        "SOLICITANTE TESTE AUTOMATIZADO"
+      );
 
       //Processo Protocolo
-      cy.get('input[nat="processodeComprasPrincipalProcessoProtocolo"]').type("2022014911");
+      cy.get('input[nat="processodeComprasPrincipalProcessoProtocolo"]').type(
+        "2022014911"
+      );
 
       //Adicionar e Sair
       cy.get('button[nat="cadastroProcessoCompraCrudSalvar"]').click();
@@ -74,16 +79,18 @@ class processoComprasDispensaSemReserva {
         )
         .screenshot();
     });
-          it('Modal', () => {
+    it("Modal", () => {
       cy.get('[nat="processodeComprasPrincipalAdicionar"]').click();
 
       cy.wait(5000);
 
       //Seleciona vinculo de requisições
       cy.get(
-        '[class="ui-grid-cell-contents ui-grid-disable-selection clickable"]'
-        ,{timeout: 10000}
-      ).first().click();
+        '[class="ui-grid-cell-contents ui-grid-disable-selection clickable"]',
+        { timeout: 10000 }
+      )
+        .first()
+        .click();
 
       //vincula as requisições
       cy.get('[nat="pesquisaRequisicoesComprasVincularRequisicoes"]').click();
@@ -102,10 +109,7 @@ class processoComprasDispensaSemReserva {
 
       //Clica na aba de credenciamento
       cy.get('li[nat="Credenciamento"]').click().wait(5000);
-      
     });
-
-    
   }
 }
 
