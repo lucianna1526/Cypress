@@ -1,6 +1,6 @@
 {
   "projectId": "7qzq3j",
-  "baseUrl": "http://192.168.0.62:8080/sigAutomacao",
+  "baseUrl": "http://167.250.26.147:8080/sigAutomacao",
   "trashAssetsBeforeRuns": false,
   "viewportHeight": 768,
   "viewportWidth": 1280,

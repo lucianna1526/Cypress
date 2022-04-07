@@ -63,6 +63,8 @@ import ativaDesativaReservaDotacaoSpec from "./processoCompra/ProcessoComprasDis
 import anulacaoEmpenhoSpec from "./processoCompra/processoCompraDispensaCubatao/anulacaoEmpenho.spec";
 import processoComprasDispensaValidaPedidoSIMNAOSpec from "./processoCompra/ProcessoComprasDispensa/processoComprasDispensaValidaPedidoSIMNAO.spec";
 
+import requisicaoMateriaisSpec from "./requisicaoMaterias/requisicaoMateriais.spec";
+
 class setup {
   constructor() {
     describe("Executa Suite Modulo Compras", () => {
@@ -97,7 +99,7 @@ class setup {
   processoComprasDispensa() {
     //Executa Suite Processo de Compras Dispensa com Reserva de Dotação
 
-    describe("Parte 1", () => {
+    describe.skip("Parte 1", () => {
       ativaDesativaReservaDotacaoSpec.ativaReserva();
       consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial();
       consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoInicial();
@@ -122,7 +124,7 @@ class setup {
       liberaRequisicaoComprasSpec.liberaRequisicao();
     });
 
-    describe("Parte 2", () => {
+    describe.skip("Parte 2", () => {
       processoComprasDispensaCapaSpec.processoCompras();
       processoComprasDispensaFaseCredenciamentoSpec.credenciamento();
       processoComprasDispensaFaseJulgamentoSpec.julgamento();
@@ -134,8 +136,8 @@ class setup {
     });
 
     //PARTE 3
-    describe("Parte 3", () => {
-      anulacaoEmpenhoDispensaSpec.anulaEmpenhoEMS();
+    describe.skip("Parte 3", () => {
+     /* anulacaoEmpenhoDispensaSpec.anulaEmpenhoEMS();
       anulacaoEmpenhoDispensaSpec.anulacaoEmpenho();
       consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial();
       validaSaldoReservaAnulacaoEmpenhoSpec.validaGeraEmpenhoSaldoCotacaoCancelado();
@@ -158,12 +160,13 @@ class setup {
       anulacaoEmpenhoDispensaSpec.anulacaoEmpenho();
       consultaSaldoFichaReservaDispensaSpec.consultaSaldoFichasInicial();
       consultaSaldoFichaReservaDispensaSpec.consultaSaldoReservaDotacaoInicial();
-      consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaInicial();
+      consultaSaldoFichaReservaDispensaSpec.consultaSaldoExecucaoOrcamentariaInicial();*/      
+      
     });
   }
 
   processoComprasDispensaSemReserva() {
-    describe("Parte 1", () => {
+    describe.skip("Parte 1", () => {
       /*ativaDesativaReservaDotacaoSemReservaSpec.desativaReservaSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoReservaDotacaoInicialSemReserva();
@@ -177,7 +180,7 @@ class setup {
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();*/
     });
 
-    describe("Parte 2", () => {
+    describe.skip("Parte 2", () => {
       processoComprasDispensaCapaSemReservaSpec.processoComprasSemReserva();
       processoComprasDispensaFaseCredenciamentoSemReservaSpec.credenciamentoSemReserva();
       processoComprasDispensaFaseJulgamentoSemReservaSpec.julgamentoSemReserva();
@@ -189,8 +192,8 @@ class setup {
     });
 
     //PARTE 3
-    describe.skip("Parte 3", () => {
-      anulacaoEmpenhoDispensaSemReservaSpec.anulaEmpenhoEMSSemReserva();
+    describe("Parte 3", () => {
+     /* anulacaoEmpenhoDispensaSemReservaSpec.anulaEmpenhoEMSSemReserva();
       anulacaoEmpenhoDispensaSemReservaSpec.anulacaoEmpenhoCancelaSaldoSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
       validaSaldoReservaAnulacaoEmpenhoSemReservaSpec.validaGeraEmpenhoSaldoCotacaoCanceladoSemReserva();
@@ -213,7 +216,9 @@ class setup {
       anulacaoEmpenhoDispensaSemReservaSpec.anulacaoEmpenhoCancelaSaldoSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoFichasInicialSemReserva();
       consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoReservaDotacaoInicialSemReserva();
-      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoExecucaoOrcamentariaInicialSemReserva();
+      consultaSaldoFichaReservaDispensaSemReservaSpec.consultaSaldoExecucaoOrcamentariaInicialSemReserva();*/
+
+      requisicaoMateriaisSpec.CadastroRequisicaoMateriaisDiversos();
     });
   }
 
@@ -272,6 +277,8 @@ class setup {
     validaSaldoReservaPedidoComprasSpec.insereEntregaSemSaldo();
     validaSaldoReservaPedidoComprasSpec.validaSaldoFinalFicha(); */
   }
+
+
 }
 
 export default new setup();

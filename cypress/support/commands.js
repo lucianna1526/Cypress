@@ -185,7 +185,7 @@ Cypress.Commands.add("moduloMenu", (modulo, menu, json = "") => {
   //procura o menu
   cy.get("UL[class='dropdown-menu']>li").each(($el, index, $list) => {
     if ($el.text().trim() === menu) {
-      cy.wrap($el).click();
+      cy.wrap($el).first().click();
     }
   });
 

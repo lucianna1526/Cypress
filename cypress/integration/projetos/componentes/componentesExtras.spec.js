@@ -32,7 +32,7 @@ class componentesExtras {
       //Valida na grid o valor da suplementação
       cy.gridClicar(
         'div[nat="testeArquiteturaGridRequisicao"]',
-        "28/03/2022",
+        "30/03/2022",
         ""
       ).first();
       cy.get("button[nat=botaoEditar]").first().click();
@@ -73,7 +73,7 @@ class componentesExtras {
       //Valida na grid o valor da suplementação
       cy.gridClicar(
         "div[nat=testeArquiteturaGridRequisicoes2]",
-        "28/03/2022",
+        "30/03/2022",
         ""
       ).first();
       cy.get("button[nat=botaoEditar]").first().click();
