@@ -6,8 +6,8 @@ class Utils {
   preencherLogin() {
     //cy.intercept("GET", "**/sigAutomacao/**").as("getUrl");
     cy.intercept('GET', '**/sigAutomacao/rest/menu/getMenu?modulo=menu').as('getUrl');
-    cy.get("#usuario").focus().type("automacao");
-    cy.get("#iPassword").focus().type("1010");
+    cy.get("#usuario").focus().type("");
+    cy.get("#iPassword").focus().type("");
     //clica em entrar
     cy.get("input.ng-scope").click();
     //cy.wait("@getUrl",{timeout: 150000});
