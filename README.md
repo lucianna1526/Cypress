@@ -48,4 +48,5 @@ npx cypress run --spec .\cypress\integration\Compras\setup.spec.js
 
 - [Jeandes Wesley Martins](https://github.com/jeandeswesley).
 - [Hevener Ancelmo Pereira](https://github.com/hevener10).
-- [Lucianna Siqueira Freitas].(https://github.com/lucianna1526).
+- [Lucianna Siqueira FReitas](https://github.com/lucianna1526).
+
